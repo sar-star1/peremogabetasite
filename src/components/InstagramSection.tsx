@@ -1,14 +1,23 @@
 import { motion } from "framer-motion";
-import { Instagram } from "lucide-react";
-import { InstagramEmbed } from "react-social-media-embed";
+import { Instagram, ExternalLink } from "lucide-react";
 
-const instagramPostUrls = [
-  "https://www.instagram.com/p/DIMISKqI2jz/",
-  "https://www.instagram.com/p/DIJp_bmoGMW/",
-  "https://www.instagram.com/p/DIHIMxkoxQs/",
-  "https://www.instagram.com/p/DIEcFJSIE8S/",
-  "https://www.instagram.com/p/DICBkGxoKs4/",
-  "https://www.instagram.com/p/DH_XfyJoUjR/",
+const instagramPosts = [
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_CZecj-DUULF-GoRpY.png", alt: "Круглий круасан Манго-абрикос" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_qchkp-bLrWH-vfPHB.png", alt: "Круасан Вибухова карамель" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_bTFQA-nIFeE-TWUCv.png", alt: "Круасан Фісташка-малина" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_KsAFb-qevzu-oFHRF.png", alt: "Еклер ягідний" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_xlCIe-iGIrk-kBAbR.png", alt: "Торт Фісташка-малина" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_NlvgD-iEkSu-KICSS.jpeg", alt: "Десерт Павлова" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_EFhRG-QONTe-gjFfD.png", alt: "Круасан лимонний" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_JHRHL-GaNGc-FmoOc.png", alt: "Круасан йогуртовий" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_kkRJk-flJeM-dQJIx.png", alt: "Естерхазі" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_EPDpV-glrco-WsdAP.png", alt: "Круасан шоколадний" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_yGqIv-aClzA-JeWsk.png", alt: "Медовик з вишнею" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_VZWCB-MTElG-Xpwbz.png", alt: "Торт Снікерс" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_rRSqa-XjJke-oRrLw.png", alt: "Круасан з куркою Теріякі" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_LyrWk-FHUDe-WmcgH.png", alt: "Хліб гречаний" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_uKqWj-coqJQ-koIFY.jpeg", alt: "Макарони" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_xprik-Gulhr-QDNge.jpeg", alt: "Донати" },
 ];
 
 const InstagramSection = () => {
@@ -32,23 +41,34 @@ const InstagramSection = () => {
           </p>
         </motion.div>
 
-        {/* Horizontally scrollable Instagram embeds */}
+        {/* Photo grid carousel */}
         <div className="relative">
           <div
-            className="flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory"
+            className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {instagramPostUrls.map((url, i) => (
-              <motion.div
+            {instagramPosts.map((post, i) => (
+              <motion.a
                 key={i}
+                href="https://www.instagram.com/peremogabakery/"
+                target="_blank"
+                rel="noopener noreferrer"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex-shrink-0 snap-center w-[328px]"
+                transition={{ delay: i * 0.03 }}
+                className="flex-shrink-0 snap-center group relative w-52 h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden bg-secondary"
               >
-                <InstagramEmbed url={url} width={328} />
-              </motion.div>
+                <img
+                  src={post.image}
+                  alt={post.alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/30 transition-colors flex items-center justify-center">
+                  <ExternalLink className="w-8 h-8 text-primary-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
