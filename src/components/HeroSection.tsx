@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
-import heroImage from "@/assets/hero-bakery.jpg";
 
 const HeroSection = () => {
   return (
     <section className="relative h-[90vh] min-h-[600px] overflow-hidden">
       <img
-        src={heroImage}
+        src="https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/uWHFXIN-qypqeCF-ekUYWeX.png"
         alt="Peremoga Bakery — свіжа випічка"
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}

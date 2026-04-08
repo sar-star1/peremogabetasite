@@ -2,14 +2,22 @@ import { motion } from "framer-motion";
 import { Instagram, ExternalLink } from "lucide-react";
 
 const instagramPosts = [
-  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_CZecj-DUULF-GoRpY.png", alt: "Круглий круасан" },
-  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_bTFQA-nIFeE-TWUCv.png", alt: "Фісташковий круасан" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_CZecj-DUULF-GoRpY.png", alt: "Круглий круасан Манго-абрикос" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_qchkp-bLrWH-vfPHB.png", alt: "Круасан Вибухова карамель" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_bTFQA-nIFeE-TWUCv.png", alt: "Круасан Фісташка-малина" },
   { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_KsAFb-qevzu-oFHRF.png", alt: "Еклер ягідний" },
-  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_xlCIe-iGIrk-kBAbR.png", alt: "Торт" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_xlCIe-iGIrk-kBAbR.png", alt: "Торт Фісташка-малина" },
   { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_NlvgD-iEkSu-KICSS.jpeg", alt: "Десерт Павлова" },
-  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_EFhRG-QONTe-gjFfD.png", alt: "Лимонний круасан" },
-  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_JHRHL-GaNGc-FmoOc.png", alt: "Йогуртовий круасан" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_EFhRG-QONTe-gjFfD.png", alt: "Круасан лимонний" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_JHRHL-GaNGc-FmoOc.png", alt: "Круасан йогуртовий" },
   { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_kkRJk-flJeM-dQJIx.png", alt: "Естерхазі" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_EPDpV-glrco-WsdAP.png", alt: "Круасан шоколадний" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_yGqIv-aClzA-JeWsk.png", alt: "Медовик з вишнею" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_VZWCB-MTElG-Xpwbz.png", alt: "Торт Снікерс" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_rRSqa-XjJke-oRrLw.png", alt: "Круасан з куркою Теріякі" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_LyrWk-FHUDe-WmcgH.png", alt: "Хліб гречаний" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_uKqWj-coqJQ-koIFY.jpeg", alt: "Макарони" },
+  { image: "https://cdn-media.choiceqr.com/prod-eat-peremoga-bakery950/menu/thumbnail_xprik-Gulhr-QDNge.jpeg", alt: "Донати" },
 ];
 
 const InstagramSection = () => {
@@ -35,7 +43,7 @@ const InstagramSection = () => {
 
         {/* Carousel-style scrollable grid */}
         <div className="relative">
-          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide">
+          <div className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
             {instagramPosts.map((post, i) => (
               <motion.a
                 key={i}
@@ -45,8 +53,8 @@ const InstagramSection = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
-                className="flex-shrink-0 snap-center group relative w-56 h-56 md:w-72 md:h-72 rounded-2xl overflow-hidden"
+                transition={{ delay: i * 0.03 }}
+                className="flex-shrink-0 snap-center group relative w-52 h-52 md:w-64 md:h-64 rounded-2xl overflow-hidden bg-secondary"
               >
                 <img
                   src={post.image}
