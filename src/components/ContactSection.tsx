@@ -33,7 +33,7 @@ const ContactSection = () => {
             viewport={{ once: true }}
             className="space-y-10"
           >
-            <div className="flex items-start gap-5">
+            <address className="not-italic flex items-start gap-5">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 border border-border">
                 <MapPin className="w-4 h-4 text-foreground/60" />
               </div>
@@ -48,7 +48,7 @@ const ContactSection = () => {
                   вулиця Григоровича-Барського, 1, Київ, Україна
                 </a>
               </div>
-            </div>
+            </address>
 
             <div className="flex items-start gap-5">
               <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 border border-border">
