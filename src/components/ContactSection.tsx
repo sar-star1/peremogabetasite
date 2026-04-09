@@ -40,7 +40,7 @@ const ContactSection = () => {
               <div>
                 <h3 className="font-display text-lg font-medium text-foreground mb-1">Адреса</h3>
                 <a
-                  href="https://maps.google.com/?q=вулиця+Григоровича-Барського,+1,+Київ"
+                  href="https://maps.app.goo.gl/QyoiGuZsLpDQeFmB9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light leading-relaxed"
@@ -72,10 +72,10 @@ const ContactSection = () => {
               <div>
                 <h3 className="font-display text-lg font-medium text-foreground mb-1">Email</h3>
                 <a
-                  href="mailto:zashkvarnojulia@gmail.com"
+                  href="mailto:peremogabakery@gmail.com"
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light"
                 >
-                  zashkvarnojulia@gmail.com
+                  peremogabakery@gmail.com
                 </a>
               </div>
             </div>
