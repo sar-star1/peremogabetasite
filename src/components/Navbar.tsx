@@ -21,6 +21,8 @@ const Navbar = () => {
 
   return (
     <nav
+      role="navigation"
+      aria-label="Головна навігація Peremoga Bakery"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
           ? "bg-background/95 backdrop-blur-md shadow-[0_1px_0_hsl(var(--border))] py-2"

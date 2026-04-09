@@ -8,7 +8,7 @@ const FooterSection = () => {
         <div className="flex flex-col items-center text-center">
           <img
             src={logo}
-            alt="Peremoga Bakery"
+            alt="Логотип Peremoga Bakery — пекарня Перемога Київ"
             className="w-14 h-14 rounded-full object-cover mb-4 opacity-80"
             width={56}
             height={56}

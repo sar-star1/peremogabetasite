@@ -4,10 +4,10 @@ import logo from "@/assets/peremoga-logo.jpg";
 
 const HeroSection = () => {
   return (
-    <section className="relative h-screen min-h-[700px] overflow-hidden">
+    <header className="relative h-screen min-h-[700px] overflow-hidden" role="banner">
       <img
         src={heroBg}
-        alt="Peremoga Bakery — свіжа випічка"
+        alt="Peremoga Bakery — реміснича пекарня-кав'ярня в Києві, свіжа випічка щодня"
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}
         height={1080}
@@ -23,7 +23,7 @@ const HeroSection = () => {
         >
           <img
             src={logo}
-            alt="Peremoga"
+            alt="Логотип Peremoga Bakery — пекарня Перемога Київ"
             className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover mx-auto shadow-2xl ring-2 ring-primary-foreground/20"
             width={144}
             height={144}
@@ -46,7 +46,7 @@ const HeroSection = () => {
             <div className="h-px w-12 bg-primary-foreground/40" />
           </div>
           <p className="font-body text-base md:text-lg text-primary-foreground/85 max-w-lg mx-auto font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
-            Реміснича пекарня в серці Києва. Натуральні інгредієнти, свіжа випічка щодня.
+            Реміснича пекарня-кав'ярня на вул. Григоровича-Барського в Києві. Авторські десерти, крафтовий хліб, випічка щодня.
           </p>
         </motion.div>
 
@@ -80,7 +80,7 @@ const HeroSection = () => {
       >
         <div className="w-px h-12 bg-gradient-to-b from-primary-foreground/0 via-primary-foreground/40 to-primary-foreground/0" />
       </motion.div>
-    </section>
+    </header>
   );
 };
 
