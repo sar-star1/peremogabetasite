@@ -35,17 +35,17 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
         >
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light text-primary-foreground mb-3 tracking-wide">
+          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light text-primary-foreground mb-3 tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
             Peremoga
           </h1>
           <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-px w-12 bg-primary-foreground/30" />
-            <span className="font-body text-xs uppercase tracking-[0.35em] text-primary-foreground/60 font-light">
+            <div className="h-px w-12 bg-primary-foreground/40" />
+            <span className="font-body text-xs uppercase tracking-[0.35em] text-primary-foreground/80 font-light drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
               Artisan Bakery · Kyiv
             </span>
-            <div className="h-px w-12 bg-primary-foreground/30" />
+            <div className="h-px w-12 bg-primary-foreground/40" />
           </div>
-          <p className="font-body text-base md:text-lg text-primary-foreground/70 max-w-lg mx-auto font-light leading-relaxed">
+          <p className="font-body text-base md:text-lg text-primary-foreground/85 max-w-lg mx-auto font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
             Реміснича пекарня в серці Києва. Натуральні інгредієнти, свіжа випічка щодня.
           </p>
         </motion.div>
