@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Clock, Mail } from "lucide-react";
+import { MapPin, Clock, Mail, Phone } from "lucide-react";
 import WheatDivider from "./WheatDivider";
 
 const schedule = [
@@ -62,6 +62,21 @@ const ContactSection = () => {
                     <span className="text-foreground/80">{s.hours}</span>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            <div className="flex items-start gap-5">
+              <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 border border-border">
+                <Phone className="w-4 h-4 text-foreground/60" />
+              </div>
+              <div>
+                <h3 className="font-display text-lg font-medium text-foreground mb-1">Телефон</h3>
+                <a
+                  href="tel:+380935263825"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors font-light"
+                >
+                  +38 (093) 526-38-25
+                </a>
               </div>
             </div>
 

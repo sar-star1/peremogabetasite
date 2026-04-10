@@ -1,19 +1,18 @@
 import { motion } from "framer-motion";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import logo from "@/assets/peremoga-logo.jpg";
 
 const HeroSection = () => {
   return (
     <header className="relative h-screen min-h-[700px] overflow-hidden" role="banner">
-      <motion.img
-        src={heroBg}
-        alt="Peremoga Bakery — реміснича пекарня-кав'ярня в Києві, свіжа випічка щодня"
+      <video
+        src={heroVideo.url}
+        autoPlay
+        muted
+        loop
+        playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        width={1920}
-        height={1080}
-        initial={{ scale: 1.15 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 12, ease: "easeOut" }}
+        poster=""
       />
       <div className="absolute inset-0 bg-hero-overlay" />
 
@@ -74,7 +73,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
