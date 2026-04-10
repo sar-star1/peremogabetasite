@@ -5,12 +5,15 @@ import logo from "@/assets/peremoga-logo.jpg";
 const HeroSection = () => {
   return (
     <header className="relative h-screen min-h-[700px] overflow-hidden" role="banner">
-      <img
+      <motion.img
         src={heroBg}
         alt="Peremoga Bakery — реміснича пекарня-кав'ярня в Києві, свіжа випічка щодня"
         className="absolute inset-0 w-full h-full object-cover"
         width={1920}
         height={1080}
+        initial={{ scale: 1.15 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 12, ease: "easeOut" }}
       />
       <div className="absolute inset-0 bg-hero-overlay" />
 
