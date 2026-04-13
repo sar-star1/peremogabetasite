@@ -48,7 +48,7 @@ const HeroSection = () => {
             <div className="h-px w-12 bg-primary-foreground/40" />
           </div>
           <p className="font-body text-base md:text-lg text-primary-foreground/85 max-w-lg mx-auto font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
-            Реміснича пекарня-кав'ярня на вул. Григоровича-Барського в Києві. Авторські десерти, крафтовий хліб, випічка щодня.
+            Реміснича пекарня-кав'ярня на вул. Григоровича-Барського в <span className="font-body">Києві</span>. Авторські десерти, крафтовий хліб, випічка щодня.
           </p>
         </motion.div>
 
