@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import WheatDivider from "./WheatDivider";
+import teamPhoto from "@/assets/team-photo.jpg";
 
 const pillars = [
   {
@@ -55,6 +57,25 @@ const AboutSection = () => {
             </p>
           </motion.div>
         </div>
+
+        {/* Team Photo */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="max-w-3xl mx-auto mb-20"
+        >
+          <img
+            src={teamPhoto}
+            alt="Команда пекарні Перемога"
+            className="w-full rounded-sm object-cover"
+            loading="lazy"
+          />
+          <p className="text-center text-sm text-muted-foreground mt-4 font-light italic">
+            Наша команда — серце пекарні "Перемога"
+          </p>
+        </motion.div>
 
         {/* What we do */}
         <motion.div

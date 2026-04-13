@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Instagram, Menu, X } from "lucide-react";
 import logo from "@/assets/peremoga-logo.jpg";
 
 const navItems = [
   { label: "Меню", href: "#menu" },
   { label: "Про нас", href: "#about" },
-  { label: "Instagram", href: "#instagram" },
+  { label: 'Хліб "Перемога"', href: "/charity-bread", isRoute: true },
   { label: "Контакти", href: "#contact" },
 ];
 
@@ -49,17 +50,29 @@ const Navbar = () => {
 
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-10">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={`text-[13px] font-body font-light uppercase tracking-[0.2em] transition-colors hover:text-warm-gold ${
-                scrolled ? "text-foreground/70" : "text-primary-foreground/80"
-              }`}
-            >
-              {item.label}
-            </a>
-          ))}
+          {navItems.map((item) =>
+            item.isRoute ? (
+              <Link
+                key={item.href}
+                to={item.href}
+                className={`text-[13px] font-body font-light uppercase tracking-[0.2em] transition-colors hover:text-warm-gold ${
+                  scrolled ? "text-foreground/70" : "text-primary-foreground/80"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`text-[13px] font-body font-light uppercase tracking-[0.2em] transition-colors hover:text-warm-gold ${
+                  scrolled ? "text-foreground/70" : "text-primary-foreground/80"
+                }`}
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </div>
 
         <div className="flex items-center gap-4">
@@ -90,16 +103,27 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="md:hidden bg-background/98 backdrop-blur-xl border-t border-border">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-body font-light uppercase tracking-[0.15em] text-foreground/80 hover:text-primary transition-colors py-2"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.isRoute ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-body font-light uppercase tracking-[0.15em] text-foreground/80 hover:text-primary transition-colors py-2"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-body font-light uppercase tracking-[0.15em] text-foreground/80 hover:text-primary transition-colors py-2"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </div>
         </div>
       )}
