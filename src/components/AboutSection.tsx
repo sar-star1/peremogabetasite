@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import WheatDivider from "./WheatDivider";
 import teamPhoto from "@/assets/team-photo.jpg";
 
@@ -22,60 +21,70 @@ const AboutSection = () => {
   return (
     <section id="about" className="py-24 md:py-32 bg-background">
       <div className="container mx-auto px-6">
-        {/* Our Story */}
-        <div className="max-w-2xl mx-auto text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-              Наша історія
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-8 tracking-wide">
-              Смак перемоги
-            </h2>
+        {/* Our Story — text left, photo right */}
+        <div className="max-w-5xl mx-auto mb-20">
+          <div className="text-center mb-10">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
+                Наша історія
+              </span>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-8 tracking-wide">
+                Смак перемоги
+              </h2>
+              <WheatDivider />
+            </motion.div>
+          </div>
 
-            <WheatDivider className="mb-10" />
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Text — left */}
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="text-muted-foreground text-base md:text-lg leading-[1.9] mb-6 font-light">
+                Наша історія почалася в 2021 році, коли ми відкрили кав'ярні і виготовляли авторські вироби для них. 
+                Тоді ми ще не знали, яким буде наш шлях.
+              </p>
+              <p className="text-muted-foreground text-base md:text-lg leading-[1.9] mb-6 font-light">
+                Адже в 2022 році все змінилось. З початком війни, ми почали випікати благодійний хліб "Перемога" 
+                для людей з прифронтових та деокупованих територій, а також для наших військових. 
+                Звідси і народилася назва нашої пекарні.
+              </p>
+              <p className="text-muted-foreground text-base md:text-lg leading-[1.9] mb-6 font-light">
+                Також ми не припиняємо створювати авторські десерти, випічку і крафтовий хліб. 
+                І тут ми вирішили не зупинятись на власних кав'ярнях.
+              </p>
+              <p className="text-foreground text-base md:text-lg leading-[1.9] font-medium">
+                Наша мета — дарувати людям емоції в цей складний час через нашу продукцію.
+              </p>
+            </motion.div>
 
-            <p className="text-muted-foreground text-base md:text-lg leading-[1.9] mb-6 font-light">
-              Наша історія почалася в 2021 році, коли ми відкрили кав'ярні і виготовляли авторські вироби для них. 
-              Тоді ми ще не знали, яким буде наш шлях.
-            </p>
-            <p className="text-muted-foreground text-base md:text-lg leading-[1.9] mb-6 font-light">
-              Адже в 2022 році все змінилось. З початком війни, ми почали випікати благодійний хліб "Перемога" 
-              для людей з прифронтових та деокупованих територій, а також для наших військових. 
-              Звідси і народилася назва нашої пекарні.
-            </p>
-            <p className="text-muted-foreground text-base md:text-lg leading-[1.9] mb-6 font-light">
-              Також ми не припиняємо створювати авторські десерти, випічку і крафтовий хліб. 
-              І тут ми вирішили не зупинятись на власних кав'ярнях.
-            </p>
-            <p className="text-foreground text-base md:text-lg leading-[1.9] font-medium">
-              Наша мета — дарувати людям емоції в цей складний час через нашу продукцію.
-            </p>
-          </motion.div>
+            {/* Team Photo — right */}
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+            >
+              <img
+                src={teamPhoto}
+                alt="Команда пекарні Перемога"
+                className="w-full rounded-sm object-cover aspect-[3/4]"
+                loading="lazy"
+              />
+              <p className="text-center text-sm text-muted-foreground mt-4 font-light italic">
+                Наша команда — серце пекарні "Перемога"
+              </p>
+            </motion.div>
+          </div>
         </div>
-
-        {/* Team Photo */}
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-3xl mx-auto mb-20"
-        >
-          <img
-            src={teamPhoto}
-            alt="Команда пекарні Перемога"
-            className="w-full rounded-sm object-cover"
-            loading="lazy"
-          />
-          <p className="text-center text-sm text-muted-foreground mt-4 font-light italic">
-            Наша команда — серце пекарні "Перемога"
-          </p>
-        </motion.div>
 
         {/* What we do */}
         <motion.div
