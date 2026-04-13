@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import WheatDivider from "./WheatDivider";
 import teamPhoto from "@/assets/team-photo.jpg";
 
