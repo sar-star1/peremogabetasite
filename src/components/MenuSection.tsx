@@ -22,13 +22,13 @@ const MenuSection = () => {
           className="text-center mb-14"
         >
           <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-            Обирайте
+            Для вас
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-4 tracking-wide">
-            Наше меню
+            Оберіть своє задоволення
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto font-light text-sm">
-            Роздрібне меню. Гуртові ціни за запитом в нашому Instagram.
+            Роздрібне меню. Для B2B співпраці — напишіть нам в Instagram.
           </p>
           <WheatDivider className="mt-8" />
         </motion.div>

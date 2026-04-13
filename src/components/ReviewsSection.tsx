@@ -48,10 +48,10 @@ const ReviewsSection = () => {
           className="text-center mb-6"
         >
           <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-            Відгуки
+            Успіх наших гостей
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-4 tracking-wide">
-            Що кажуть гості
+            Вони вже обрали Peremoga
           </h2>
           <WheatDivider className="mt-6" />
         </motion.div>

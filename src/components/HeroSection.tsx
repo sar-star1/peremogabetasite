@@ -37,19 +37,19 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
         >
-          <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light text-primary-foreground mb-3 tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
-            Peremoga
-          </h1>
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <div className="h-px w-12 bg-primary-foreground/40" />
-            <span className="font-body text-xs uppercase tracking-[0.35em] text-primary-foreground/80 font-light drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
-              Artisan Bakery · Kyiv
-            </span>
-            <div className="h-px w-12 bg-primary-foreground/40" />
-          </div>
-          <p className="font-body text-base md:text-lg text-primary-foreground/85 max-w-lg mx-auto font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
-            Реміснича пекарня-кав'ярня на вул. Григоровича-Барського в <span className="font-body">Києві</span>. Авторські десерти, крафтовий хліб, випічка щодня.
-          </p>
+           <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light text-primary-foreground mb-3 tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
+             Peremoga
+           </h1>
+           <div className="flex items-center justify-center gap-4 mb-6">
+             <div className="h-px w-12 bg-primary-foreground/40" />
+             <span className="font-body text-xs uppercase tracking-[0.35em] text-primary-foreground/80 font-light drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
+               Artisan Bakery · Kyiv
+             </span>
+             <div className="h-px w-12 bg-primary-foreground/40" />
+           </div>
+           <p className="font-body text-base md:text-lg text-primary-foreground/85 max-w-lg mx-auto font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
+             Ваше свято заслуговує на найкраще. Авторські десерти, крафтовий хліб та випічка, створені з любов'ю — щодня у <span className="font-body">Києві</span>.
+           </p>
         </motion.div>
 
         <motion.div
@@ -58,18 +58,18 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.7 }}
           className="flex flex-col sm:flex-row gap-4 mt-10"
         >
-          <a
-            href="#menu"
-            className="px-10 py-3 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/25 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground/20 transition-all duration-300"
-          >
-            Меню
-          </a>
-          <a
-            href="#contact"
-            className="px-10 py-3 border border-primary-foreground/15 text-primary-foreground/80 font-body text-sm uppercase tracking-[0.2em] font-light hover:border-primary-foreground/30 transition-all duration-300"
-          >
-            Контакти
-          </a>
+         <a
+           href="#menu"
+           className="px-10 py-3 bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground/25 transition-all duration-300"
+         >
+           Обрати випічку
+         </a>
+         <a
+           href="#contact"
+           className="px-10 py-3 border border-primary-foreground/15 text-primary-foreground/80 font-body text-sm uppercase tracking-[0.2em] font-light hover:border-primary-foreground/30 transition-all duration-300"
+         >
+           Замовити
+         </a>
         </motion.div>
       </div>
 

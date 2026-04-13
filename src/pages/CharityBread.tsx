@@ -8,7 +8,7 @@ import charityBread1 from "@/assets/charity-bread-1.jpg";
 import charityBread2 from "@/assets/charity-bread-2.jpg";
 import charityBread3 from "@/assets/charity-bread-3.jpg";
 import charityBread4 from "@/assets/charity-bread-4.jpg";
-import monobankLogo from "@/assets/monobank-logo.png";
+import monobankLogo from "@/assets/monobank-logo.jpeg";
 import breadBasket from "@/assets/bread-basket.webp";
 
 const photos = [
@@ -140,45 +140,64 @@ const CharityBread = () => {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 px-8 py-3 bg-foreground text-background font-body text-sm uppercase tracking-[0.15em] font-light hover:bg-foreground/90 transition-colors"
                 >
-                  <img src={monobankLogo} alt="Monobank" className="w-5 h-5 object-contain" />
+                  <img src={monobankLogo} alt="Monobank" className="w-6 h-6 object-contain rounded" />
                   Задонатити через Monobank
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
 
-              {/* News & Instagram links */}
-              <div className="grid sm:grid-cols-2 gap-4">
-                <a
-                  href={NEWS_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-5 border border-border hover:border-wheat/40 transition-colors group"
-                >
-                  <Newspaper className="w-5 h-5 text-muted-foreground group-hover:text-wheat transition-colors shrink-0" />
-                  <div>
-                    <span className="text-sm font-medium text-foreground block">5 канал</span>
-                    <span className="text-xs text-muted-foreground font-light">Репортаж про хліб "Перемога"</span>
+              {/* News Preview */}
+              <a
+                href={NEWS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block border border-border hover:border-wheat/40 transition-colors group overflow-hidden"
+              >
+                <div className="flex flex-col sm:flex-row">
+                  <div className="sm:w-48 h-40 sm:h-auto flex-shrink-0 overflow-hidden">
+                    <img
+                      src="https://www.5.ua/media/pictures/400x266/276179.jpg?t=1695558831"
+                      alt="Хліб Перемога — репортаж 5 каналу"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground ml-auto shrink-0" />
-                </a>
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-5 border border-border hover:border-wheat/40 transition-colors group"
-                >
-                  <svg className="w-5 h-5 text-muted-foreground group-hover:text-wheat transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                  </svg>
-                  <div>
-                    <span className="text-sm font-medium text-foreground block">Instagram</span>
-                    <span className="text-xs text-muted-foreground font-light">Відео про благодійність</span>
+                  <div className="p-5 flex flex-col justify-center">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Newspaper className="w-4 h-4 text-muted-foreground" />
+                      <span className="text-[11px] font-body uppercase tracking-wider text-muted-foreground font-light">5 канал · 24.09.2023</span>
+                    </div>
+                    <h4 className="font-display text-base md:text-lg font-medium text-foreground leading-snug mb-2 group-hover:text-primary transition-colors">
+                      Безкоштовно передають хліб "Перемога" військовим та волонтерам: як працює пекарня у Києві
+                    </h4>
+                    <p className="text-xs text-muted-foreground font-light leading-relaxed line-clamp-2">
+                      Військові у Бахмуті називали цей хліб "Перемога" своїм символом. Буханці з написом перемога печуть у столичній пекарні й безоплатно розвозять військовим.
+                    </p>
+                    <span className="inline-flex items-center gap-1 text-xs text-primary font-body mt-3 font-light">
+                      Читати повністю <ExternalLink className="w-3 h-3" />
+                    </span>
                   </div>
-                  <ExternalLink className="w-3.5 h-3.5 text-muted-foreground ml-auto shrink-0" />
-                </a>
-              </div>
+                </div>
+              </a>
+
+              {/* Instagram link */}
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 p-5 border border-border hover:border-wheat/40 transition-colors group"
+              >
+                <svg className="w-5 h-5 text-muted-foreground group-hover:text-wheat transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+                </svg>
+                <div>
+                  <span className="text-sm font-medium text-foreground block">@craft_bakery_by_dubova</span>
+                  <span className="text-xs text-muted-foreground font-light">Відео про благодійність в Instagram</span>
+                </div>
+                <ExternalLink className="w-3.5 h-3.5 text-muted-foreground ml-auto shrink-0" />
+              </a>
             </motion.div>
           </div>
         </section>
