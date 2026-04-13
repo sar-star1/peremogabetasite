@@ -76,7 +76,7 @@ const AboutSection = () => {
               <img
                 src={teamPhoto}
                 alt="Команда пекарні Перемога"
-                className="w-full rounded-sm object-cover aspect-[3/4]"
+                className="w-full rounded-sm object-contain"
                 loading="lazy"
               />
               <p className="text-center text-sm text-muted-foreground mt-4 font-light italic">
