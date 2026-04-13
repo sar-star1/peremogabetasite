@@ -103,16 +103,27 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="md:hidden bg-background/98 backdrop-blur-xl border-t border-border">
           <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-sm font-body font-light uppercase tracking-[0.15em] text-foreground/80 hover:text-primary transition-colors py-2"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navItems.map((item) =>
+              item.isRoute ? (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-body font-light uppercase tracking-[0.15em] text-foreground/80 hover:text-primary transition-colors py-2"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-sm font-body font-light uppercase tracking-[0.15em] text-foreground/80 hover:text-primary transition-colors py-2"
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </div>
         </div>
       )}
