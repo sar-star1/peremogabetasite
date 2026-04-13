@@ -8,7 +8,7 @@ import charityBread1 from "@/assets/charity-bread-1.jpg";
 import charityBread2 from "@/assets/charity-bread-2.jpg";
 import charityBread3 from "@/assets/charity-bread-3.jpg";
 import charityBread4 from "@/assets/charity-bread-4.jpg";
-import monobankLogo from "@/assets/monobank-logo.png";
+import monobankLogo from "@/assets/monobank-logo.jpeg";
 import breadBasket from "@/assets/bread-basket.webp";
 
 const photos = [
