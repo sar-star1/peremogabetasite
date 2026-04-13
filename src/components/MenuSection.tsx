@@ -2,13 +2,19 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuCategories } from "@/data/menuData";
 import WheatDivider from "./WheatDivider";
+import eclairs from "@/assets/eclairs.webp";
 
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
 
   return (
-    <section id="menu" className="py-24 md:py-32 bg-linen-gradient">
-      <div className="container mx-auto px-6">
+    <section id="menu" className="relative py-24 md:py-32 overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-10"
+        style={{ backgroundImage: `url(${eclairs})` }}
+      />
+      <div className="absolute inset-0 bg-linen-gradient" style={{ opacity: 0.92 }} />
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

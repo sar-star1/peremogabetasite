@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Clock, Mail, Phone } from "lucide-react";
 import WheatDivider from "./WheatDivider";
+import breadSliced from "@/assets/bread-sliced.webp";
 
 const schedule = [
   { day: "Понеділок — Субота", hours: "08:00 — 20:00" },
@@ -9,7 +10,12 @@ const schedule = [
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 md:py-32 bg-background">
+    <section id="contact" className="relative py-24 md:py-32 overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-8"
+        style={{ backgroundImage: `url(${breadSliced})` }}
+      />
+      <div className="absolute inset-0 bg-background" style={{ opacity: 0.93 }} />
       <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
