@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import WheatDivider from "./WheatDivider";
+import teamPhoto from "@/assets/team-photo.jpg";
 
 const pillars = [
   {
