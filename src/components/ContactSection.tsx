@@ -24,10 +24,10 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-            Завітайте
+            Зробіть перший крок
           </span>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-4 tracking-wide">
-            Контакти
+            Зв'яжіться з нами
           </h2>
           <WheatDivider className="mt-6" />
         </motion.div>
