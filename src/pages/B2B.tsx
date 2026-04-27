@@ -1,39 +1,114 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Instagram, Mail, Phone, Check } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
+import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import WheatDivider from "@/components/WheatDivider";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { useToast } from "@/hooks/use-toast";
 import heroBakery from "@/assets/hero-bakery.jpg";
-import breadBasket from "@/assets/bread-basket.webp";
 import croissants from "@/assets/hero-croissants.jpg";
+import eclairs from "@/assets/eclairs.webp";
+import breadBasket from "@/assets/bread-basket.webp";
+import breadSliced from "@/assets/bread-sliced.webp";
+import wheatCroissants from "@/assets/hero-wheat-croissants.jpg";
 
-const benefits = [
-  "Щоденна свіжа випічка власного виробництва",
-  "Стабільні об'єми та гнучкий графік доставки по Києву",
-  "Індивідуальні рецептури під концепцію вашого закладу",
-  "Прозоре ціноутворення для постійних партнерів",
+const products = [
+  {
+    title: "Випічка",
+    image: croissants,
+    text: "Вся випічка виготовляється за власною рецептурою, яка адаптувала традиційний підхід до сучасних тенденцій. Незмінний топ-продажів — наші круглі круасани (Supreme, New York Roll) — сучасний десерт із листкового тіста ідеально круглої форми та з великою кількістю кремової начинки. Також пропонуємо великий вибір хрумких класичних круасанів з начинкою і без, сінабони та іншу випічку.",
+  },
+  {
+    title: "Еклери",
+    image: eclairs,
+    text: "Ми відтворили смак дитинства та поєднали класичне заварне тістечко з різними начинками. Наші еклери — це естетичне оздоблення, ароматне тісто і велика кількість начинки на будь-який смак.",
+  },
+  {
+    title: "Чізкейки",
+    image: heroBakery,
+    text: "Ніжні чізкейки нашого виробництва — це свіжі смаки і ароматна пісочна основа. Наш бестселер — чізкейк із солоною карамеллю власного виробництва.",
+  },
+  {
+    title: "Торти",
+    image: wheatCroissants,
+    text: "Ми виготовляємо торти на будь-який смак. Незмінне правило кожного рецепту — свіжі і натуральні продукти, які гармонійно поєднуються між собою. Регулярно робимо сезонні оновлення асортименту.",
+  },
+  {
+    title: "Кіші",
+    image: breadBasket,
+    text: "Хрустке тісто і смачні поживні начинки — відомий відкритий пиріг, який смакує як гарячим, так і холодним.",
+  },
+  {
+    title: "«Солоне меню»",
+    image: breadSliced,
+    text: "Сендвічі на крафтовому хлібі або хрумкі і повітряні круасани з поживними начинками на будь-який смак.",
+  },
+  {
+    title: "Тарти",
+    image: eclairs,
+    text: "Популярна позиція меню для будь-якого закладу. Хрумке і ароматне пісочне тісто в поєднанні зі свіжими натуральними начинками.",
+  },
+  {
+    title: "Десерти",
+    image: croissants,
+    text: "Виготовляємо великий асортимент десертів на будь-який смак: донати з начинками, макарони, десерт Павлова, картопля з різними смаками, хрумкі трубочки з цікавими начинками і багато інших авторських виробів.",
+  },
+  {
+    title: "Крафтовий хліб",
+    image: breadBasket,
+    text: "Хліб виготовляємо на основі закваски, яка забезпечує природний, повільний процес бродіння тіста. Це дозволяє розвиватись багатьом смаковим нотам і зберігає всі корисні речовини в зерні.",
+  },
 ];
 
-const forWhom = [
-  { title: "Кав'ярні", desc: "Круасани, бріоші, синабони та авторські десерти до ранкової кави." },
-  { title: "Ресторани", desc: "Крафтовий хліб, фокачча та бріош-булочки під ваше меню." },
-  { title: "Готелі", desc: "Свіжа випічка для сніданків — щодня, без вихідних." },
-  { title: "Корпоративні клієнти", desc: "Кейтеринг та подарункові набори для команд і подій." },
-];
+const formSchema = z.object({
+  name: z.string().trim().min(1, "Вкажіть ім'я").max(100),
+  company: z.string().trim().min(1, "Вкажіть назву закладу").max(150),
+  phone: z.string().trim().min(5, "Вкажіть телефон").max(30),
+  email: z.string().trim().email("Невірний email").max(255).or(z.literal("")),
+  message: z.string().trim().max(1000).optional(),
+});
 
 const B2B = () => {
+  const { toast } = useToast();
+  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", message: "" });
+  const [tasting, setTasting] = useState({ name: "", company: "", phone: "" });
+
+  const handlePriceSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const result = formSchema.safeParse(form);
+    if (!result.success) {
+      toast({ title: "Перевірте форму", description: result.error.issues[0].message, variant: "destructive" });
+      return;
+    }
+    const text = `Запит прайсу для закладів%0A%0AІм'я: ${encodeURIComponent(form.name)}%0AЗаклад: ${encodeURIComponent(form.company)}%0AТелефон: ${encodeURIComponent(form.phone)}%0AEmail: ${encodeURIComponent(form.email)}%0AКоментар: ${encodeURIComponent(form.message || "—")}`;
+    window.location.href = `mailto:peremogabakery@gmail.com?subject=Запит%20прайсу%20для%20закладів&body=${text}`;
+    toast({ title: "Дякуємо!", description: "Відкриваємо ваш email — надішліть листа, ми надішлемо прайс." });
+  };
+
+  const handleTastingSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!tasting.name.trim() || !tasting.company.trim() || !tasting.phone.trim()) {
+      toast({ title: "Заповніть усі поля", variant: "destructive" });
+      return;
+    }
+    const text = `Замовлення дегустаційного сету%0A%0AІм'я: ${encodeURIComponent(tasting.name)}%0AЗаклад: ${encodeURIComponent(tasting.company)}%0AТелефон: ${encodeURIComponent(tasting.phone)}`;
+    window.location.href = `mailto:peremogabakery@gmail.com?subject=Дегустаційний%20сет&body=${text}`;
+    toast({ title: "Дякуємо!", description: "Ми зв'яжемось із вами щодо дегустаційного сету." });
+  };
+
   return (
     <div className="min-h-screen">
       <Navbar />
       <main className="pt-24">
-        {/* Hero */}
+        {/* Hero / Intro */}
         <section className="relative py-20 md:py-32 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroBakery})` }}
-          />
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBakery})` }} />
+          <div className="absolute inset-0 bg-background/85 backdrop-blur-[2px]" />
           <div className="container mx-auto px-6 relative z-10">
             <Link
               to="/"
@@ -50,127 +125,168 @@ const B2B = () => {
               className="max-w-3xl mx-auto text-center"
             >
               <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-                B2B · Оптова співпраця
+                B2B · Для закладів
               </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-6 tracking-wide">
-                Партнерство з пекарнею Peremoga
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-8 tracking-wide">
+                Вітаємо Вас в пекарні «Перемога»!
               </h1>
-              <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
-                Ваш заклад заслуговує на випічку, якій довіряють гості. Ми постачаємо крафтовий хліб
-                та авторську випічку кав'ярням, ресторанам і готелям Києва.
-              </p>
-              <WheatDivider className="mt-10" />
+              <div className="space-y-5 text-muted-foreground text-base md:text-lg font-light leading-relaxed text-left md:text-center">
+                <p>
+                  Наша пекарня — Ваш надійний партнер у постачанні авторської випічки, смачних десертів і
+                  крафтового хлібу.
+                </p>
+                <p>Наразі ми виконуємо поставки в заклади Києва, Ірпеня і Бучі.</p>
+                <p>
+                  Працюємо виключно з натуральними і органічними продуктами високої якості. Постійно
+                  вдосконалюємо рецептуру і оновлюємо асортимент.
+                </p>
+                <p>А швидка комунікація і персональний менеджер додає гнучкості нашій співпраці.</p>
+                <p>
+                  Також ви можете отримати <span className="text-foreground">10% кешбеку щомісяця</span> при
+                  виконанні умов нашої програми лояльності для партнерів.
+                </p>
+              </div>
+
+              <a
+                href="#tasting"
+                className="inline-flex items-center justify-center mt-10 px-10 py-4 bg-foreground text-background font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-foreground/90 transition-colors"
+              >
+                Замовити дегустаційний сет
+              </a>
+              <WheatDivider className="mt-12" />
             </motion.div>
           </div>
         </section>
 
-        {/* Why us */}
-        <section className="py-20 bg-background">
+        {/* Products */}
+        <section className="py-20 md:py-28 bg-background">
           <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-                  Чому ми
-                </span>
-                <h2 className="font-display text-3xl md:text-4xl font-light text-foreground mt-3 mb-8 tracking-wide">
-                  Надійний партнер для вашого бізнесу
-                </h2>
-                <ul className="space-y-4">
-                  {benefits.map((b) => (
-                    <li key={b} className="flex items-start gap-3">
-                      <Check className="w-4 h-4 text-wheat mt-1 flex-shrink-0" />
-                      <span className="text-muted-foreground font-light leading-relaxed">{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-              <motion.img
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                src={croissants}
-                alt="Крафтова випічка Peremoga для оптових партнерів"
-                className="w-full aspect-[4/5] object-cover"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* For whom */}
-        <section className="relative py-20 overflow-hidden">
-          <div
-            className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: `url(${breadBasket})` }}
-          />
-          <div className="absolute inset-0 bg-linen-gradient" style={{ opacity: 0.92 }} />
-          <div className="container mx-auto px-6 relative z-10">
-            <div className="text-center mb-14">
-              <h2 className="font-display text-3xl md:text-4xl font-light text-foreground tracking-wide">
-                З ким ми працюємо
+            <div className="text-center mb-16">
+              <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
+                Асортимент
+              </span>
+              <h2 className="font-display text-3xl md:text-5xl font-light text-foreground mt-3 tracking-wide">
+                Наша продукція
               </h2>
               <WheatDivider className="mt-6" />
             </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-              {forWhom.map((item, i) => (
+
+            <div className="max-w-5xl mx-auto space-y-20">
+              {products.map((p, i) => (
                 <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 16 }}
+                  key={p.title}
+                  initial={{ opacity: 0, y: 24 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  className="bg-card border border-border p-6 hover:border-wheat/40 transition-colors"
+                  className={`grid md:grid-cols-2 gap-10 md:gap-14 items-center ${
+                    i % 2 === 1 ? "md:[&>img]:order-2" : ""
+                  }`}
                 >
-                  <h3 className="font-display text-lg font-medium text-foreground mb-3">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground font-light leading-relaxed">{item.desc}</p>
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    loading="lazy"
+                    className="w-full aspect-[4/3] object-cover"
+                  />
+                  <div>
+                    <h3 className="font-display text-2xl md:text-3xl font-light text-foreground mb-4 tracking-wide">
+                      {p.title}
+                    </h3>
+                    <p className="text-muted-foreground font-light leading-relaxed">{p.text}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* CTA */}
-        <section className="py-24 bg-background">
-          <div className="container mx-auto px-6">
-            <motion.div
+        {/* Tasting set form */}
+        <section id="tasting" className="relative py-20 overflow-hidden">
+          <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${eclairs})` }} />
+          <div className="absolute inset-0 bg-linen-gradient" style={{ opacity: 0.92 }} />
+          <div className="container mx-auto px-6 relative z-10">
+            <motion.form
+              onSubmit={handleTastingSubmit}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="max-w-2xl mx-auto text-center border border-wheat/30 bg-wheat/5 p-10 md:p-14"
+              className="max-w-xl mx-auto bg-card border border-border p-8 md:p-12"
             >
-              <h2 className="font-display text-3xl md:text-4xl font-light text-foreground mb-4 tracking-wide">
-                Обговоримо співпрацю
+              <h2 className="font-display text-3xl md:text-4xl font-light text-foreground mb-3 tracking-wide text-center">
+                Дегустаційний сет
               </h2>
-              <p className="text-muted-foreground font-light leading-relaxed mb-8">
-                Напишіть нам — ми надішлемо прайс, узгодимо асортимент та графік доставки під ваш заклад.
+              <p className="text-sm text-muted-foreground font-light text-center mb-8">
+                Залиште контакти — ми зв'яжемось і узгодимо дегустацію.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a
-                  href="https://www.instagram.com/peremogabakery/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-foreground text-background font-body text-sm uppercase tracking-[0.15em] font-light hover:bg-foreground/90 transition-colors"
-                >
-                  <Instagram className="w-4 h-4" /> Написати в Instagram
-                </a>
-                <a
-                  href="mailto:peremogabakery@gmail.com"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 border border-border text-foreground font-body text-sm uppercase tracking-[0.15em] font-light hover:border-wheat/50 transition-colors"
-                >
-                  <Mail className="w-4 h-4" /> Email
-                </a>
-                <a
-                  href="tel:+380935263825"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3 border border-border text-foreground font-body text-sm uppercase tracking-[0.15em] font-light hover:border-wheat/50 transition-colors"
-                >
-                  <Phone className="w-4 h-4" /> Телефон
-                </a>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="t-name" className="font-body text-xs uppercase tracking-[0.15em] font-light">Ім'я</Label>
+                  <Input id="t-name" maxLength={100} value={tasting.name} onChange={(e) => setTasting({ ...tasting, name: e.target.value })} className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="t-company" className="font-body text-xs uppercase tracking-[0.15em] font-light">Заклад</Label>
+                  <Input id="t-company" maxLength={150} value={tasting.company} onChange={(e) => setTasting({ ...tasting, company: e.target.value })} className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="t-phone" className="font-body text-xs uppercase tracking-[0.15em] font-light">Телефон</Label>
+                  <Input id="t-phone" maxLength={30} value={tasting.phone} onChange={(e) => setTasting({ ...tasting, phone: e.target.value })} className="mt-2" />
+                </div>
               </div>
-            </motion.div>
+              <button
+                type="submit"
+                className="w-full mt-6 px-8 py-3 bg-foreground text-background font-body text-sm uppercase tracking-[0.15em] font-light hover:bg-foreground/90 transition-colors"
+              >
+                Замовити сет
+              </button>
+            </motion.form>
+          </div>
+        </section>
+
+        {/* Price request form */}
+        <section className="py-24 bg-background">
+          <div className="container mx-auto px-6">
+            <motion.form
+              onSubmit={handlePriceSubmit}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-xl mx-auto border border-wheat/30 bg-wheat/5 p-8 md:p-12"
+            >
+              <h2 className="font-display text-3xl md:text-4xl font-light text-foreground mb-3 tracking-wide text-center">
+                Отримати прайс для закладів
+              </h2>
+              <p className="text-sm text-muted-foreground font-light text-center mb-8">
+                Заповніть форму — надішлемо актуальний прайс і умови співпраці.
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="name" className="font-body text-xs uppercase tracking-[0.15em] font-light">Ім'я *</Label>
+                  <Input id="name" maxLength={100} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="company" className="font-body text-xs uppercase tracking-[0.15em] font-light">Заклад *</Label>
+                  <Input id="company" maxLength={150} value={form.company} onChange={(e) => setForm({ ...form, company: e.target.value })} className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="phone" className="font-body text-xs uppercase tracking-[0.15em] font-light">Телефон *</Label>
+                  <Input id="phone" maxLength={30} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="email" className="font-body text-xs uppercase tracking-[0.15em] font-light">Email</Label>
+                  <Input id="email" type="email" maxLength={255} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="mt-2" />
+                </div>
+                <div>
+                  <Label htmlFor="message" className="font-body text-xs uppercase tracking-[0.15em] font-light">Коментар</Label>
+                  <Textarea id="message" maxLength={1000} rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-2" />
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="w-full mt-6 px-8 py-3 bg-foreground text-background font-body text-sm uppercase tracking-[0.15em] font-light hover:bg-foreground/90 transition-colors"
+              >
+                Надіслати запит
+              </button>
+            </motion.form>
           </div>
         </section>
       </main>
