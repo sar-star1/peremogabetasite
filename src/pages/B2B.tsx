@@ -22,6 +22,7 @@ import b2bPavlova from "@/assets/b2b-pavlova.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bTubes from "@/assets/b2b-tubes.jpeg";
 import b2bCheesecake from "@/assets/b2b-cheesecake.jpeg";
+import b2bQuiche from "@/assets/b2b-quiche.jpeg";
 
 const products = [
   {
