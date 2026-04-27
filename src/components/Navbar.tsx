@@ -4,10 +4,9 @@ import { Instagram, Menu, X } from "lucide-react";
 import logo from "@/assets/peremoga-logo.jpg";
 
 const navItems = [
-  { label: "Меню", href: "#menu" },
-  { label: "Про нас", href: "#about" },
+  { label: "B2B", href: "/b2b", isRoute: true },
+  { label: "Завітайте", href: "/clients", isRoute: true },
   { label: 'Хліб "Перемога"', href: "/charity-bread", isRoute: true },
-  { label: "Контакти", href: "#contact" },
 ];
 
 const Navbar = () => {
