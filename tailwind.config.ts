@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Azoft Sans"', '"Work Sans"', 'system-ui', 'sans-serif'],
-        body: ['"Azoft Sans"', '"Work Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+        body: ['Manrope', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
