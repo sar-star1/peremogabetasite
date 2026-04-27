@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Playfair Display"', 'Georgia', 'serif'],
-        body: ['Lato', 'system-ui', 'sans-serif'],
+        display: ['Anton', '"Work Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Work Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
