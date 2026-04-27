@@ -157,12 +157,6 @@ const B2B = () => {
                 </p>
               </div>
 
-              <a
-                href="#tasting"
-                className="inline-flex items-center justify-center mt-10 px-10 py-4 bg-foreground text-background font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-foreground/90 transition-colors"
-              >
-                Замовити дегустаційний сет
-              </a>
               <WheatDivider className="mt-12" />
             </motion.div>
           </div>
