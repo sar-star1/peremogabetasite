@@ -6,6 +6,7 @@ import { z } from "zod";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import WheatDivider from "@/components/WheatDivider";
+import CategoryTiles from "@/components/CategoryTiles";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -298,6 +299,35 @@ const B2B = () => {
             </motion.form>
           </div>
         </section>
+
+        {/* Cross-link tiles to other destinations */}
+        <CategoryTiles
+          eyebrow="Дивіться також"
+          heading="Інші напрямки пекарні"
+          tiles={[
+            {
+              to: "/clients",
+              eyebrow: "Завітайте",
+              title: "Меню та адреса",
+              image: breadSliced,
+              alt: "Меню пекарні Перемога для гостей у Києві",
+            },
+            {
+              to: "/charity-bread",
+              eyebrow: "Благодійність",
+              title: 'Хліб "Перемога"',
+              image: heroBakery,
+              alt: 'Благодійний хліб "Перемога"',
+            },
+            {
+              to: "/",
+              eyebrow: "Головна",
+              title: "На головну",
+              image: b2bCake,
+              alt: "Повернутись на головну сторінку",
+            },
+          ]}
+        />
       </main>
       <FooterSection />
     </div>

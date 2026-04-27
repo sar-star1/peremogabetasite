@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Newspaper } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import WheatDivider from "@/components/WheatDivider";
+import CategoryTiles from "@/components/CategoryTiles";
 import charityBread1 from "@/assets/charity-bread-1.jpg";
 import charityBread2 from "@/assets/charity-bread-2.jpg";
 import charityBread3 from "@/assets/charity-bread-3.jpg";

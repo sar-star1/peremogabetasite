@@ -9,7 +9,10 @@ import ReviewsSection from "@/components/ReviewsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import InstagramSection from "@/components/InstagramSection";
+import CategoryTiles from "@/components/CategoryTiles";
 import breadSliced from "@/assets/bread-sliced.webp";
+import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
+import charityBread from "@/assets/charity-bread-1.jpg";
 
 const Clients = () => {
   return (
@@ -56,6 +59,34 @@ const Clients = () => {
         <InstagramSection />
         <FAQSection />
         <ContactSection />
+
+        <CategoryTiles
+          eyebrow="Дивіться також"
+          heading="Інші напрямки пекарні"
+          tiles={[
+            {
+              to: "/b2b",
+              eyebrow: "Для закладів",
+              title: "B2B · Партнерство",
+              image: b2bSupreme,
+              alt: "B2B співпраця для закладів Києва",
+            },
+            {
+              to: "/charity-bread",
+              eyebrow: "Благодійність",
+              title: 'Хліб "Перемога"',
+              image: charityBread,
+              alt: 'Благодійний хліб "Перемога"',
+            },
+            {
+              to: "/",
+              eyebrow: "Головна",
+              title: "На головну",
+              image: breadSliced,
+              alt: "Повернутись на головну сторінку",
+            },
+          ]}
+        />
       </main>
       <FooterSection />
     </div>
