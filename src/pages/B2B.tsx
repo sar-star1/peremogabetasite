@@ -12,20 +12,24 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import heroBakery from "@/assets/hero-bakery.jpg";
 import croissants from "@/assets/hero-croissants.jpg";
-import eclairs from "@/assets/eclairs.webp";
 import breadBasket from "@/assets/bread-basket.webp";
 import breadSliced from "@/assets/bread-sliced.webp";
-import wheatCroissants from "@/assets/hero-wheat-croissants.jpg";
+import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
+import b2bBread from "@/assets/b2b-craft-bread.jpeg";
+import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
+import b2bPavlova from "@/assets/b2b-pavlova.jpeg";
+import b2bCake from "@/assets/b2b-cake.jpeg";
+import b2bTubes from "@/assets/b2b-tubes.jpeg";
 
 const products = [
   {
     title: "Випічка",
-    image: croissants,
+    image: b2bSupreme,
     text: "Вся випічка виготовляється за власною рецептурою, яка адаптувала традиційний підхід до сучасних тенденцій. Незмінний топ-продажів — наші круглі круасани (Supreme, New York Roll) — сучасний десерт із листкового тіста ідеально круглої форми та з великою кількістю кремової начинки. Також пропонуємо великий вибір хрумких класичних круасанів з начинкою і без, сінабони та іншу випічку.",
   },
   {
     title: "Еклери",
-    image: eclairs,
+    image: b2bEclairs,
     text: "Ми відтворили смак дитинства та поєднали класичне заварне тістечко з різними начинками. Наші еклери — це естетичне оздоблення, ароматне тісто і велика кількість начинки на будь-який смак.",
   },
   {
@@ -35,7 +39,7 @@ const products = [
   },
   {
     title: "Торти",
-    image: wheatCroissants,
+    image: b2bCake,
     text: "Ми виготовляємо торти на будь-який смак. Незмінне правило кожного рецепту — свіжі і натуральні продукти, які гармонійно поєднуються між собою. Регулярно робимо сезонні оновлення асортименту.",
   },
   {
@@ -50,17 +54,22 @@ const products = [
   },
   {
     title: "Тарти",
-    image: eclairs,
+    image: b2bEclairs,
     text: "Популярна позиція меню для будь-якого закладу. Хрумке і ароматне пісочне тісто в поєднанні зі свіжими натуральними начинками.",
   },
   {
     title: "Десерти",
-    image: croissants,
+    image: b2bPavlova,
     text: "Виготовляємо великий асортимент десертів на будь-який смак: донати з начинками, макарони, десерт Павлова, картопля з різними смаками, хрумкі трубочки з цікавими начинками і багато інших авторських виробів.",
   },
   {
+    title: "Хрумкі трубочки",
+    image: b2bTubes,
+    text: "Тонкі ароматні трубочки з ніжною кремовою начинкою — улюблений десерт, який пасує як до кави, так і до святкового столу.",
+  },
+  {
     title: "Крафтовий хліб",
-    image: breadBasket,
+    image: b2bBread,
     text: "Хліб виготовляємо на основі закваски, яка забезпечує природний, повільний процес бродіння тіста. Це дозволяє розвиватись багатьом смаковим нотам і зберігає всі корисні речовини в зерні.",
   },
 ];
@@ -202,7 +211,7 @@ const B2B = () => {
 
         {/* Tasting set form */}
         <section id="tasting" className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${eclairs})` }} />
+          <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${b2bEclairs})` }} />
           <div className="absolute inset-0 bg-linen-gradient" style={{ opacity: 0.92 }} />
           <div className="container mx-auto px-6 relative z-10">
             <motion.form
