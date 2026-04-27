@@ -4,6 +4,7 @@ import { ArrowLeft, ExternalLink, Newspaper } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import WheatDivider from "@/components/WheatDivider";
+import CategoryTiles from "@/components/CategoryTiles";
 import charityBread1 from "@/assets/charity-bread-1.jpg";
 import charityBread2 from "@/assets/charity-bread-2.jpg";
 import charityBread3 from "@/assets/charity-bread-3.jpg";
@@ -229,6 +230,34 @@ const CharityBread = () => {
             </motion.div>
           </div>
         </section>
+
+        <CategoryTiles
+          eyebrow="Дивіться також"
+          heading="Інші напрямки пекарні"
+          tiles={[
+            {
+              to: "/b2b",
+              eyebrow: "Для закладів",
+              title: "B2B · Партнерство",
+              image: charityBread2,
+              alt: "B2B співпраця для кав'ярень та ресторанів",
+            },
+            {
+              to: "/clients",
+              eyebrow: "Завітайте",
+              title: "Меню та адреса",
+              image: breadBasket,
+              alt: "Меню та адреса пекарні Перемога",
+            },
+            {
+              to: "/",
+              eyebrow: "Головна",
+              title: "На головну",
+              image: charityBread1,
+              alt: "Повернутись на головну сторінку",
+            },
+          ]}
+        />
       </main>
       <FooterSection />
     </div>
