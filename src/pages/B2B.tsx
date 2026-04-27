@@ -23,6 +23,7 @@ import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bTubes from "@/assets/b2b-tubes.jpeg";
 import b2bCheesecake from "@/assets/b2b-cheesecake.jpeg";
 import b2bQuiche from "@/assets/b2b-quiche.jpeg";
+import b2bSavory from "@/assets/b2b-savory.jpeg";
 
 const products = [
   {
@@ -52,7 +53,7 @@ const products = [
   },
   {
     title: "«Солоне меню»",
-    image: breadSliced,
+    image: b2bSavory,
     text: "Сендвічі на крафтовому хлібі або хрумкі і повітряні круасани з поживними начинками на будь-який смак.",
   },
   {
