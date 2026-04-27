@@ -211,7 +211,7 @@ const B2B = () => {
 
         {/* Tasting set form */}
         <section id="tasting" className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${eclairs})` }} />
+          <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${b2bEclairs})` }} />
           <div className="absolute inset-0 bg-linen-gradient" style={{ opacity: 0.92 }} />
           <div className="container mx-auto px-6 relative z-10">
             <motion.form
