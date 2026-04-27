@@ -117,7 +117,7 @@ const B2B = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main className="pt-24">
+      <main className="pt-24 text-primary">
         {/* Hero / Intro */}
         <section className="relative py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBakery})` }} />

@@ -27,7 +27,7 @@ const CharityBread = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main className="pt-24">
+      <main className="pt-24 text-primary">
         {/* Hero with background */}
         <section className="relative py-16 md:py-24 overflow-hidden">
           <div

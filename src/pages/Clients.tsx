@@ -18,7 +18,7 @@ const Clients = () => {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main className="pt-24">
+      <main className="pt-24 text-primary">
         {/* Hero */}
         <section className="relative py-20 md:py-28 overflow-hidden">
           <div
