@@ -57,27 +57,28 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row gap-4 mt-10"
+          className="flex flex-col sm:flex-row gap-4 mt-10 w-full max-w-3xl"
         >
          <Link
            to="/b2b"
-           className="px-10 py-3 bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground/25 transition-all duration-300"
+           className="flex-1 text-center px-8 py-4 bg-primary-foreground/15 backdrop-blur-md border border-primary-foreground/40 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground hover:text-foreground transition-all duration-300 shadow-lg"
          >
            B2B
          </Link>
          <Link
            to="/clients"
-           className="px-10 py-3 bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground/25 transition-all duration-300"
+           className="flex-1 text-center px-8 py-4 bg-primary-foreground/15 backdrop-blur-md border border-primary-foreground/40 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground hover:text-foreground transition-all duration-300 shadow-lg"
          >
            Завітайте
          </Link>
          <Link
            to="/charity-bread"
-           className="px-10 py-3 bg-primary-foreground/15 backdrop-blur-sm border border-primary-foreground/30 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground/25 transition-all duration-300"
+           className="flex-1 text-center px-8 py-4 bg-primary-foreground/15 backdrop-blur-md border border-primary-foreground/40 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground hover:text-foreground transition-all duration-300 shadow-lg"
          >
            Хліб "Перемога"
          </Link>
         </motion.div>
+
       </div>
 
       <motion.div
