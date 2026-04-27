@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Anton', '"Work Sans"', 'system-ui', 'sans-serif'],
-        body: ['"Work Sans"', 'system-ui', 'sans-serif'],
+        display: ['"Azoft Sans"', '"Work Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Azoft Sans"', '"Work Sans"', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
