@@ -212,8 +212,23 @@ const B2B = () => {
           </div>
         </section>
 
+        {/* Mid-page CTA after products */}
+        <section className="py-12 bg-wheat/10 border-y border-wheat/30">
+          <div className="container mx-auto px-6 text-center">
+            <p className="font-display text-2xl md:text-3xl font-light text-foreground tracking-wide mb-6">
+              Готові співпрацювати?
+            </p>
+            <a
+              href="#price"
+              className="inline-flex items-center justify-center px-10 py-4 bg-foreground text-background font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-foreground/90 transition-colors"
+            >
+              Отримати прайс
+            </a>
+          </div>
+        </section>
+
         {/* Price request form */}
-        <section className="py-24 bg-background">
+        <section id="price" className="py-24 pb-32 bg-background">
           <div className="container mx-auto px-6">
             <motion.form
               onSubmit={handlePriceSubmit}
