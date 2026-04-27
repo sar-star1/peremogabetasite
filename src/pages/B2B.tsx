@@ -210,48 +210,6 @@ const B2B = () => {
           </div>
         </section>
 
-        {/* Tasting set form */}
-        <section id="tasting" className="relative py-20 overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: `url(${b2bEclairs})` }} />
-          <div className="absolute inset-0 bg-linen-gradient" style={{ opacity: 0.92 }} />
-          <div className="container mx-auto px-6 relative z-10">
-            <motion.form
-              onSubmit={handleTastingSubmit}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-xl mx-auto bg-card border border-border p-8 md:p-12"
-            >
-              <h2 className="font-display text-3xl md:text-4xl font-light text-foreground mb-3 tracking-wide text-center">
-                Дегустаційний сет
-              </h2>
-              <p className="text-sm text-muted-foreground font-light text-center mb-8">
-                Залиште контакти — ми зв'яжемось і узгодимо дегустацію.
-              </p>
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="t-name" className="font-body text-xs uppercase tracking-[0.15em] font-light">Ім'я</Label>
-                  <Input id="t-name" maxLength={100} value={tasting.name} onChange={(e) => setTasting({ ...tasting, name: e.target.value })} className="mt-2" />
-                </div>
-                <div>
-                  <Label htmlFor="t-company" className="font-body text-xs uppercase tracking-[0.15em] font-light">Заклад</Label>
-                  <Input id="t-company" maxLength={150} value={tasting.company} onChange={(e) => setTasting({ ...tasting, company: e.target.value })} className="mt-2" />
-                </div>
-                <div>
-                  <Label htmlFor="t-phone" className="font-body text-xs uppercase tracking-[0.15em] font-light">Телефон</Label>
-                  <Input id="t-phone" maxLength={30} value={tasting.phone} onChange={(e) => setTasting({ ...tasting, phone: e.target.value })} className="mt-2" />
-                </div>
-              </div>
-              <button
-                type="submit"
-                className="w-full mt-6 px-8 py-3 bg-foreground text-background font-body text-sm uppercase tracking-[0.15em] font-light hover:bg-foreground/90 transition-colors"
-              >
-                Замовити сет
-              </button>
-            </motion.form>
-          </div>
-        </section>
-
         {/* Price request form */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-6">
