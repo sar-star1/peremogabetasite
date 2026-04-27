@@ -230,6 +230,34 @@ const CharityBread = () => {
             </motion.div>
           </div>
         </section>
+
+        <CategoryTiles
+          eyebrow="Дивіться також"
+          heading="Інші напрямки пекарні"
+          tiles={[
+            {
+              to: "/b2b",
+              eyebrow: "Для закладів",
+              title: "B2B · Партнерство",
+              image: charityBread2,
+              alt: "B2B співпраця для кав'ярень та ресторанів",
+            },
+            {
+              to: "/clients",
+              eyebrow: "Завітайте",
+              title: "Меню та адреса",
+              image: breadBasket,
+              alt: "Меню та адреса пекарні Перемога",
+            },
+            {
+              to: "/",
+              eyebrow: "Головна",
+              title: "На головну",
+              image: charityBread1,
+              alt: "Повернутись на головну сторінку",
+            },
+          ]}
+        />
       </main>
       <FooterSection />
     </div>
