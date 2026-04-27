@@ -304,6 +304,22 @@ const B2B = () => {
           ]}
         />
       </main>
+
+      {/* Sticky bottom CTA bar */}
+      <div className="fixed bottom-0 inset-x-0 z-40 bg-foreground/95 backdrop-blur-sm border-t border-foreground/20">
+        <div className="container mx-auto px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="font-body text-xs sm:text-sm text-background/90 font-light tracking-wide text-center sm:text-left">
+            Працюємо із закладами Києва, Ірпеня і Бучі · 10% кешбеку щомісяця
+          </p>
+          <a
+            href="#price"
+            className="inline-flex items-center justify-center px-6 py-2.5 bg-background text-foreground font-body text-xs uppercase tracking-[0.2em] font-light hover:bg-background/90 transition-colors whitespace-nowrap"
+          >
+            Отримати прайс
+          </a>
+        </div>
+      </div>
+
       <FooterSection />
     </div>
   );
