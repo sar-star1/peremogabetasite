@@ -122,14 +122,14 @@ const B2B = () => {
         <section className="relative py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBakery})` }} />
           <div className="absolute inset-0 bg-background/85 backdrop-blur-[2px]" />
+          <Link
+            to="/"
+            className="absolute top-6 left-6 z-20 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-light"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            На головну
+          </Link>
           <div className="container mx-auto px-6 relative z-10">
-            <Link
-              to="/"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12 font-light"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              На головну
-            </Link>
 
             <motion.div
               initial={{ opacity: 0, y: 24 }}
