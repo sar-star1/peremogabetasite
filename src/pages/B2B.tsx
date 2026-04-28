@@ -121,7 +121,7 @@ const B2B = () => {
         {/* Hero / Intro */}
         <section className="relative py-20 md:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${heroBakery})` }} />
-          <div className="absolute inset-0 bg-background/85 backdrop-blur-[2px]" />
+          <div className="absolute inset-0 bg-background/40" />
           <Link
             to="/"
             className="absolute top-6 left-6 z-20 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors font-light"
