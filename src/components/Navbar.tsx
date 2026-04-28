@@ -40,7 +40,7 @@ const Navbar = () => {
           />
           <span
             className={`font-display text-xl font-semibold tracking-wide transition-colors ${
-              scrolled ? "text-foreground" : "text-primary-foreground"
+              scrolled ? "text-foreground" : "text-primary"
             }`}
           >
             Peremoga
@@ -55,7 +55,7 @@ const Navbar = () => {
                 key={item.href}
                 to={item.href}
                 className={`text-[13px] font-body font-light uppercase tracking-[0.2em] transition-colors hover:text-warm-gold ${
-                  scrolled ? "text-foreground/70" : "text-primary-foreground/80"
+                  scrolled ? "text-foreground/70" : "text-primary/80"
                 }`}
               >
                 {item.label}
@@ -65,7 +65,7 @@ const Navbar = () => {
                 key={item.href}
                 href={item.href}
                 className={`text-[13px] font-body font-light uppercase tracking-[0.2em] transition-colors hover:text-warm-gold ${
-                  scrolled ? "text-foreground/70" : "text-primary-foreground/80"
+                  scrolled ? "text-foreground/70" : "text-primary/80"
                 }`}
               >
                 {item.label}
@@ -80,7 +80,7 @@ const Navbar = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={`transition-colors hover:text-warm-gold ${
-              scrolled ? "text-foreground" : "text-primary-foreground"
+              scrolled ? "text-foreground" : "text-primary"
             }`}
           >
             <Instagram className="w-4 h-4" />
@@ -90,7 +90,7 @@ const Navbar = () => {
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`md:hidden transition-colors ${
-              scrolled ? "text-foreground" : "text-primary-foreground"
+              scrolled ? "text-foreground" : "text-primary"
             }`}
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
