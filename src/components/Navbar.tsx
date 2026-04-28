@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Menu, X } from "lucide-react";
-import logo from "@/assets/peremoga-logo.jpg";
+import logo from "@/assets/peremoga-logo.png";
 
 const navItems = [
   { label: "B2B", href: "/b2b", isRoute: true },
@@ -30,21 +30,13 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6 text-primary">
-        <a href="#" className="flex items-center gap-3">
+        <a href="#" className="flex items-center">
           <img
             src={logo}
             alt="Peremoga Bakery"
-            className="w-10 h-10 rounded-full object-cover"
-            width={40}
+            className="h-10 w-auto object-contain"
             height={40}
           />
-          <span
-            className={`font-display text-xl font-semibold tracking-wide transition-colors ${
-              scrolled ? "text-foreground" : "text-primary"
-            }`}
-          >
-            Peremoga
-          </span>
         </a>
 
         {/* Desktop nav */}
