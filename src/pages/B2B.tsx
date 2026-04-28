@@ -135,15 +135,15 @@ const B2B = () => {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
-              className="max-w-3xl mx-auto text-center"
+              className="max-w-3xl mx-auto text-center bg-background/85 backdrop-blur-sm p-8 md:p-12 shadow-lg"
             >
-              <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
+              <span className="font-body text-xs uppercase tracking-[0.3em] text-foreground/70 font-light">
                 B2B · Для закладів
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-8 tracking-wide">
                 Вітаємо Вас в пекарні «Перемога»!
               </h1>
-              <div className="space-y-5 text-muted-foreground text-base md:text-lg font-light leading-relaxed text-left md:text-center">
+              <div className="space-y-5 text-foreground/90 text-base md:text-lg font-light leading-relaxed text-left md:text-center">
                 <p>
                   Наша пекарня — Ваш надійний партнер у постачанні авторської випічки, смачних десертів і
                   крафтового хлібу.
@@ -155,7 +155,7 @@ const B2B = () => {
                 </p>
                 <p>А швидка комунікація і персональний менеджер додає гнучкості нашій співпраці.</p>
                 <p>
-                  Також ви можете отримати <span className="text-foreground">10% кешбеку щомісяця</span> при
+                  Також ви можете отримати <span className="font-normal text-foreground">10% кешбеку щомісяця</span> при
                   виконанні умов нашої програми лояльності для партнерів.
                 </p>
               </div>
