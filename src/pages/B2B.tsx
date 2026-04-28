@@ -11,7 +11,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import heroBakery from "@/assets/hero-bakery.jpg";
+import heroBakery from "@/assets/b2b-hero-cake.jpeg";
 import croissants from "@/assets/hero-croissants.jpg";
 import breadBasket from "@/assets/bread-basket.webp";
 import breadSliced from "@/assets/bread-sliced.webp";
