@@ -102,6 +102,7 @@ const Index = () => {
           eyebrow="Благодійність · з 2022"
           title='Хліб "Перемога" — більше, ніж хліб'
           image={charityBread}
+          imageContain
           imageAlt='Благодійний хліб "Перемога" для військових та прифронтових територій'
           description={
             <>
