@@ -13,6 +13,7 @@ interface PromoStripProps {
   ctaExternal?: boolean;
   reverse?: boolean;
   background?: "background" | "warm" | "linen";
+  imageContain?: boolean;
 }
 
 const bgMap = {
@@ -32,6 +33,7 @@ const PromoStrip = ({
   ctaExternal = false,
   reverse = false,
   background = "background",
+  imageContain = false,
 }: PromoStripProps) => {
   const cta = ctaLabel && ctaHref ? (
     ctaExternal ? (
@@ -70,7 +72,7 @@ const PromoStrip = ({
               src={image}
               alt={imageAlt}
               loading="lazy"
-              className="w-full aspect-[4/3] object-cover hover:scale-[1.03] transition-transform duration-[1200ms] ease-out"
+              className={`w-full aspect-[4/3] ${imageContain ? "object-contain bg-background" : "object-cover"} hover:scale-[1.03] transition-transform duration-[1200ms] ease-out`}
             />
           </motion.div>
 

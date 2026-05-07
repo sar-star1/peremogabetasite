@@ -10,7 +10,7 @@ import FooterSection from "@/components/FooterSection";
 import teamPhoto from "@/assets/team-photo.jpg";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
-import charityBread from "@/assets/charity-bread-1.jpg";
+import charityBread from "@/assets/charity-bread-1.png";
 
 const Index = () => {
   return (
@@ -102,6 +102,7 @@ const Index = () => {
           eyebrow="Благодійність · з 2022"
           title='Хліб "Перемога" — більше, ніж хліб'
           image={charityBread}
+          imageContain
           imageAlt='Благодійний хліб "Перемога" для військових та прифронтових територій'
           description={
             <>
