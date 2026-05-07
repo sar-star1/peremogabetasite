@@ -1,19 +1,18 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
 import logo from "@/assets/peremoga-logo.jpg";
 
 const HeroSection = () => {
   return (
     <header className="relative h-screen min-h-[700px] overflow-hidden" role="banner">
       <video
-        src={heroVideo.url}
+        src="/assets/hero-video.mp4"
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         className="absolute inset-0 w-full h-full object-cover"
-        poster=""
       />
       <div className="absolute inset-0 bg-hero-overlay" />
 
