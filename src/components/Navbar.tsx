@@ -81,14 +81,6 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="https://www.instagram.com/peremogabakery/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-xs uppercase tracking-[0.3em] text-foreground inline-flex items-center gap-2"
-            >
-              <Instagram className="w-4 h-4" strokeWidth={1.5} /> Instagram
-            </a>
           </div>
         </div>
       )}
