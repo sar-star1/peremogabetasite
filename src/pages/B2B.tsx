@@ -292,7 +292,7 @@ const B2B = () => {
           tiles={[
             {
               to: "/clients",
-              eyebrow: "Завітайте",
+              eyebrow: "Авторські Вироби",
               title: "Меню та адреса",
               image: breadSliced,
               alt: "Меню пекарні Перемога для гостей у Києві",
@@ -300,7 +300,7 @@ const B2B = () => {
             {
               to: "/charity-bread",
               eyebrow: "Благодійність",
-              title: 'Хліб "Перемога"',
+              title: "Стандартизована Лінійка (мас маркет)",
               image: heroBakery,
               alt: 'Благодійний хліб "Перемога"',
             },

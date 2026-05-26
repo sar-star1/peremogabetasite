@@ -238,13 +238,13 @@ const CharityBread = () => {
             {
               to: "/b2b",
               eyebrow: "Для закладів",
-              title: "B2B · Партнерство",
+              title: "HoReCa (B2B) · Партнерство",
               image: charityBread2,
-              alt: "B2B співпраця для кав'ярень та ресторанів",
+              alt: "HoReCa (B2B) співпраця для кав'ярень та ресторанів",
             },
             {
               to: "/clients",
-              eyebrow: "Завітайте",
+              eyebrow: "Авторські Вироби",
               title: "Меню та адреса",
               image: breadBasket,
               alt: "Меню та адреса пекарні Перемога",

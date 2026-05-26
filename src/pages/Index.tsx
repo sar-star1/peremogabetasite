@@ -44,7 +44,7 @@ const Index = () => {
               </p>
             </>
           }
-          ctaLabel="Завітайте до нас"
+          ctaLabel="Авторські Вироби"
           ctaHref="/clients"
         />
 

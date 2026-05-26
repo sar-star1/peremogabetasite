@@ -41,7 +41,7 @@ const Clients = () => {
               className="max-w-3xl mx-auto text-center"
             >
               <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-                Завітайте
+                Авторські Вироби
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-6 tracking-wide">
                 Меню та все для гостей
@@ -67,14 +67,14 @@ const Clients = () => {
             {
               to: "/b2b",
               eyebrow: "Для закладів",
-              title: "B2B · Партнерство",
+              title: "HoReCa (B2B) · Партнерство",
               image: b2bSupreme,
-              alt: "B2B співпраця для закладів Києва",
+              alt: "HoReCa (B2B) співпраця для закладів Києва",
             },
             {
               to: "/charity-bread",
               eyebrow: "Благодійність",
-              title: 'Хліб "Перемога"',
+              title: "Стандартизована Лінійка (мас маркет)",
               image: charityBread,
               alt: 'Благодійний хліб "Перемога"',
             },
