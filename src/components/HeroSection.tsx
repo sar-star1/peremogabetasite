@@ -93,7 +93,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4"
+              className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-[#A4B8CC] mb-4"
             >
               &nbsp;&nbsp;
               <br />
@@ -103,7 +103,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
-              className="font-display-black text-foreground leading-[0.85] text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[10rem] xl:text-[12rem]"
+              className="font-display-black text-[#A4B8CC] leading-[0.85] text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[10rem] xl:text-[12rem]"
             >
               <span className="block">PEREMOGA</span>
               <span className="block">BAKERY</span>
@@ -112,7 +112,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="font-body text-sm md:text-base text-muted-foreground max-w-md mx-auto mt-12 font-light leading-relaxed pointer-events-auto"
+              className="font-body text-sm md:text-base text-[#A4B8CC] max-w-md mx-auto mt-12 font-light leading-relaxed pointer-events-auto"
             >
               Реміснича пекарня — авторські десерти, крафтовий хліб та випічка щодня у Києві.
             </motion.p>
@@ -131,7 +131,7 @@ const HeroSection = () => {
                 <Link
                   key={cta.to}
                   to={cta.to}
-                  className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
+                  className="font-body text-[11px] uppercase tracking-[0.3em] text-[#A4B8CC] border-b border-[#A4B8CC] pb-1 hover:opacity-60 transition-opacity"
                 >
                   {cta.label}
                 </Link>
