@@ -4,6 +4,8 @@ export interface MenuItem {
   description: string;
   weight: string;
   image: string;
+  ingredients?: string;
+  storage?: string;
 }
 
 export interface MenuCategory {

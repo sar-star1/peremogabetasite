@@ -1,9 +1,18 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuCategories } from "@/data/menuData";
+import type { MenuItem } from "@/data/menuData";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
+  const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
 
   return (
     <section id="menu" className="relative py-24 md:py-32 bg-background">
@@ -52,7 +61,12 @@ const MenuSection = () => {
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12"
           >
             {menuCategories[activeCategory].items.map((item) => (
-              <div key={item.name} className="group">
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => setSelectedItem(item)}
+                className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
+              >
                 <div className="aspect-square overflow-hidden bg-secondary mb-4 flex items-center justify-center p-4">
                   <img
                     src={item.image}
@@ -75,11 +89,76 @@ const MenuSection = () => {
                 <span className="text-[10px] text-muted-foreground/70 font-body uppercase tracking-[0.2em]">
                   {item.weight}
                 </span>
-              </div>
+              </button>
             ))}
           </motion.div>
         </AnimatePresence>
       </div>
+
+      <Dialog open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
+        <DialogContent className="max-w-lg">
+          {selectedItem && (
+            <>
+              <div className="aspect-square w-full overflow-hidden bg-secondary flex items-center justify-center p-6 mb-2">
+                <img
+                  src={selectedItem.image}
+                  alt={selectedItem.name}
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <DialogHeader>
+                <DialogTitle className="font-display-black text-foreground text-xl uppercase leading-tight">
+                  {selectedItem.name}
+                </DialogTitle>
+                <DialogDescription className="font-body text-sm text-muted-foreground font-light leading-relaxed">
+                  {selectedItem.description}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="mt-4 space-y-5 border-t border-border pt-5">
+                <div>
+                  <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    Склад та алергени
+                  </span>
+                  <p className="font-body text-sm text-foreground font-light leading-relaxed mt-1.5">
+                    {selectedItem.ingredients ??
+                      "Борошно пшеничне, вершкове масло, цукор, яйця, молоко, дріжджі, сіль. Може містити сліди горіхів, кунжуту, сої."}
+                  </p>
+                </div>
+
+                <div>
+                  <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                    Умови зберігання
+                  </span>
+                  <p className="font-body text-sm text-foreground font-light leading-relaxed mt-1.5">
+                    {selectedItem.storage ??
+                      "Зберігати при температурі +2…+6 °C до 48 годин. Подавати при кімнатній температурі."}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-border pt-4">
+                  <div>
+                    <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                      Вага
+                    </span>
+                    <p className="font-display-black text-foreground text-base mt-1">
+                      {selectedItem.weight}
+                    </p>
+                  </div>
+                  <div className="text-right">
+                    <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                      Ціна
+                    </span>
+                    <p className="font-display-black text-foreground text-base mt-1">
+                      {selectedItem.price}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
