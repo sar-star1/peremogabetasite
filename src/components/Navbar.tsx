@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Menu, X, ShoppingBag } from "lucide-react";
+import peremogaLogo from "@/assets/peremoga-logo.jpg";
 
 const navItems = [
   { label: "B2B", href: "/b2b", isRoute: true },
