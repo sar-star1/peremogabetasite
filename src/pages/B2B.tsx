@@ -266,6 +266,15 @@ const B2B = () => {
                   <Textarea id="message" maxLength={1000} rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-2" />
                 </div>
               </div>
+              <label className="flex items-center gap-3 mt-6 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={form.tastingSet}
+                  onChange={(e) => setForm({ ...form, tastingSet: e.target.checked })}
+                  className="w-5 h-5 accent-foreground shrink-0"
+                />
+                <span className="font-body text-sm text-foreground font-light">Замовити дегустаційний сет</span>
+              </label>
               <button
                 type="submit"
                 className="w-full mt-6 px-8 py-3 bg-foreground text-background font-body text-sm uppercase tracking-[0.15em] font-light hover:bg-foreground/90 transition-colors"
