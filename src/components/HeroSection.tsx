@@ -116,29 +116,30 @@ const HeroSection = () => {
             >
               Реміснича пекарня — авторські десерти, крафтовий хліб та випічка щодня у Києві.
             </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.05 }}
-              className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mt-16 pointer-events-auto"
-            >
-              {[
-                { to: "/clients", label: "АВТОРСЬКІ ВИРОБИ" },
-                { to: "/b2b", label: "HORECA (B2B) " },
-                { to: "/charity-bread", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА " },
-              ].map((cta) => (
-                <Link
-                  key={cta.to}
-                  to={cta.to}
-                  className="font-body text-[11px] uppercase tracking-[0.3em] text-[#A4B8CC] border-b border-[#A4B8CC] pb-1 hover:opacity-60 transition-opacity"
-                >
-                  {cta.label}
-                </Link>
-              ))}
-            </motion.div>
           </div>
         </div>
+
+        {/* CTA buttons — placed below the floating-image collage so they never overlap */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 1.05 }}
+          className="relative z-20 flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-10 md:mt-16"
+        >
+          {[
+            { to: "/clients", label: "АВТОРСЬКІ ВИРОБИ" },
+            { to: "/b2b", label: "HORECA (B2B)" },
+            { to: "/charity-bread", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА" },
+          ].map((cta) => (
+            <Link
+              key={cta.to}
+              to={cta.to}
+              className="font-body text-[11px] uppercase tracking-[0.3em] text-[#A4B8CC] border-2 border-[#A4B8CC] px-6 py-3 md:px-8 md:py-4 hover:bg-[#A4B8CC] hover:text-background transition-all duration-300"
+            >
+              {cta.label}
+            </Link>
+          ))}
+        </motion.div>
       </div>
     </header>
   );
