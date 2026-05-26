@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
 
 interface PromoStripProps {
   eyebrow?: string;
@@ -16,11 +15,9 @@ interface PromoStripProps {
   imageContain?: boolean;
 }
 
-const bgMap = {
-  background: "bg-background",
-  warm: "bg-warm-gradient",
-  linen: "bg-linen-gradient",
-};
+// Cycle through pastel offset colors per instance for an editorial feel.
+const pastelPalette = ["bg-pastel-peach", "bg-pastel-blue", "bg-pastel-lime", "bg-pastel-lavender"];
+let stripCounter = 0;
 
 const PromoStrip = ({
   eyebrow,
@@ -35,63 +32,67 @@ const PromoStrip = ({
   background = "background",
   imageContain = false,
 }: PromoStripProps) => {
+  const pastel = pastelPalette[stripCounter++ % pastelPalette.length];
+
   const cta = ctaLabel && ctaHref ? (
     ctaExternal ? (
       <a
         href={ctaHref}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 mt-8 px-8 py-3.5 bg-foreground text-background font-body text-xs uppercase tracking-[0.2em] font-light hover:bg-foreground/90 transition-all duration-300 hover:gap-3 self-start"
+        className="inline-block mt-8 font-body text-[11px] uppercase tracking-[0.3em] text-foreground border-b border-foreground pb-1 hover:opacity-60 transition-opacity self-start"
       >
         {ctaLabel}
-        <ArrowRight className="w-3.5 h-3.5" />
       </a>
     ) : (
       <Link
         to={ctaHref}
-        className="inline-flex items-center gap-2 mt-8 px-8 py-3.5 bg-foreground text-background font-body text-xs uppercase tracking-[0.2em] font-light hover:bg-foreground/90 transition-all duration-300 hover:gap-3 self-start"
+        className="inline-block mt-8 font-body text-[11px] uppercase tracking-[0.3em] text-foreground border-b border-foreground pb-1 hover:opacity-60 transition-opacity self-start"
       >
         {ctaLabel}
-        <ArrowRight className="w-3.5 h-3.5" />
       </Link>
     )
   ) : null;
 
   return (
-    <section className={`py-16 md:py-24 ${bgMap[background]}`}>
+    <section className="py-20 md:py-28 bg-background">
       <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center max-w-6xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, x: reverse ? 30 : -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className={`overflow-hidden ${reverse ? "md:order-2" : ""}`}
+            className={`relative ${reverse ? "md:order-2" : ""}`}
           >
+            <div
+              className={`absolute ${reverse ? "-top-4 -right-4" : "-bottom-4 -left-4"} w-full h-full ${pastel}`}
+              aria-hidden="true"
+            />
             <img
               src={image}
               alt={imageAlt}
               loading="lazy"
-              className={`w-full aspect-[4/3] ${imageContain ? "object-contain bg-background" : "object-cover"} hover:scale-[1.03] transition-transform duration-[1200ms] ease-out`}
+              className={`relative w-full aspect-[4/5] ${imageContain ? "object-contain bg-background" : "object-cover"}`}
             />
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: reverse ? -30 : 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className={`flex flex-col ${reverse ? "md:order-1" : ""}`}
           >
             {eyebrow && (
-              <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light mb-4">
+              <span className="font-body text-[11px] uppercase tracking-[0.4em] text-muted-foreground mb-5">
                 {eyebrow}
               </span>
             )}
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-foreground tracking-wide mb-6 leading-tight">
+            <h2 className="font-display-black text-foreground text-4xl md:text-5xl lg:text-6xl leading-[0.95] uppercase mb-6">
               {title}
             </h2>
-            <div className="text-muted-foreground text-base md:text-lg font-light leading-[1.85] space-y-4">
+            <div className="text-muted-foreground text-sm md:text-base font-light leading-[1.8] space-y-4 max-w-md">
               {typeof description === "string" ? <p>{description}</p> : description}
             </div>
             {cta}
