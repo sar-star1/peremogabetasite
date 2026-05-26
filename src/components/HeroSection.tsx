@@ -95,7 +95,9 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4"
             >
-              Kyiv · з 2021
+              &nbsp;&nbsp;
+              <br />
+              KYIV · 2021
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
