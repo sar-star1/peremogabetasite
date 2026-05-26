@@ -33,7 +33,7 @@ const Navbar = () => {
           <img
             src={peremogaLogo}
             alt="Peremoga Bakery"
-            className="h-12 md:h-14 w-auto object-contain mix-blend-multiply"
+            className="h-12 md:h-14 w-auto object-contain mix-blend-multiply rounded-full"
           />
         </Link>
 
