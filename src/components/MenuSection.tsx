@@ -96,33 +96,33 @@ const MenuSection = () => {
       </div>
 
       <Dialog open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
-        <DialogContent className="max-w-lg">
+        <DialogContent className="max-w-sm sm:max-w-md max-h-[85vh] overflow-y-auto p-5 gap-3">
           {selectedItem && (
             <>
-              <div className="aspect-square w-full overflow-hidden bg-secondary flex items-center justify-center p-6 mb-2">
+              <div className="aspect-square w-32 sm:w-40 mx-auto overflow-hidden bg-secondary flex items-center justify-center p-3">
                 <img
                   src={selectedItem.image}
                   alt={selectedItem.name}
                   className="w-full h-full object-contain"
                 />
               </div>
-              <DialogHeader>
-                <DialogTitle className="font-display-black text-foreground text-xl uppercase leading-tight">
+              <DialogHeader className="space-y-1.5">
+                <DialogTitle className="font-display-black text-foreground text-base sm:text-lg uppercase leading-tight text-center">
                   {selectedItem.name}
                 </DialogTitle>
-                <DialogDescription className="font-body text-sm text-muted-foreground font-light leading-relaxed">
+                <DialogDescription className="font-body text-xs text-muted-foreground font-light leading-relaxed text-center">
                   {selectedItem.description}
                 </DialogDescription>
               </DialogHeader>
 
-              <div className="mt-4 space-y-5 border-t border-border pt-5">
+              <div className="space-y-4 border-t border-border pt-4">
                 <div>
                   <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     Склад та алергени
                   </span>
-                  <p className="font-body text-sm text-foreground font-light leading-relaxed mt-1.5">
+                  <p className="font-body text-xs text-foreground font-light leading-relaxed mt-1.5">
                     {selectedItem.ingredients ??
-                      "Борошно пшеничне, вершкове масло, цукор, яйця, молоко, дріжджі, сіль. Може містити сліди горіхів, кунжуту, сої."}
+                      "Інформація уточнюється. Зверніться до нас в Instagram для уточнення складу та алергенів."}
                   </p>
                 </div>
 
@@ -130,18 +130,18 @@ const MenuSection = () => {
                   <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                     Умови зберігання
                   </span>
-                  <p className="font-body text-sm text-foreground font-light leading-relaxed mt-1.5">
+                  <p className="font-body text-xs text-foreground font-light leading-relaxed mt-1.5">
                     {selectedItem.storage ??
-                      "Зберігати при температурі +2…+6 °C до 48 годин. Подавати при кімнатній температурі."}
+                      "Інформація уточнюється. Зверніться до нас в Instagram для уточнення."}
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between border-t border-border pt-4">
+                <div className="flex items-center justify-between border-t border-border pt-3">
                   <div>
                     <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                       Вага
                     </span>
-                    <p className="font-display-black text-foreground text-base mt-1">
+                    <p className="font-display-black text-foreground text-sm mt-1">
                       {selectedItem.weight}
                     </p>
                   </div>
@@ -149,7 +149,7 @@ const MenuSection = () => {
                     <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
                       Ціна
                     </span>
-                    <p className="font-display-black text-foreground text-base mt-1">
+                    <p className="font-display-black text-foreground text-sm mt-1">
                       {selectedItem.price}
                     </p>
                   </div>
