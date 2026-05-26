@@ -112,18 +112,16 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="font-body text-sm md:text-base text-muted-foreground max-w-md mx-auto mt-6 font-light leading-relaxed pointer-events-auto"
+              className="font-body text-sm md:text-base text-muted-foreground max-w-md mx-auto mt-12 font-light leading-relaxed pointer-events-auto"
             >
-              <br />
               Реміснича пекарня — авторські десерти, крафтовий хліб та випічка щодня у Києві.
-              <br />
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.05 }}
-              className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-8 pointer-events-auto"
+              className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mt-16 pointer-events-auto"
             >
               {[
                 { to: "/clients", label: "ЗАВІТАЙТЕ" },
