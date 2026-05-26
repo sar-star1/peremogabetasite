@@ -273,7 +273,7 @@ const B2B = () => {
                   onChange={(e) => setForm({ ...form, tastingSet: e.target.checked })}
                   className="w-5 h-5 accent-foreground shrink-0"
                 />
-                <span className="font-body text-sm text-foreground font-light">Замовити дегустаційний сет</span>
+                <span className="font-body text-sm text-foreground font-light">Замовити Дегустаційний Сет</span>
               </label>
               <button
                 type="submit"
