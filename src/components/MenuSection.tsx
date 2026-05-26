@@ -1,6 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuCategories } from "@/data/menuData";
+import type { MenuItem } from "@/data/menuData";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
