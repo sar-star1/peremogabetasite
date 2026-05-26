@@ -88,7 +88,7 @@ const formSchema = z.object({
 
 const B2B = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", message: "", tastingSet: false });
   const [tasting, setTasting] = useState({ name: "", company: "", phone: "" });
 
   const handlePriceSubmit = (e: React.FormEvent) => {
@@ -98,7 +98,7 @@ const B2B = () => {
       toast({ title: "Перевірте форму", description: result.error.issues[0].message, variant: "destructive" });
       return;
     }
-    const text = `Запит прайсу для закладів%0A%0AІм'я: ${encodeURIComponent(form.name)}%0AЗаклад: ${encodeURIComponent(form.company)}%0AТелефон: ${encodeURIComponent(form.phone)}%0AEmail: ${encodeURIComponent(form.email)}%0AКоментар: ${encodeURIComponent(form.message || "—")}`;
+    const text = `Запит прайсу для закладів%0A%0AІм'я: ${encodeURIComponent(form.name)}%0AЗаклад: ${encodeURIComponent(form.company)}%0AТелефон: ${encodeURIComponent(form.phone)}%0AEmail: ${encodeURIComponent(form.email)}%0AКоментар: ${encodeURIComponent(form.message || "—")}%0AДегустаційний сет: ${form.tastingSet ? "Так" : "Ні"}`;
     window.location.href = `mailto:peremogabakery@gmail.com?subject=Запит%20прайсу%20для%20закладів&body=${text}`;
     toast({ title: "Дякуємо!", description: "Відкриваємо ваш email — надішліть листа, ми надішлемо прайс." });
   };
@@ -266,6 +266,15 @@ const B2B = () => {
                   <Textarea id="message" maxLength={1000} rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} className="mt-2" />
                 </div>
               </div>
+              <label className="flex items-center gap-3 mt-6 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={form.tastingSet}
+                  onChange={(e) => setForm({ ...form, tastingSet: e.target.checked })}
+                  className="w-5 h-5 accent-foreground shrink-0"
+                />
+                <span className="font-body text-sm text-foreground font-light">Замовити дегустаційний сет</span>
+              </label>
               <button
                 type="submit"
                 className="w-full mt-6 px-8 py-3 bg-foreground text-background font-body text-sm uppercase tracking-[0.15em] font-light hover:bg-foreground/90 transition-colors"
