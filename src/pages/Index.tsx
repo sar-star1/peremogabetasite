@@ -21,8 +21,8 @@ const Index = () => {
 
         {/* Porto's-style 3 big destination tiles */}
         <CategoryTiles
-          eyebrow="Ваш напрямок"
-          heading="Що вас цікавить?"
+          eyebrow="ВАШ НАПРЯМОК"
+          heading="ЩО ВАС ЦІКАВИТЬ?"
         />
 
         {/* Promo strip 1 — Our story (image left) */}

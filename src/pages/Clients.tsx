@@ -41,10 +41,10 @@ const Clients = () => {
               className="max-w-3xl mx-auto text-center"
             >
               <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-                Авторські Вироби
+                АВТОРСЬКІ ВИРОБИ
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-6 tracking-wide">
-                Меню та все для гостей
+                МЕНЮ 
               </h1>
               <p className="text-muted-foreground text-base md:text-lg font-light leading-relaxed max-w-2xl mx-auto">
                 Оберіть улюблену випічку, дізнайтесь години роботи та як нас знайти у Києві.
@@ -65,15 +65,15 @@ const Clients = () => {
           tiles={[
             {
               to: "/b2b",
-              eyebrow: "Для закладів",
-              title: "HoReCa (B2B) · Партнерство",
+              eyebrow: "ДЛЯ ПАРТНЕРСТВА",
+              title: "HORECA (B2B) ",
               image: b2bSupreme,
               alt: "HoReCa (B2B) співпраця для закладів Києва",
             },
             {
               to: "/charity-bread",
-              eyebrow: "Благодійність",
-              title: "Стандартизована Лінійка (мас маркет)",
+              eyebrow: "MACОВИЙ МАРКЕТ",
+              title: "СТАНДАРТИЗОВАНА ЛІНІЙКА ",
               image: charityBread,
               alt: 'Благодійний хліб "Перемога"',
             },

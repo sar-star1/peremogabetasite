@@ -51,7 +51,7 @@ const CharityBread = () => {
               className="max-w-3xl mx-auto text-center"
             >
               <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
-                Благодійність
+                MACОВИЙ МАРКЕТ
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-8 tracking-wide">
                 Хліб "Перемога"
@@ -219,15 +219,15 @@ const CharityBread = () => {
           tiles={[
             {
               to: "/b2b",
-              eyebrow: "Для закладів",
-              title: "HoReCa (B2B) · Партнерство",
+              eyebrow: "ДЛЯ ПАРТНЕРСТВА",
+              title: "HORECA (B2B) ",
               image: charityBread2,
               alt: "HoReCa (B2B) співпраця для кав'ярень та ресторанів",
             },
             {
               to: "/clients",
-              eyebrow: "Авторські Вироби",
-              title: "Меню та адреса",
+              eyebrow: "АВТОРСЬКІ ВИРОБИ",
+              title: "МЕНЮ ",
               image: breadBasket,
               alt: "Меню та адреса пекарні Перемога",
             },

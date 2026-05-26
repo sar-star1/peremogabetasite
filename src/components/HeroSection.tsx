@@ -125,8 +125,8 @@ const HeroSection = () => {
             >
               {[
                 { to: "/clients", label: "АВТОРСЬКІ ВИРОБИ" },
-                { to: "/b2b", label: "HoReCa (B2B)" },
-                { to: "/charity-bread", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА (МАС МАРКЕТ)" },
+                { to: "/b2b", label: "HORECA (B2B) " },
+                { to: "/charity-bread", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА " },
               ].map((cta) => (
                 <Link
                   key={cta.to}

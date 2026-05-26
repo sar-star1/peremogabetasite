@@ -4,9 +4,9 @@ import { Menu, X, ShoppingBag } from "lucide-react";
 import peremogaLogo from "@/assets/peremoga-logo.jpg";
 
 const navItems = [
-  { label: "HoReCa (B2B)", href: "/b2b", isRoute: true },
-  { label: "Авторські Вироби", href: "/clients", isRoute: true },
-  { label: "Стандартизована Лінійка (мас маркет)", href: "/charity-bread", isRoute: true },
+  { label: "HORECA (B2B) ", href: "/b2b", isRoute: true },
+  { label: "АВТОРСЬКІ ВИРОБИ", href: "/clients", isRoute: true },
+  { label: "СТАНДАРТИЗОВАНА ЛІНІЙКА ", href: "/charity-bread", isRoute: true },
 ];
 
 const Navbar = () => {

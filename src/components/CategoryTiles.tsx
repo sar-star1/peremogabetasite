@@ -15,22 +15,22 @@ type Tile = {
 const defaultTiles: Tile[] = [
   {
     to: "/b2b",
-    eyebrow: "Для закладів",
-    title: "HoReCa (B2B) · Партнерство",
+    eyebrow: "ДЛЯ ПАРТНЕРСТВА",
+    title: "HORECA (B2B) ",
     image: b2bSupreme,
     alt: "Авторська випічка Supreme для кав'ярень та ресторанів",
   },
   {
     to: "/clients",
-    eyebrow: "Авторські Вироби",
-    title: "Меню та адреса",
+    eyebrow: "АВТОРСЬКІ ВИРОБИ",
+    title: "МЕНЮ ",
     image: breadSliced,
     alt: "Свіжий крафтовий хліб у пекарні Перемога, Київ",
   },
   {
     to: "/charity-bread",
-    eyebrow: "Благодійність",
-    title: "Стандартизована Лінійка (мас маркет)",
+    eyebrow: "MACОВИЙ МАРКЕТ",
+    title: "СТАНДАРТИЗОВАНА ЛІНІЙКА ",
     image: charityBread,
     alt: 'Благодійний хліб "Перемога" для військових та прифронтових територій',
   },

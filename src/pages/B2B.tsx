@@ -138,7 +138,7 @@ const B2B = () => {
               className="max-w-3xl mx-auto text-center bg-background/85 backdrop-blur-sm p-8 md:p-12 shadow-lg"
             >
               <span className="font-body text-xs uppercase tracking-[0.3em] text-foreground/70 font-light">
-                B2B · Для закладів
+                ДЛЯ ПАРТНЕРСТВА
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-8 tracking-wide">
                 Вітаємо Вас в пекарні «Перемога»!
@@ -292,15 +292,15 @@ const B2B = () => {
           tiles={[
             {
               to: "/clients",
-              eyebrow: "Авторські Вироби",
-              title: "Меню та адреса",
+              eyebrow: "АВТОРСЬКІ ВИРОБИ",
+              title: "МЕНЮ ",
               image: breadSliced,
               alt: "Меню пекарні Перемога для гостей у Києві",
             },
             {
               to: "/charity-bread",
-              eyebrow: "Благодійність",
-              title: "Стандартизована Лінійка (мас маркет)",
+              eyebrow: "MACОВИЙ МАРКЕТ",
+              title: "СТАНДАРТИЗОВАНА ЛІНІЙКА ",
               image: heroBakery,
               alt: 'Благодійний хліб "Перемога"',
             },
