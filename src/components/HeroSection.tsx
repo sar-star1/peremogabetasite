@@ -126,9 +126,9 @@ const HeroSection = () => {
               className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-8 pointer-events-auto"
             >
               {[
-                { to: "/clients", label: "Завітайте" },
+                { to: "/clients", label: "ЗАВІТАЙТЕ" },
                 { to: "/b2b", label: "B2B" },
-                { to: "/charity-bread", label: 'Хліб "Перемога"' },
+                { to: "/charity-bread", label: "ХЛІБ \"ПЕРЕМОГА\"" },
               ].map((cta) => (
                 <Link
                   key={cta.to}
