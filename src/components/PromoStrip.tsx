@@ -73,7 +73,7 @@ const PromoStrip = ({
               src={image}
               alt={imageAlt}
               loading="lazy"
-              className={`relative w-full aspect-square ${imageContain ? "object-contain bg-background" : "object-cover"}`}
+              className={`relative w-full aspect-square ${imageContain ? "object-contain bg-background" : "object-contain bg-background"}`}
             />
           </motion.div>
 
