@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-        body: ['Manrope', 'system-ui', 'sans-serif'],
+        display: ['"Archivo Black"', '"Archivo"', 'system-ui', 'sans-serif'],
+        body: ['Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -68,6 +68,10 @@ export default {
         charcoal: "hsl(var(--charcoal))",
         ivory: "hsl(var(--ivory))",
         linen: "hsl(var(--linen))",
+        "pastel-blue": "hsl(var(--pastel-blue))",
+        "pastel-lime": "hsl(var(--pastel-lime))",
+        "pastel-lavender": "hsl(var(--pastel-lavender))",
+        "pastel-peach": "hsl(var(--pastel-peach))",
       },
       borderRadius: {
         lg: "var(--radius)",
