@@ -8,7 +8,7 @@ import MenuSection from "@/components/MenuSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
-import InstagramSection from "@/components/InstagramSection";
+
 import CategoryTiles from "@/components/CategoryTiles";
 import breadSliced from "@/assets/bread-sliced.webp";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
@@ -56,7 +56,6 @@ const Clients = () => {
 
         <MenuSection />
         <ReviewsSection />
-        <InstagramSection />
         <FAQSection />
         <ContactSection />
 
