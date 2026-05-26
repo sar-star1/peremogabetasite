@@ -127,9 +127,9 @@
   }
 
   .font-display-black {
-    font-family: "Archivo Black", "Archivo", system-ui, sans-serif;
+    font-family: "Nunito", system-ui, sans-serif;
     font-weight: 900;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.03em;
   }
 
   .wheat-divider {
