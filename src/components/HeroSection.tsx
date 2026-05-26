@@ -124,9 +124,9 @@ const HeroSection = () => {
               className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 mt-16 pointer-events-auto"
             >
               {[
-                { to: "/clients", label: "ЗАВІТАЙТЕ" },
-                { to: "/b2b", label: "B2B" },
-                { to: "/charity-bread", label: "ХЛІБ \"ПЕРЕМОГА\"" },
+                { to: "/clients", label: "АВТОРСЬКІ ВИРОБИ" },
+                { to: "/b2b", label: "HoReCa (B2B)" },
+                { to: "/charity-bread", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА (МАС МАРКЕТ)" },
               ].map((cta) => (
                 <Link
                   key={cta.to}

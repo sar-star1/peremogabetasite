@@ -152,8 +152,8 @@ const AboutSection = () => {
         >
           {[
             { value: "2021", label: "Рік заснування" },
-            { value: "B2B", label: "Ключовий напрямок" },
-            { value: "24/7", label: 'Хліб "Перемога"' },
+            { value: "HoReCa (B2B)", label: "Ключовий напрямок" },
+            { value: "24/7", label: "Стандартизована Лінійка (мас маркет)" },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <div className="text-3xl md:text-4xl font-display font-light text-foreground mb-2 tracking-wide">
