@@ -88,7 +88,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Center wordmark */}
-          <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none">
+          <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none text-[#a4b8cc]">
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
