@@ -114,7 +114,9 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="font-body text-sm md:text-base text-muted-foreground max-w-md mx-auto mt-6 font-light leading-relaxed pointer-events-auto"
             >
+              <br />
               Реміснича пекарня — авторські десерти, крафтовий хліб та випічка щодня у Києві.
+              <br />
             </motion.p>
 
             <motion.div
