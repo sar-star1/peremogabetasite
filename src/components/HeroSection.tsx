@@ -1,93 +1,143 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import logo from "@/assets/peremoga-logo.jpg";
+import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
+import b2bCake from "@/assets/b2b-cake.jpeg";
+import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
+import b2bTubes from "@/assets/b2b-tubes.jpeg";
 
+// Editorial collage hero — Dominique Ansel inspired.
+// Huge wordmark center; product photos float on white with pastel offset blocks.
 const HeroSection = () => {
   return (
-    <header className="relative h-screen min-h-[700px] overflow-hidden" role="banner">
-      <video
-        src="/assets/hero-video.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-hero-overlay" />
+    <header
+      className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
+      role="banner"
+    >
+      <div className="container mx-auto px-6">
+        <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
+          {/* Floating product 1 — top-left, pastel-peach offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut" }}
+            className="absolute left-0 top-4 md:top-10 w-[34%] md:w-[24%] max-w-[260px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-peach" />
+              <img
+                src={b2bSupreme}
+                alt="Круасан Supreme Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="mb-8"
-        >
-          <img
-            src={logo}
-            alt="Логотип Peremoga Bakery — пекарня Перемога Київ"
-            className="w-28 h-28 md:w-36 md:h-36 rounded-full object-cover mx-auto shadow-2xl ring-2 ring-primary-foreground/20"
-            width={144}
-            height={144}
-          />
-        </motion.div>
+          {/* Floating product 2 — top-center small, pastel-lavender offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1, ease: "easeOut" }}
+            className="absolute left-1/2 -translate-x-1/2 top-0 w-[26%] md:w-[18%] max-w-[200px] hidden sm:block"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
+              <img
+                src={b2bEclairs}
+                alt="Еклер ремісничої пекарні Перемога"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-        >
-           <h1 className="font-display text-5xl md:text-7xl lg:text-[5.5rem] font-light text-primary-foreground mb-3 tracking-wide drop-shadow-[0_2px_12px_rgba(0,0,0,0.5)]">
-             Peremoga
-           </h1>
-           <div className="flex items-center justify-center gap-4 mb-6">
-             <div className="h-px w-12 bg-primary-foreground/40" />
-             <span className="font-body text-xs uppercase tracking-[0.35em] text-primary-foreground/80 font-light drop-shadow-[0_1px_4px_rgba(0,0,0,0.4)]">
-               Artisan Bakery · Kyiv
-             </span>
-             <div className="h-px w-12 bg-primary-foreground/40" />
-           </div>
-           <p className="font-body text-base md:text-lg text-primary-foreground/85 max-w-lg mx-auto font-light leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.4)]">
-             Ваше свято заслуговує на найкраще. Авторські десерти, крафтовий хліб та випічка, створені з любов'ю — щодня у <span className="font-body">Києві</span>.
-           </p>
-        </motion.div>
+          {/* Floating product 3 — right, pastel-lime offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
+            className="absolute right-0 top-2 md:top-20 w-[32%] md:w-[22%] max-w-[240px]"
+          >
+            <div className="relative">
+              <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-lime" />
+              <img
+                src={b2bTubes}
+                alt="Авторські десерти Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.7 }}
-          className="flex flex-col sm:flex-row gap-4 mt-10 w-full max-w-3xl"
-        >
-         <Link
-           to="/b2b"
-           className="flex-1 text-center px-8 py-4 bg-primary-foreground/15 backdrop-blur-md border border-primary-foreground/40 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground hover:text-foreground transition-all duration-300 shadow-lg"
-         >
-           B2B
-         </Link>
-         <Link
-           to="/clients"
-           className="flex-1 text-center px-8 py-4 bg-primary-foreground/15 backdrop-blur-md border border-primary-foreground/40 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground hover:text-foreground transition-all duration-300 shadow-lg"
-         >
-           Завітайте
-         </Link>
-         <Link
-           to="/charity-bread"
-           className="flex-1 text-center px-8 py-4 bg-primary-foreground/15 backdrop-blur-md border border-primary-foreground/40 text-primary-foreground font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-primary-foreground hover:text-foreground transition-all duration-300 shadow-lg"
-         >
-           Хліб "Перемога"
-         </Link>
-        </motion.div>
+          {/* Floating product 4 — bottom-center, pastel-blue offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
+            className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-12 w-[36%] md:w-[24%] max-w-[260px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
+              <img
+                src={b2bCake}
+                alt="Авторський торт Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
 
+          {/* Center wordmark */}
+          <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none">
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4"
+            >
+              Kyiv · з 2021
+            </motion.span>
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
+              className="font-display-black text-foreground leading-[0.85] text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[10rem] xl:text-[12rem]"
+            >
+              <span className="block">PEREMOGA</span>
+              <span className="block">BAKERY</span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="font-body text-sm md:text-base text-muted-foreground max-w-md mx-auto mt-6 font-light leading-relaxed pointer-events-auto"
+            >
+              Реміснича пекарня — авторські десерти, крафтовий хліб та випічка щодня у Києві.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.05 }}
+              className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-8 pointer-events-auto"
+            >
+              {[
+                { to: "/clients", label: "Завітайте" },
+                { to: "/b2b", label: "B2B" },
+                { to: "/charity-bread", label: 'Хліб "Перемога"' },
+              ].map((cta) => (
+                <Link
+                  key={cta.to}
+                  to={cta.to}
+                  className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
+                >
+                  {cta.label}
+                </Link>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-px h-12 bg-gradient-to-b from-primary-foreground/0 via-primary-foreground/40 to-primary-foreground/0" />
-      </motion.div>
     </header>
   );
 };
