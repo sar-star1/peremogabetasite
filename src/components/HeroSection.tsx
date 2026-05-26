@@ -95,7 +95,9 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-muted-foreground mb-4"
             >
-              Kyiv · з 2021
+              &nbsp;&nbsp;
+              <br />
+              KYIV · 2021
             </motion.span>
             <motion.h1
               initial={{ opacity: 0, y: 16 }}
@@ -112,7 +114,9 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="font-body text-sm md:text-base text-muted-foreground max-w-md mx-auto mt-6 font-light leading-relaxed pointer-events-auto"
             >
+              <br />
               Реміснича пекарня — авторські десерти, крафтовий хліб та випічка щодня у Києві.
+              <br />
             </motion.p>
 
             <motion.div
@@ -122,9 +126,9 @@ const HeroSection = () => {
               className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-8 pointer-events-auto"
             >
               {[
-                { to: "/clients", label: "Завітайте" },
+                { to: "/clients", label: "ЗАВІТАЙТЕ" },
                 { to: "/b2b", label: "B2B" },
-                { to: "/charity-bread", label: 'Хліб "Перемога"' },
+                { to: "/charity-bread", label: "ХЛІБ \"ПЕРЕМОГА\"" },
               ].map((cta) => (
                 <Link
                   key={cta.to}
