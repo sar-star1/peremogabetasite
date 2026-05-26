@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Instagram, Menu, X, ShoppingBag } from "lucide-react";
+import peremogaLogo from "@/assets/peremoga-logo.jpg";
 
 const navItems = [
   { label: "B2B", href: "/b2b", isRoute: true },
@@ -28,13 +29,12 @@ const Navbar = () => {
     >
       <div className="container mx-auto flex items-center justify-between px-6">
         {/* Wordmark left */}
-        <Link to="/" className="flex flex-col leading-none">
-          <span className="font-display-black text-foreground text-base md:text-lg tracking-tight">
-            PEREMOGA
-          </span>
-          <span className="font-display-black text-foreground text-base md:text-lg tracking-tight">
-            BAKERY
-          </span>
+        <Link to="/" className="flex items-center" aria-label="Peremoga Bakery">
+          <img
+            src={peremogaLogo}
+            alt="Peremoga Bakery"
+            className="h-12 md:h-14 w-auto object-contain mix-blend-multiply"
+          />
         </Link>
 
         {/* Center city tag */}
