@@ -53,12 +53,12 @@ const MenuSection = () => {
           >
             {menuCategories[activeCategory].items.map((item) => (
               <div key={item.name} className="group">
-                <div className="aspect-square overflow-hidden bg-secondary mb-4">
+                <div className="aspect-square overflow-hidden bg-secondary mb-4 flex items-center justify-center p-4">
                   <img
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-[900ms]"
+                    className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-[900ms]"
                   />
                 </div>
                 <div className="flex items-start justify-between gap-3 mb-1.5">
