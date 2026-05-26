@@ -98,7 +98,7 @@ const B2B = () => {
       toast({ title: "Перевірте форму", description: result.error.issues[0].message, variant: "destructive" });
       return;
     }
-    const text = `Запит прайсу для закладів%0A%0AІм'я: ${encodeURIComponent(form.name)}%0AЗаклад: ${encodeURIComponent(form.company)}%0AТелефон: ${encodeURIComponent(form.phone)}%0AEmail: ${encodeURIComponent(form.email)}%0AКоментар: ${encodeURIComponent(form.message || "—")}`;
+    const text = `Запит прайсу для закладів%0A%0AІм'я: ${encodeURIComponent(form.name)}%0AЗаклад: ${encodeURIComponent(form.company)}%0AТелефон: ${encodeURIComponent(form.phone)}%0AEmail: ${encodeURIComponent(form.email)}%0AКоментар: ${encodeURIComponent(form.message || "—")}%0AДегустаційний сет: ${form.tastingSet ? "Так" : "Ні"}`;
     window.location.href = `mailto:peremogabakery@gmail.com?subject=Запит%20прайсу%20для%20закладів&body=${text}`;
     toast({ title: "Дякуємо!", description: "Відкриваємо ваш email — надішліть листа, ми надішлемо прайс." });
   };
