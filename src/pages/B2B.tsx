@@ -88,7 +88,7 @@ const formSchema = z.object({
 
 const B2B = () => {
   const { toast } = useToast();
-  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", company: "", phone: "", email: "", message: "", tastingSet: false });
   const [tasting, setTasting] = useState({ name: "", company: "", phone: "" });
 
   const handlePriceSubmit = (e: React.FormEvent) => {
