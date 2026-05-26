@@ -21,7 +21,7 @@ const photos = [
 
 const DONATE_URL = "https://send.monobank.ua/jar/Hy45vxyuK?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQMMjU2MjgxMDQwNTU4AAGnpM27TiX6gbutSUPcoWy2CA_GS80O7x1L_Np4mG5DYdZX6-x7bOJd2MCbkS8_aem_PU4R8Pz5jJA4s63Uy89SWA";
 const NEWS_URL = "https://www.5.ua/suspilstvo/bezkoshtovno-peredaiut-khlib-peremoha-viiskovym-ta-volonteram-iak-pratsiuie-pekarnia-u-kyievi-314185.html";
-const INSTAGRAM_URL = "https://www.instagram.com/craft_bakery_by_dubova/";
+
 
 const CharityBread = () => {
   return (
@@ -181,24 +181,6 @@ const CharityBread = () => {
                 </div>
               </a>
 
-              {/* Instagram link */}
-              <a
-                href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 p-5 border border-border hover:border-wheat/40 transition-colors group"
-              >
-                <svg className="w-5 h-5 text-muted-foreground group-hover:text-wheat transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                  <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
-                </svg>
-                <div>
-                  <span className="text-sm font-medium text-foreground block">@craft_bakery_by_dubova</span>
-                  <span className="text-xs text-muted-foreground font-light">Відео про благодійність в Instagram</span>
-                </div>
-                <ExternalLink className="w-3.5 h-3.5 text-muted-foreground ml-auto shrink-0" />
-              </a>
             </motion.div>
           </div>
         </section>
