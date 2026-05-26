@@ -72,7 +72,7 @@ const MenuSection = () => {
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
-                    className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-[900ms]"
+                    className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-[900ms] bg-slate-50"
                   />
                 </div>
                 <div className="flex items-start justify-between gap-3 mb-1.5">
