@@ -12,6 +12,7 @@ import {
 
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
+  const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
 
   return (
     <section id="menu" className="relative py-24 md:py-32 bg-background">
