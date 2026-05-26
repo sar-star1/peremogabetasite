@@ -68,6 +68,10 @@ export default {
         charcoal: "hsl(var(--charcoal))",
         ivory: "hsl(var(--ivory))",
         linen: "hsl(var(--linen))",
+        "pastel-blue": "hsl(var(--pastel-blue))",
+        "pastel-lime": "hsl(var(--pastel-lime))",
+        "pastel-lavender": "hsl(var(--pastel-lavender))",
+        "pastel-peach": "hsl(var(--pastel-peach))",
       },
       borderRadius: {
         lg: "var(--radius)",
