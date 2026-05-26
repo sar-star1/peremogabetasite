@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import CategoryTiles from "@/components/CategoryTiles";
 import PromoStrip from "@/components/PromoStrip";
 import ReviewsSection from "@/components/ReviewsSection";
-import InstagramSection from "@/components/InstagramSection";
+
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
 import FooterSection from "@/components/FooterSection";
@@ -118,7 +118,6 @@ const Index = () => {
         />
 
         <ReviewsSection />
-        <InstagramSection />
         <FAQSection />
         <ContactSection />
       </main>

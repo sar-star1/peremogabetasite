@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+
 
 const FooterSection = () => {
   return (
@@ -16,15 +16,6 @@ const FooterSection = () => {
           </p>
 
           <div className="flex items-center gap-8 mb-10">
-            <a
-              href="https://www.instagram.com/peremogabakery/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-background/70 hover:text-background transition-colors"
-              aria-label="Instagram"
-            >
-              <Instagram className="w-4 h-4" strokeWidth={1.5} />
-            </a>
             <a
               href="https://www.tiktok.com/@peremogabakery"
               target="_blank"

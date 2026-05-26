@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Instagram, Menu, X, ShoppingBag } from "lucide-react";
+import { Menu, X, ShoppingBag } from "lucide-react";
 import peremogaLogo from "@/assets/peremoga-logo.jpg";
 
 const navItems = [
@@ -55,15 +55,6 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-          <a
-            href="https://www.instagram.com/peremogabakery/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground hover:opacity-60 transition-opacity"
-            aria-label="Instagram"
-          >
-            <Instagram className="w-4 h-4" strokeWidth={1.5} />
-          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -90,14 +81,6 @@ const Navbar = () => {
                 {item.label}
               </Link>
             ))}
-            <a
-              href="https://www.instagram.com/peremogabakery/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-body text-xs uppercase tracking-[0.3em] text-foreground inline-flex items-center gap-2"
-            >
-              <Instagram className="w-4 h-4" strokeWidth={1.5} /> Instagram
-            </a>
           </div>
         </div>
       )}
