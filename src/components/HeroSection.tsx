@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
 import b2bTubes from "@/assets/b2b-tubes.jpeg";
+import strawberryPavlova from "@/assets/strawberry-pavlova.jpeg.asset.json";
+import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
+import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
 
 // Editorial collage hero — Dominique Ansel inspired.
 // Huge wordmark center; product photos float on white with pastel offset blocks.
