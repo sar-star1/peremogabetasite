@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import breadSliced from "@/assets/bread-sliced.webp";
-import charityBread from "@/assets/charity-bread-1.jpg";
+import breadBasket from "@/assets/bread-basket.webp";
 
 type Tile = {
   to: string;
@@ -28,11 +28,11 @@ const defaultTiles: Tile[] = [
     alt: "Свіжий крафтовий хліб у пекарні Перемога, Київ",
   },
   {
-    to: "/charity-bread",
-    eyebrow: "MACОВИЙ МАРКЕТ",
+    to: "/standard-line",
+    eyebrow: "МАСОВИЙ РИНОК",
     title: "СТАНДАРТИЗОВАНА ЛІНІЙКА ",
-    image: charityBread,
-    alt: 'Благодійний хліб "Перемога" для військових та прифронтових територій',
+    image: breadBasket,
+    alt: "Стандартизована лінійка випічки пекарні Перемога",
   },
 ];
 

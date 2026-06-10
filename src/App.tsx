@@ -5,7 +5,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
-import CharityBread from "./pages/CharityBread.tsx";
+import StandardLine from "./pages/StandardLine.tsx";
 import B2B from "./pages/B2B.tsx";
 import Clients from "./pages/Clients.tsx";
 
@@ -19,7 +19,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/charity-bread" element={<CharityBread />} />
+          <Route path="/standard-line" element={<StandardLine />} />
           <Route path="/b2b" element={<B2B />} />
           <Route path="/clients" element={<Clients />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

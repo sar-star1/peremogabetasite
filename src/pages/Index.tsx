@@ -10,7 +10,7 @@ import FooterSection from "@/components/FooterSection";
 import teamPhoto from "@/assets/team-photo.jpg";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
-import charityBread from "@/assets/charity-bread-1.png";
+import breadBasket from "@/assets/bread-basket.webp";
 
 const Index = () => {
   return (
@@ -95,26 +95,25 @@ const Index = () => {
           ctaHref="/b2b"
         />
 
-        {/* Promo strip 4 — Charity bread (image right) */}
+        {/* Promo strip 4 — Standard line (image right) */}
         <PromoStrip
           background="background"
           reverse
-          eyebrow="Благодійність · з 2022"
-          title='Хліб "Перемога" — більше, ніж хліб'
-          image={charityBread}
-          imageContain
-          imageAlt='Благодійний хліб "Перемога" для військових та прифронтових територій'
+          eyebrow="Масовий ринок"
+          title="Стандартизована лінійка"
+          image={breadBasket}
+          imageAlt="Стандартизована лінійка випічки пекарні Перемога"
           description={
             <>
               <p>
-                З першого дня повномасштабного вторгнення ми щодня і щоночі випікаємо благодійний хліб
-                «Перемога» для прифронтових територій та наших захисників.
+                Наша стандартизована лінійка — стабільна якість, чіткі рецептури та надійний
+                асортимент для щоденного попиту.
               </p>
-              <p>Це надія, підтримка та віра в перемогу — у кожній буханці.</p>
+              <p>Деталі та повний асортимент з'являться найближчим часом.</p>
             </>
           }
-          ctaLabel="Підтримати проєкт"
-          ctaHref="/charity-bread"
+          ctaLabel="Дізнатись більше"
+          ctaHref="/standard-line"
         />
 
         <ReviewsSection />

@@ -71,11 +71,11 @@ const Clients = () => {
               alt: "HoReCa (B2B) співпраця для закладів Києва",
             },
             {
-              to: "/charity-bread",
-              eyebrow: "MACОВИЙ МАРКЕТ",
+              to: "/standard-line",
+              eyebrow: "МАСОВИЙ РИНОК",
               title: "СТАНДАРТИЗОВАНА ЛІНІЙКА ",
               image: charityBread,
-              alt: 'Благодійний хліб "Перемога"',
+              alt: "Стандартизована лінійка пекарні Перемога",
             },
             {
               to: "/",
