@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useRef, useState } from "react";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
@@ -7,6 +8,115 @@ import b2bTubes from "@/assets/b2b-tubes.jpeg";
 import strawberryPavlova from "@/assets/strawberry-pavlova.jpeg.asset.json";
 import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
 import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
+
+type Corner = "nw" | "ne" | "sw" | "se";
+
+interface DraggableResizableImageProps {
+  src: string;
+  alt: string;
+  /** Initial absolute position classes, e.g. "left-0 top-0" */
+  position: string;
+  /** Initial pixel size (square). */
+  initialSize: number;
+  /** Pastel offset block tailwind class, e.g. "bg-pastel-peach" */
+  offsetColor: string;
+  /** Where the pastel offset sits: which two edges to attach to. */
+  offsetCorner?: Corner;
+  delay?: number;
+}
+
+const offsetClassMap: Record<Corner, string> = {
+  nw: "-top-2 -left-2 md:-top-3 md:-left-3",
+  ne: "-top-2 -right-2 md:-top-3 md:-right-3",
+  sw: "-bottom-2 -left-2 md:-bottom-3 md:-left-3",
+  se: "-bottom-2 -right-2 md:-bottom-3 md:-right-3",
+};
+
+const DraggableResizableImage = ({
+  src,
+  alt,
+  position,
+  initialSize,
+  offsetColor,
+  offsetCorner = "sw",
+  delay = 0,
+}: DraggableResizableImageProps) => {
+  const [size, setSize] = useState(initialSize);
+  const resizingRef = useRef(false);
+  const startRef = useRef({ x: 0, y: 0, size: initialSize, corner: "se" as Corner });
+
+  const onResizePointerDown = (e: React.PointerEvent, corner: Corner) => {
+    e.stopPropagation();
+    e.preventDefault();
+    resizingRef.current = true;
+    startRef.current = { x: e.clientX, y: e.clientY, size, corner };
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+  };
+
+  const onResizePointerMove = (e: React.PointerEvent) => {
+    if (!resizingRef.current) return;
+    const { x, y, size: s, corner } = startRef.current;
+    const dx = e.clientX - x;
+    const dy = e.clientY - y;
+    // Outward drag from the chosen corner grows the image.
+    const signX = corner.includes("e") ? 1 : -1;
+    const signY = corner.includes("s") ? 1 : -1;
+    const delta = (dx * signX + dy * signY) / 2;
+    const next = Math.max(60, Math.min(520, s + delta));
+    setSize(next);
+  };
+
+  const onResizePointerUp = (e: React.PointerEvent) => {
+    if (!resizingRef.current) return;
+    resizingRef.current = false;
+    try {
+      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch {
+      // ignore
+    }
+  };
+
+  const handles: { corner: Corner; cursor: string; pos: string }[] = [
+    { corner: "nw", cursor: "cursor-nwse-resize", pos: "-top-1.5 -left-1.5" },
+    { corner: "ne", cursor: "cursor-nesw-resize", pos: "-top-1.5 -right-1.5" },
+    { corner: "sw", cursor: "cursor-nesw-resize", pos: "-bottom-1.5 -left-1.5" },
+    { corner: "se", cursor: "cursor-nwse-resize", pos: "-bottom-1.5 -right-1.5" },
+  ];
+
+  return (
+    <motion.div
+      drag
+      dragMomentum={false}
+      whileDrag={{ scale: 1.03 }}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, delay, ease: "easeOut" }}
+      className={`absolute ${position} group touch-none`}
+      style={{ width: size, height: size }}
+    >
+      <div className="relative w-full h-full">
+        <div className={`absolute w-full h-full ${offsetColor} ${offsetClassMap[offsetCorner]}`} />
+        <img
+          src={src}
+          alt={alt}
+          className="relative w-full h-full object-cover select-none pointer-events-none"
+          draggable={false}
+          loading="eager"
+        />
+        {handles.map((h) => (
+          <div
+            key={h.corner}
+            onPointerDown={(e) => onResizePointerDown(e, h.corner)}
+            onPointerMove={onResizePointerMove}
+            onPointerUp={onResizePointerUp}
+            onPointerCancel={onResizePointerUp}
+            className={`absolute ${h.pos} w-3 h-3 bg-foreground border border-background ${h.cursor} opacity-0 group-hover:opacity-100 transition-opacity z-20`}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+};
 
 // Editorial collage hero — Dominique Ansel inspired.
 // Huge wordmark center; product photos float on white with pastel offset blocks.
@@ -18,134 +128,74 @@ const HeroSection = () => {
     >
       <div className="container mx-auto px-6">
         <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
-          {/* 1. Supreme croissant — top-left */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            className="absolute left-0 top-0 w-[26%] sm:w-[24%] md:w-[22%] lg:w-[20%] max-w-[280px]"
-          >
-            <div className="relative">
-              <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-peach" />
-              <img
-                src={b2bSupreme}
-                alt="Круасан Supreme Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage
+            src={b2bSupreme}
+            alt="Круасан Supreme Peremoga Bakery"
+            position="left-0 top-0"
+            initialSize={120}
+            offsetColor="bg-pastel-peach"
+            offsetCorner="sw"
+          />
 
-          {/* 2. Eclairs — top-center (tablet+) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.08, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 top-[4%] w-[20%] md:w-[16%] lg:w-[14%] max-w-[200px] hidden sm:block"
-          >
-            <div className="relative">
-              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 w-full h-full bg-pastel-lavender" />
-              <img
-                src={b2bEclairs}
-                alt="Еклер ремісничої пекарні Перемога"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage
+            src={b2bEclairs}
+            alt="Еклер ремісничої пекарні Перемога"
+            position="left-1/2 -translate-x-1/2 top-[4%]"
+            initialSize={100}
+            offsetColor="bg-pastel-lavender"
+            offsetCorner="se"
+            delay={0.08}
+          />
 
-          {/* 3. Tubes — top-right */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-            className="absolute right-0 top-0 w-[26%] sm:w-[24%] md:w-[22%] lg:w-[20%] max-w-[280px]"
-          >
-            <div className="relative">
-              <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-full h-full bg-pastel-lime" />
-              <img
-                src={b2bTubes}
-                alt="Авторські десерти Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage
+            src={b2bTubes}
+            alt="Авторські десерти Peremoga Bakery"
+            position="right-0 top-0"
+            initialSize={120}
+            offsetColor="bg-pastel-lime"
+            offsetCorner="ne"
+            delay={0.15}
+          />
 
-          {/* 4. Pavlova — mid-left (tablet+ only, would overlap wordmark on mobile) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.22, ease: "easeOut" }}
-            className="absolute left-0 top-[42%] w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px] hidden sm:block"
-          >
-            <div className="relative">
-              <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-blue" />
-              <img
-                src={strawberryPavlova.url}
-                alt="Полунична павлова Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage
+            src={strawberryPavlova.url}
+            alt="Полунична павлова Peremoga Bakery"
+            position="left-0 top-[42%]"
+            initialSize={100}
+            offsetColor="bg-pastel-blue"
+            offsetCorner="sw"
+            delay={0.22}
+          />
 
-          {/* 5. Strawberry eclair — mid-right (tablet+ only) */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.28, ease: "easeOut" }}
-            className="absolute right-0 top-[42%] w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px] hidden sm:block"
-          >
-            <div className="relative">
-              <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-full h-full bg-pastel-peach" />
-              <img
-                src={strawberryEclair.url}
-                alt="Полуничний еклер Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage
+            src={strawberryEclair.url}
+            alt="Полуничний еклер Peremoga Bakery"
+            position="right-0 top-[42%]"
+            initialSize={100}
+            offsetColor="bg-pastel-peach"
+            offsetCorner="ne"
+            delay={0.28}
+          />
 
-          {/* 6. Cheesecake — bottom-left */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
-            className="absolute left-0 bottom-0 w-[26%] sm:w-[24%] md:w-[22%] lg:w-[20%] max-w-[280px]"
-          >
-            <div className="relative">
-              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 w-full h-full bg-pastel-lavender" />
-              <img
-                src={strawberryCheesecake.url}
-                alt="Полуничний чізкейк Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage
+            src={strawberryCheesecake.url}
+            alt="Полуничний чізкейк Peremoga Bakery"
+            position="left-0 bottom-0"
+            initialSize={120}
+            offsetColor="bg-pastel-lavender"
+            offsetCorner="se"
+            delay={0.35}
+          />
 
-          {/* 7. Cake — bottom-right on mobile, bottom-center on tablet+ */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.42, ease: "easeOut" }}
-            className="absolute right-0 bottom-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 sm:bottom-[4%] w-[26%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[280px]"
-          >
-            <div className="relative">
-              <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-blue" />
-              <img
-                src={b2bCake}
-                alt="Авторський торт Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
-
-
-
+          <DraggableResizableImage
+            src={b2bCake}
+            alt="Авторський торт Peremoga Bakery"
+            position="right-0 bottom-0"
+            initialSize={120}
+            offsetColor="bg-pastel-blue"
+            offsetCorner="sw"
+            delay={0.42}
+          />
 
           {/* Center wordmark */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none text-[#a4b8cc]">
@@ -196,6 +246,5 @@ const HeroSection = () => {
     </header>
   );
 };
-
 
 export default HeroSection;
