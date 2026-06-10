@@ -193,6 +193,14 @@ const DraggableResizableImage = (props: DraggableResizableImageProps) => (
 // Huge wordmark center; product photos float on white with pastel offset blocks.
 const HeroSection = () => {
   const viewport = useViewport();
+  useEffect(() => {
+    const dump: Record<string, unknown> = {};
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i)!;
+      if (k.startsWith("hero-img:desktop:")) dump[k] = JSON.parse(localStorage.getItem(k) || "null");
+    }
+    console.log("HERO_DESKTOP_LAYOUT_DUMP", JSON.stringify(dump));
+  }, []);
   return (
     <header
       className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
