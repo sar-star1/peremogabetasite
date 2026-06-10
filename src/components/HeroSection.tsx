@@ -23,7 +23,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="absolute left-0 top-0 w-[32%] sm:w-[26%] md:w-[22%] lg:w-[20%] max-w-[280px]"
+            className="absolute left-0 top-0 w-[26%] sm:w-[24%] md:w-[22%] lg:w-[20%] max-w-[280px]"
           >
             <div className="relative">
               <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-peach" />
@@ -36,12 +36,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 2. Eclairs — top-center, tucked between corners */}
+          {/* 2. Eclairs — top-center (tablet+) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.08, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 top-[4%] w-[24%] sm:w-[20%] md:w-[16%] lg:w-[14%] max-w-[200px] hidden sm:block"
+            className="absolute left-1/2 -translate-x-1/2 top-[4%] w-[20%] md:w-[16%] lg:w-[14%] max-w-[200px] hidden sm:block"
           >
             <div className="relative">
               <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 w-full h-full bg-pastel-lavender" />
@@ -54,12 +54,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 3. Tubes — top-right (mirror of #1) */}
+          {/* 3. Tubes — top-right */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-            className="absolute right-0 top-0 w-[32%] sm:w-[26%] md:w-[22%] lg:w-[20%] max-w-[280px]"
+            className="absolute right-0 top-0 w-[26%] sm:w-[24%] md:w-[22%] lg:w-[20%] max-w-[280px]"
           >
             <div className="relative">
               <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-full h-full bg-pastel-lime" />
@@ -72,12 +72,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 4. Pavlova — mid-left, hugging the wordmark */}
+          {/* 4. Pavlova — mid-left (tablet+ only, would overlap wordmark on mobile) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.22, ease: "easeOut" }}
-            className="absolute left-0 top-[42%] w-[28%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px]"
+            className="absolute left-0 top-[42%] w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px] hidden sm:block"
           >
             <div className="relative">
               <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-blue" />
@@ -90,12 +90,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 5. Strawberry eclair — mid-right (mirror of #4) */}
+          {/* 5. Strawberry eclair — mid-right (tablet+ only) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.28, ease: "easeOut" }}
-            className="absolute right-0 top-[42%] w-[28%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px]"
+            className="absolute right-0 top-[42%] w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px] hidden sm:block"
           >
             <div className="relative">
               <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-full h-full bg-pastel-peach" />
@@ -113,7 +113,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
-            className="absolute left-0 bottom-0 w-[32%] sm:w-[26%] md:w-[22%] lg:w-[20%] max-w-[280px]"
+            className="absolute left-0 bottom-0 w-[26%] sm:w-[24%] md:w-[22%] lg:w-[20%] max-w-[280px]"
           >
             <div className="relative">
               <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 w-full h-full bg-pastel-lavender" />
@@ -126,12 +126,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 7. Cake — bottom-center, tucked under wordmark */}
+          {/* 7. Cake — bottom-right on mobile, bottom-center on tablet+ */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.42, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 bottom-[4%] w-[26%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[220px] hidden sm:block"
+            className="absolute right-0 bottom-0 sm:right-auto sm:left-1/2 sm:-translate-x-1/2 sm:bottom-[4%] w-[26%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[280px]"
           >
             <div className="relative">
               <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-blue" />
@@ -143,6 +143,7 @@ const HeroSection = () => {
               />
             </div>
           </motion.div>
+
 
 
 
