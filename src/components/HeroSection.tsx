@@ -192,6 +192,7 @@ const DraggableResizableImage = (props: DraggableResizableImageProps) => (
 // Editorial collage hero — Dominique Ansel inspired.
 // Huge wordmark center; product photos float on white with pastel offset blocks.
 const HeroSection = () => {
+  const viewport = useViewport();
   return (
     <header
       className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
@@ -200,6 +201,8 @@ const HeroSection = () => {
       <div className="container mx-auto px-6">
         <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
           <DraggableResizableImage
+            id="supreme"
+            viewport={viewport}
             src={b2bSupreme}
             alt="Круасан Supreme Peremoga Bakery"
             position="left-0 top-0"
@@ -209,6 +212,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="eclairs"
+            viewport={viewport}
             src={b2bEclairs}
             alt="Еклер ремісничої пекарні Перемога"
             position="left-1/2 -translate-x-1/2 top-[4%]"
@@ -219,6 +224,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="tubes"
+            viewport={viewport}
             src={b2bTubes}
             alt="Авторські десерти Peremoga Bakery"
             position="right-0 top-0"
@@ -229,6 +236,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="pavlova"
+            viewport={viewport}
             src={strawberryPavlova.url}
             alt="Полунична павлова Peremoga Bakery"
             position="left-0 top-[42%]"
@@ -239,6 +248,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="strawberry-eclair"
+            viewport={viewport}
             src={strawberryEclair.url}
             alt="Полуничний еклер Peremoga Bakery"
             position="right-0 top-[42%]"
@@ -249,6 +260,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="cheesecake"
+            viewport={viewport}
             src={strawberryCheesecake.url}
             alt="Полуничний чізкейк Peremoga Bakery"
             position="left-0 bottom-0"
@@ -259,6 +272,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="cake"
+            viewport={viewport}
             src={b2bCake}
             alt="Авторський торт Peremoga Bakery"
             position="right-0 bottom-0"
@@ -267,6 +282,7 @@ const HeroSection = () => {
             offsetCorner="sw"
             delay={0.42}
           />
+
 
           {/* Center wordmark */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none text-[#a4b8cc]">
