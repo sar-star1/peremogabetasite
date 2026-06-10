@@ -36,7 +36,59 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          <DraggableResizableImage />
+          {/* Strawberry pavlova — mid-left, pastel-blue offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+            className="absolute left-[6%] md:left-[10%] top-[44%] md:top-[40%] w-[28%] md:w-[18%] max-w-[220px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
+              <img
+                src={strawberryPavlova.url}
+                alt="Полунична павлова Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          {/* Strawberry eclair — mid-right, pastel-peach offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+            className="absolute right-[6%] md:right-[10%] top-[46%] md:top-[44%] w-[30%] md:w-[20%] max-w-[240px]"
+          >
+            <div className="relative">
+              <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-peach" />
+              <img
+                src={strawberryEclair.url}
+                alt="Полуничний еклер Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          {/* Strawberry cheesecake — bottom-left, pastel-lime offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+            className="absolute left-[2%] md:left-[6%] bottom-2 md:bottom-6 w-[30%] md:w-[20%] max-w-[240px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
+              <img
+                src={strawberryCheesecake.url}
+                alt="Полуничний чізкейк Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
 
 
 
