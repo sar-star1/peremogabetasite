@@ -14,7 +14,33 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      hero_image_layouts: {
+        Row: {
+          image_id: string
+          size: number
+          updated_at: string
+          viewport: string
+          x: number
+          y: number
+        }
+        Insert: {
+          image_id: string
+          size?: number
+          updated_at?: string
+          viewport: string
+          x?: number
+          y?: number
+        }
+        Update: {
+          image_id?: string
+          size?: number
+          updated_at?: string
+          viewport?: string
+          x?: number
+          y?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
