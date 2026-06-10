@@ -18,12 +18,12 @@ const HeroSection = () => {
     >
       <div className="container mx-auto px-6">
         <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
-          {/* Floating product 1 — top-left, pastel-peach offset */}
+          {/* 1. Supreme croissant — top-left corner */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="absolute left-0 top-4 md:top-10 w-[34%] md:w-[24%] max-w-[260px]"
+            className="absolute left-[3%] top-[3%] w-[22%] md:w-[15%] max-w-[200px]"
           >
             <div className="relative">
               <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-peach" />
@@ -36,68 +36,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Strawberry pavlova — mid-left, pastel-blue offset */}
+          {/* 2. Eclairs — top-center, dropped slightly for rhythm */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
-            className="absolute left-[6%] md:left-[10%] top-[44%] md:top-[40%] w-[28%] md:w-[18%] max-w-[220px]"
-          >
-            <div className="relative">
-              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
-              <img
-                src={strawberryPavlova.url}
-                alt="Полунична павлова Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
-
-          {/* Strawberry eclair — mid-right, pastel-peach offset */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
-            className="absolute right-[6%] md:right-[10%] top-[46%] md:top-[44%] w-[30%] md:w-[20%] max-w-[240px]"
-          >
-            <div className="relative">
-              <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-peach" />
-              <img
-                src={strawberryEclair.url}
-                alt="Полуничний еклер Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
-
-          {/* Strawberry cheesecake — bottom-left, pastel-lime offset */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
-            className="absolute left-[2%] md:left-[6%] bottom-2 md:bottom-6 w-[30%] md:w-[20%] max-w-[240px]"
-          >
-            <div className="relative">
-              <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
-              <img
-                src={strawberryCheesecake.url}
-                alt="Полуничний чізкейк Peremoga Bakery"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-              />
-            </div>
-          </motion.div>
-
-
-
-          {/* Floating product 2 — top-center small, pastel-lavender offset */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 top-0 w-[26%] md:w-[18%] max-w-[200px] hidden sm:block"
+            transition={{ duration: 0.9, delay: 0.08, ease: "easeOut" }}
+            className="absolute left-1/2 -translate-x-1/2 top-[10%] w-[18%] md:w-[12%] max-w-[160px] hidden sm:block"
           >
             <div className="relative">
               <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
@@ -110,12 +54,12 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Floating product 3 — right, pastel-lime offset */}
+          {/* 3. Tubes — top-right corner (mirror of #1) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-            className="absolute right-0 top-2 md:top-20 w-[32%] md:w-[22%] max-w-[240px]"
+            className="absolute right-[3%] top-[3%] w-[22%] md:w-[15%] max-w-[200px]"
           >
             <div className="relative">
               <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-lime" />
@@ -128,12 +72,66 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Floating product 4 — bottom-center, pastel-blue offset */}
+          {/* 4. Pavlova — mid-left */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 bottom-20 md:bottom-12 w-[36%] md:w-[24%] max-w-[260px]"
+            transition={{ duration: 0.9, delay: 0.22, ease: "easeOut" }}
+            className="absolute left-[2%] top-[48%] w-[20%] md:w-[14%] max-w-[180px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
+              <img
+                src={strawberryPavlova.url}
+                alt="Полунична павлова Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          {/* 5. Eclair (strawberry) — mid-right (mirror of #4) */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.28, ease: "easeOut" }}
+            className="absolute right-[2%] top-[48%] w-[20%] md:w-[14%] max-w-[180px]"
+          >
+            <div className="relative">
+              <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-peach" />
+              <img
+                src={strawberryEclair.url}
+                alt="Полуничний еклер Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          {/* 6. Cheesecake — bottom-left, inset from corner */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+            className="absolute left-[14%] bottom-[4%] w-[22%] md:w-[15%] max-w-[200px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
+              <img
+                src={strawberryCheesecake.url}
+                alt="Полуничний чізкейк Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          {/* 7. Cake — bottom-right, inset from corner (mirror of #6) */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.42, ease: "easeOut" }}
+            className="absolute right-[14%] bottom-[4%] w-[22%] md:w-[15%] max-w-[200px]"
           >
             <div className="relative">
               <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
@@ -145,6 +143,7 @@ const HeroSection = () => {
               />
             </div>
           </motion.div>
+
 
           {/* Center wordmark */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none text-[#a4b8cc]">
