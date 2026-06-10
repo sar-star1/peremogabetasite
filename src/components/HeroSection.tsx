@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
@@ -10,8 +10,29 @@ import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
 import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
 
 type Corner = "nw" | "ne" | "sw" | "se";
+type Viewport = "mobile" | "tablet" | "desktop";
+
+const getViewport = (): Viewport => {
+  if (typeof window === "undefined") return "desktop";
+  const w = window.innerWidth;
+  if (w < 768) return "mobile";
+  if (w < 1024) return "tablet";
+  return "desktop";
+};
+
+const useViewport = (): Viewport => {
+  const [vp, setVp] = useState<Viewport>(getViewport);
+  useEffect(() => {
+    const onResize = () => setVp(getViewport());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return vp;
+};
 
 interface DraggableResizableImageProps {
+  id: string;
+  viewport: Viewport;
   src: string;
   alt: string;
   /** Initial absolute position classes, e.g. "left-0 top-0" */
