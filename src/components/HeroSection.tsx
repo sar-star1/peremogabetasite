@@ -18,15 +18,15 @@ const HeroSection = () => {
     >
       <div className="container mx-auto px-6">
         <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
-          {/* 1. Supreme croissant — top-left corner */}
+          {/* 1. Supreme croissant — top-left */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: "easeOut" }}
-            className="absolute left-[3%] top-[3%] w-[22%] md:w-[15%] max-w-[200px]"
+            className="absolute left-0 top-0 w-[32%] sm:w-[26%] md:w-[22%] lg:w-[20%] max-w-[280px]"
           >
             <div className="relative">
-              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-peach" />
+              <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-peach" />
               <img
                 src={b2bSupreme}
                 alt="Круасан Supreme Peremoga Bakery"
@@ -36,15 +36,15 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 2. Eclairs — top-center, dropped slightly for rhythm */}
+          {/* 2. Eclairs — top-center, tucked between corners */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.08, ease: "easeOut" }}
-            className="absolute left-1/2 -translate-x-1/2 top-[10%] w-[18%] md:w-[12%] max-w-[160px] hidden sm:block"
+            className="absolute left-1/2 -translate-x-1/2 top-[4%] w-[24%] sm:w-[20%] md:w-[16%] lg:w-[14%] max-w-[200px] hidden sm:block"
           >
             <div className="relative">
-              <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
+              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 w-full h-full bg-pastel-lavender" />
               <img
                 src={b2bEclairs}
                 alt="Еклер ремісничої пекарні Перемога"
@@ -54,15 +54,15 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 3. Tubes — top-right corner (mirror of #1) */}
+          {/* 3. Tubes — top-right (mirror of #1) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: "easeOut" }}
-            className="absolute right-[3%] top-[3%] w-[22%] md:w-[15%] max-w-[200px]"
+            className="absolute right-0 top-0 w-[32%] sm:w-[26%] md:w-[22%] lg:w-[20%] max-w-[280px]"
           >
             <div className="relative">
-              <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-lime" />
+              <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-full h-full bg-pastel-lime" />
               <img
                 src={b2bTubes}
                 alt="Авторські десерти Peremoga Bakery"
@@ -72,15 +72,15 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 4. Pavlova — mid-left */}
+          {/* 4. Pavlova — mid-left, hugging the wordmark */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.22, ease: "easeOut" }}
-            className="absolute left-[2%] top-[48%] w-[20%] md:w-[14%] max-w-[180px]"
+            className="absolute left-0 top-[42%] w-[28%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px]"
           >
             <div className="relative">
-              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
+              <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-blue" />
               <img
                 src={strawberryPavlova.url}
                 alt="Полунична павлова Peremoga Bakery"
@@ -90,15 +90,15 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 5. Eclair (strawberry) — mid-right (mirror of #4) */}
+          {/* 5. Strawberry eclair — mid-right (mirror of #4) */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.28, ease: "easeOut" }}
-            className="absolute right-[2%] top-[48%] w-[20%] md:w-[14%] max-w-[180px]"
+            className="absolute right-0 top-[42%] w-[28%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[230px]"
           >
             <div className="relative">
-              <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-peach" />
+              <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-full h-full bg-pastel-peach" />
               <img
                 src={strawberryEclair.url}
                 alt="Полуничний еклер Peremoga Bakery"
@@ -108,15 +108,15 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 6. Cheesecake — bottom-left, inset from corner */}
+          {/* 6. Cheesecake — bottom-left */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
-            className="absolute left-[14%] bottom-[4%] w-[22%] md:w-[15%] max-w-[200px]"
+            className="absolute left-0 bottom-0 w-[32%] sm:w-[26%] md:w-[22%] lg:w-[20%] max-w-[280px]"
           >
             <div className="relative">
-              <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
+              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 w-full h-full bg-pastel-lavender" />
               <img
                 src={strawberryCheesecake.url}
                 alt="Полуничний чізкейк Peremoga Bakery"
@@ -126,15 +126,15 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* 7. Cake — bottom-right, inset from corner (mirror of #6) */}
+          {/* 7. Cake — bottom-center, tucked under wordmark */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.42, ease: "easeOut" }}
-            className="absolute right-[14%] bottom-[4%] w-[22%] md:w-[15%] max-w-[200px]"
+            className="absolute left-1/2 -translate-x-1/2 bottom-[4%] w-[26%] sm:w-[22%] md:w-[18%] lg:w-[16%] max-w-[220px] hidden sm:block"
           >
             <div className="relative">
-              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
+              <div className="absolute -bottom-2 -left-2 md:-bottom-3 md:-left-3 w-full h-full bg-pastel-blue" />
               <img
                 src={b2bCake}
                 alt="Авторський торт Peremoga Bakery"
@@ -143,6 +143,7 @@ const HeroSection = () => {
               />
             </div>
           </motion.div>
+
 
 
           {/* Center wordmark */}
