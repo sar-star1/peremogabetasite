@@ -263,17 +263,22 @@ const DraggableResizableImageInner = ({
 };
 
 
-// Remount per viewport so each device keeps independent saved state.
-const DraggableResizableImage = (props: DraggableResizableImageProps) => (
-  <DraggableResizableImageInner key={props.viewport} {...props} />
-);
+// Remount per viewport and when cloud layout for this image changes.
+const DraggableResizableImage = (props: DraggableResizableImageProps) => {
+  const layouts = useContext(LayoutContext);
+  const saved = layouts[props.viewport]?.[props.id];
+  const layoutKey = saved ? `${saved.x.toFixed(2)}:${saved.y.toFixed(2)}:${saved.size.toFixed(2)}` : "init";
+  return <DraggableResizableImageInner key={`${props.viewport}:${layoutKey}`} {...props} />;
+};
 
 
 // Editorial collage hero — Dominique Ansel inspired.
 // Huge wordmark center; product photos float on white with pastel offset blocks.
 const HeroSection = () => {
   const viewport = useViewport();
+  const layouts = useLayoutsProvider();
   return (
+    <LayoutContext.Provider value={layouts}>
     <header
       className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
       role="banner"
