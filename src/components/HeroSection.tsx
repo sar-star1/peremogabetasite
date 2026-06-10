@@ -55,17 +55,32 @@ const offsetClassMap: Record<Corner, string> = {
 
 type SavedState = { x: number; y: number; size: number };
 
+// Hardcoded desktop layout — applies to all desktop visitors who haven't customized.
+const desktopDefaults: Record<string, SavedState> = {
+  supreme: { x: 57.57, y: 35.51, size: 270.04 },
+  eclairs: { x: -93.05, y: 0.29, size: 146.67 },
+  tubes: { x: -113.39, y: 48.11, size: 200.75 },
+  pavlova: { x: 112.86, y: 113.2, size: 181.33 },
+  "strawberry-eclair": { x: -85.63, y: 63.61, size: 174.62 },
+  cheesecake: { x: 429.57, y: -10.63, size: 120 },
+  cake: { x: -361.83, y: -37.49, size: 192.8 },
+};
+
 const storageKey = (id: string, viewport: Viewport) => `hero-img:${viewport}:${id}`;
 
 const loadState = (id: string, viewport: Viewport): SavedState | null => {
-  if (typeof window === "undefined") return null;
+  if (typeof window === "undefined") {
+    return viewport === "desktop" ? desktopDefaults[id] ?? null : null;
+  }
   try {
     const raw = window.localStorage.getItem(storageKey(id, viewport));
-    return raw ? (JSON.parse(raw) as SavedState) : null;
+    if (raw) return JSON.parse(raw) as SavedState;
   } catch {
-    return null;
+    // ignore
   }
+  return viewport === "desktop" ? desktopDefaults[id] ?? null : null;
 };
+
 
 const saveState = (id: string, viewport: Viewport, state: SavedState) => {
   if (typeof window === "undefined") return;
@@ -193,14 +208,6 @@ const DraggableResizableImage = (props: DraggableResizableImageProps) => (
 // Huge wordmark center; product photos float on white with pastel offset blocks.
 const HeroSection = () => {
   const viewport = useViewport();
-  useEffect(() => {
-    const dump: Record<string, unknown> = {};
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i)!;
-      if (k.startsWith("hero-img:desktop:")) dump[k] = JSON.parse(localStorage.getItem(k) || "null");
-    }
-    console.log("HERO_DESKTOP_LAYOUT_DUMP", JSON.stringify(dump));
-  }, []);
   return (
     <header
       className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
