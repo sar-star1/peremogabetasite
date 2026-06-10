@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
@@ -8,6 +8,7 @@ import b2bTubes from "@/assets/b2b-tubes.jpeg";
 import strawberryPavlova from "@/assets/strawberry-pavlova.jpeg.asset.json";
 import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
 import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
+import { supabase } from "@/integrations/supabase/client";
 
 type Corner = "nw" | "ne" | "sw" | "se";
 type Viewport = "mobile" | "tablet" | "desktop";
@@ -55,7 +56,7 @@ const offsetClassMap: Record<Corner, string> = {
 
 type SavedState = { x: number; y: number; size: number };
 
-// Hardcoded desktop layout — applies to all desktop visitors who haven't customized.
+// Hardcoded fallback layout used until cloud values load.
 const desktopDefaults: Record<string, SavedState> = {
   supreme: { x: 57.57, y: 35.51, size: 270.04 },
   eclairs: { x: -93.05, y: 0.29, size: 146.67 },
@@ -66,29 +67,91 @@ const desktopDefaults: Record<string, SavedState> = {
   cake: { x: -361.83, y: -37.49, size: 192.8 },
 };
 
-const storageKey = (id: string, viewport: Viewport) => `hero-img:${viewport}:${id}`;
+// ====== Cloud-backed layout store (shared across all visitors) ======
 
-const loadState = (id: string, viewport: Viewport): SavedState | null => {
-  if (typeof window === "undefined") {
-    return viewport === "desktop" ? desktopDefaults[id] ?? null : null;
-  }
-  try {
-    const raw = window.localStorage.getItem(storageKey(id, viewport));
-    if (raw) return JSON.parse(raw) as SavedState;
-  } catch {
-    // ignore
-  }
-  return viewport === "desktop" ? desktopDefaults[id] ?? null : null;
+type LayoutMap = Record<string, SavedState>;
+type LayoutsByViewport = Record<Viewport, LayoutMap>;
+
+const LayoutContext = createContext<LayoutsByViewport>({
+  mobile: {},
+  tablet: {},
+  desktop: {},
+});
+
+const useLayoutsProvider = (): LayoutsByViewport => {
+  const [layouts, setLayouts] = useState<LayoutsByViewport>({
+    mobile: {},
+    tablet: {},
+    desktop: { ...desktopDefaults },
+  });
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data } = await supabase
+        .from("hero_image_layouts")
+        .select("viewport, image_id, x, y, size");
+      if (cancelled || !data) return;
+      const next: LayoutsByViewport = {
+        mobile: {},
+        tablet: {},
+        desktop: { ...desktopDefaults },
+      };
+      for (const row of data) {
+        const vp = row.viewport as Viewport;
+        if (vp !== "mobile" && vp !== "tablet" && vp !== "desktop") continue;
+        next[vp][row.image_id] = { x: row.x, y: row.y, size: row.size };
+      }
+      setLayouts(next);
+    })();
+
+    const channel = supabase
+      .channel("hero_image_layouts_changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "hero_image_layouts" },
+        (payload) => {
+          const row = (payload.new ?? payload.old) as {
+            viewport: string;
+            image_id: string;
+            x: number;
+            y: number;
+            size: number;
+          };
+          const vp = row.viewport as Viewport;
+          if (vp !== "mobile" && vp !== "tablet" && vp !== "desktop") return;
+          setLayouts((prev) => ({
+            ...prev,
+            [vp]: {
+              ...prev[vp],
+              [row.image_id]: { x: row.x, y: row.y, size: row.size },
+            },
+          }));
+        }
+      )
+      .subscribe();
+
+    return () => {
+      cancelled = true;
+      supabase.removeChannel(channel);
+    };
+  }, []);
+
+  return layouts;
 };
 
-
-const saveState = (id: string, viewport: Viewport, state: SavedState) => {
-  if (typeof window === "undefined") return;
-  try {
-    window.localStorage.setItem(storageKey(id, viewport), JSON.stringify(state));
-  } catch {
-    // ignore
-  }
+const saveStateCloud = async (id: string, viewport: Viewport, state: SavedState) => {
+  await supabase.from("hero_image_layouts").upsert(
+    {
+      image_id: id,
+      viewport,
+      x: state.x,
+      y: state.y,
+      size: state.size,
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: "viewport,image_id" }
+  );
 };
 
 const DraggableResizableImageInner = ({
@@ -102,7 +165,8 @@ const DraggableResizableImageInner = ({
   offsetCorner = "sw",
   delay = 0,
 }: DraggableResizableImageProps) => {
-  const saved = loadState(id, viewport);
+  const layouts = useContext(LayoutContext);
+  const saved = layouts[viewport]?.[id] ?? null;
   const [size, setSize] = useState(saved?.size ?? initialSize);
   const offsetRef = useRef({ x: saved?.x ?? 0, y: saved?.y ?? 0 });
   const resizingRef = useRef(false);
@@ -115,7 +179,7 @@ const DraggableResizableImageInner = ({
       size,
       ...patch,
     };
-    saveState(id, viewport, next);
+    void saveStateCloud(id, viewport, next);
   };
 
   const onResizePointerDown = (e: React.PointerEvent, corner: Corner) => {
@@ -198,17 +262,23 @@ const DraggableResizableImageInner = ({
   );
 };
 
-// Remount per viewport so each device keeps independent saved state.
-const DraggableResizableImage = (props: DraggableResizableImageProps) => (
-  <DraggableResizableImageInner key={props.viewport} {...props} />
-);
+
+// Remount per viewport and when cloud layout for this image changes.
+const DraggableResizableImage = (props: DraggableResizableImageProps) => {
+  const layouts = useContext(LayoutContext);
+  const saved = layouts[props.viewport]?.[props.id];
+  const layoutKey = saved ? `${saved.x.toFixed(2)}:${saved.y.toFixed(2)}:${saved.size.toFixed(2)}` : "init";
+  return <DraggableResizableImageInner key={`${props.viewport}:${layoutKey}`} {...props} />;
+};
 
 
 // Editorial collage hero — Dominique Ansel inspired.
 // Huge wordmark center; product photos float on white with pastel offset blocks.
 const HeroSection = () => {
   const viewport = useViewport();
+  const layouts = useLayoutsProvider();
   return (
+    <LayoutContext.Provider value={layouts}>
     <header
       className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
       role="banner"
@@ -346,6 +416,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
     </header>
+    </LayoutContext.Provider>
   );
 };
 
