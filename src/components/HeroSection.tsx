@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
@@ -10,8 +10,29 @@ import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
 import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
 
 type Corner = "nw" | "ne" | "sw" | "se";
+type Viewport = "mobile" | "tablet" | "desktop";
+
+const getViewport = (): Viewport => {
+  if (typeof window === "undefined") return "desktop";
+  const w = window.innerWidth;
+  if (w < 768) return "mobile";
+  if (w < 1024) return "tablet";
+  return "desktop";
+};
+
+const useViewport = (): Viewport => {
+  const [vp, setVp] = useState<Viewport>(getViewport);
+  useEffect(() => {
+    const onResize = () => setVp(getViewport());
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
+  return vp;
+};
 
 interface DraggableResizableImageProps {
+  id: string;
+  viewport: Viewport;
   src: string;
   alt: string;
   /** Initial absolute position classes, e.g. "left-0 top-0" */
@@ -32,7 +53,32 @@ const offsetClassMap: Record<Corner, string> = {
   se: "-bottom-2 -right-2 md:-bottom-3 md:-right-3",
 };
 
-const DraggableResizableImage = ({
+type SavedState = { x: number; y: number; size: number };
+
+const storageKey = (id: string, viewport: Viewport) => `hero-img:${viewport}:${id}`;
+
+const loadState = (id: string, viewport: Viewport): SavedState | null => {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(storageKey(id, viewport));
+    return raw ? (JSON.parse(raw) as SavedState) : null;
+  } catch {
+    return null;
+  }
+};
+
+const saveState = (id: string, viewport: Viewport, state: SavedState) => {
+  if (typeof window === "undefined") return;
+  try {
+    window.localStorage.setItem(storageKey(id, viewport), JSON.stringify(state));
+  } catch {
+    // ignore
+  }
+};
+
+const DraggableResizableImageInner = ({
+  id,
+  viewport,
   src,
   alt,
   position,
@@ -41,9 +87,21 @@ const DraggableResizableImage = ({
   offsetCorner = "sw",
   delay = 0,
 }: DraggableResizableImageProps) => {
-  const [size, setSize] = useState(initialSize);
+  const saved = loadState(id, viewport);
+  const [size, setSize] = useState(saved?.size ?? initialSize);
+  const offsetRef = useRef({ x: saved?.x ?? 0, y: saved?.y ?? 0 });
   const resizingRef = useRef(false);
   const startRef = useRef({ x: 0, y: 0, size: initialSize, corner: "se" as Corner });
+
+  const persist = (patch: Partial<SavedState>) => {
+    const next: SavedState = {
+      x: offsetRef.current.x,
+      y: offsetRef.current.y,
+      size,
+      ...patch,
+    };
+    saveState(id, viewport, next);
+  };
 
   const onResizePointerDown = (e: React.PointerEvent, corner: Corner) => {
     e.stopPropagation();
@@ -58,7 +116,6 @@ const DraggableResizableImage = ({
     const { x, y, size: s, corner } = startRef.current;
     const dx = e.clientX - x;
     const dy = e.clientY - y;
-    // Outward drag from the chosen corner grows the image.
     const signX = corner.includes("e") ? 1 : -1;
     const signY = corner.includes("s") ? 1 : -1;
     const delta = (dx * signX + dy * signY) / 2;
@@ -69,6 +126,7 @@ const DraggableResizableImage = ({
   const onResizePointerUp = (e: React.PointerEvent) => {
     if (!resizingRef.current) return;
     resizingRef.current = false;
+    persist({ size });
     try {
       (e.target as HTMLElement).releasePointerCapture(e.pointerId);
     } catch {
@@ -88,9 +146,16 @@ const DraggableResizableImage = ({
       drag
       dragMomentum={false}
       whileDrag={{ scale: 1.03 }}
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 24, x: offsetRef.current.x }}
+      animate={{ opacity: 1, y: offsetRef.current.y, x: offsetRef.current.x }}
       transition={{ duration: 0.9, delay, ease: "easeOut" }}
+      onDragEnd={(_, info) => {
+        offsetRef.current = {
+          x: offsetRef.current.x + info.offset.x,
+          y: offsetRef.current.y + info.offset.y,
+        };
+        persist({});
+      }}
       className={`absolute ${position} group touch-none`}
       style={{ width: size, height: size }}
     >
@@ -118,9 +183,16 @@ const DraggableResizableImage = ({
   );
 };
 
+// Remount per viewport so each device keeps independent saved state.
+const DraggableResizableImage = (props: DraggableResizableImageProps) => (
+  <DraggableResizableImageInner key={props.viewport} {...props} />
+);
+
+
 // Editorial collage hero — Dominique Ansel inspired.
 // Huge wordmark center; product photos float on white with pastel offset blocks.
 const HeroSection = () => {
+  const viewport = useViewport();
   return (
     <header
       className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
@@ -129,6 +201,8 @@ const HeroSection = () => {
       <div className="container mx-auto px-6">
         <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
           <DraggableResizableImage
+            id="supreme"
+            viewport={viewport}
             src={b2bSupreme}
             alt="Круасан Supreme Peremoga Bakery"
             position="left-0 top-0"
@@ -138,6 +212,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="eclairs"
+            viewport={viewport}
             src={b2bEclairs}
             alt="Еклер ремісничої пекарні Перемога"
             position="left-1/2 -translate-x-1/2 top-[4%]"
@@ -148,6 +224,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="tubes"
+            viewport={viewport}
             src={b2bTubes}
             alt="Авторські десерти Peremoga Bakery"
             position="right-0 top-0"
@@ -158,6 +236,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="pavlova"
+            viewport={viewport}
             src={strawberryPavlova.url}
             alt="Полунична павлова Peremoga Bakery"
             position="left-0 top-[42%]"
@@ -168,6 +248,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="strawberry-eclair"
+            viewport={viewport}
             src={strawberryEclair.url}
             alt="Полуничний еклер Peremoga Bakery"
             position="right-0 top-[42%]"
@@ -178,6 +260,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="cheesecake"
+            viewport={viewport}
             src={strawberryCheesecake.url}
             alt="Полуничний чізкейк Peremoga Bakery"
             position="left-0 bottom-0"
@@ -188,6 +272,8 @@ const HeroSection = () => {
           />
 
           <DraggableResizableImage
+            id="cake"
+            viewport={viewport}
             src={b2bCake}
             alt="Авторський торт Peremoga Bakery"
             position="right-0 bottom-0"
@@ -196,6 +282,7 @@ const HeroSection = () => {
             offsetCorner="sw"
             delay={0.42}
           />
+
 
           {/* Center wordmark */}
           <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none text-[#a4b8cc]">
