@@ -416,6 +416,7 @@ const HeroSection = () => {
         </motion.div>
       </div>
     </header>
+    </LayoutContext.Provider>
   );
 };
 
