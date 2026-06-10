@@ -108,14 +108,6 @@ const HeroSection = () => {
               <span className="block">PEREMOGA</span>
               <span className="block">BAKERY</span>
             </motion.h1>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              className="font-body text-sm md:text-base text-[#A4B8CC] max-w-md mx-auto mt-32 md:mt-40 font-light leading-relaxed pointer-events-auto"
-            >
-              Реміснича пекарня — авторські десерти, крафтовий хліб та випічка щодня у Києві.
-            </motion.p>
           </div>
         </div>
 
