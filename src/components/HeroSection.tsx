@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
