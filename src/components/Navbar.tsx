@@ -6,7 +6,7 @@ import peremogaLogo from "@/assets/peremoga-logo.jpg";
 const navItems = [
   { label: "HORECA (B2B) ", href: "/b2b", isRoute: true },
   { label: "АВТОРСЬКІ ВИРОБИ", href: "/clients", isRoute: true },
-  { label: "СТАНДАРТИЗОВАНА ЛІНІЙКА ", href: "/charity-bread", isRoute: true },
+  { label: "СТАНДАРТИЗОВАНА ЛІНІЙКА ", href: "/standard-line", isRoute: true },
 ];
 
 const Navbar = () => {
