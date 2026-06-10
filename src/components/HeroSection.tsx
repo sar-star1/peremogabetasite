@@ -34,27 +34,9 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Floating product 1 (duplicate) — draggable */}
-          <motion.div
-            drag
-            dragMomentum={false}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            whileDrag={{ scale: 1.05 }}
-            className="absolute left-[8%] top-32 md:top-44 w-[34%] md:w-[24%] max-w-[260px] cursor-grab active:cursor-grabbing z-30"
-          >
-            <div className="relative pointer-events-none select-none">
-              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-peach" />
-              <img
-                src={b2bSupreme}
-                alt="Круасан Supreme Peremoga Bakery (копія)"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-                draggable={false}
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage />
+
+
 
           {/* Floating product 2 — top-center small, pastel-lavender offset */}
           <motion.div
