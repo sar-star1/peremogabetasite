@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
@@ -33,27 +34,9 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Floating product 1 (duplicate) — draggable */}
-          <motion.div
-            drag
-            dragMomentum={false}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: "easeOut" }}
-            whileDrag={{ scale: 1.05 }}
-            className="absolute left-[8%] top-32 md:top-44 w-[34%] md:w-[24%] max-w-[260px] cursor-grab active:cursor-grabbing z-30"
-          >
-            <div className="relative pointer-events-none select-none">
-              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-peach" />
-              <img
-                src={b2bSupreme}
-                alt="Круасан Supreme Peremoga Bakery (копія)"
-                className="relative w-full aspect-square object-cover"
-                loading="eager"
-                draggable={false}
-              />
-            </div>
-          </motion.div>
+          <DraggableResizableImage />
+
+
 
           {/* Floating product 2 — top-center small, pastel-lavender offset */}
           <motion.div
@@ -156,6 +139,79 @@ const HeroSection = () => {
         </motion.div>
       </div>
     </header>
+  );
+};
+
+// Draggable + resizable duplicate of the hero croissant image.
+const DraggableResizableImage = () => {
+  const [size, setSize] = useState(220);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const resizingRef = useRef(false);
+
+  const onResizePointerDown = (e: React.PointerEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    resizingRef.current = true;
+    const startX = e.clientX;
+    const startY = e.clientY;
+    const startSize = size;
+    (e.target as Element).setPointerCapture(e.pointerId);
+
+    const onMove = (ev: PointerEvent) => {
+      if (!resizingRef.current) return;
+      const delta = Math.max(ev.clientX - startX, ev.clientY - startY);
+      setSize(Math.max(80, Math.min(600, startSize + delta)));
+    };
+    const onUp = () => {
+      resizingRef.current = false;
+      window.removeEventListener("pointermove", onMove);
+      window.removeEventListener("pointerup", onUp);
+    };
+    window.addEventListener("pointermove", onMove);
+    window.addEventListener("pointerup", onUp);
+  };
+
+  return (
+    <motion.div
+      ref={containerRef}
+      drag
+      dragMomentum={false}
+      dragListener={!resizingRef.current}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.9, ease: "easeOut" }}
+      whileDrag={{ scale: 1.03 }}
+      style={{ width: size, height: size }}
+      className="absolute left-[8%] top-32 md:top-44 cursor-grab active:cursor-grabbing z-30 group"
+    >
+      <div className="relative w-full h-full select-none">
+        <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-peach pointer-events-none" />
+        <img
+          src={b2bSupreme}
+          alt="Круасан Supreme Peremoga Bakery (копія)"
+          className="relative w-full h-full object-cover pointer-events-none"
+          loading="eager"
+          draggable={false}
+        />
+        {/* Resize handles */}
+        {(["nw", "ne", "sw", "se"] as const).map((corner) => {
+          const pos = {
+            nw: "-top-1.5 -left-1.5 cursor-nwse-resize",
+            ne: "-top-1.5 -right-1.5 cursor-nesw-resize",
+            sw: "-bottom-1.5 -left-1.5 cursor-nesw-resize",
+            se: "-bottom-1.5 -right-1.5 cursor-nwse-resize",
+          }[corner];
+          return (
+            <div
+              key={corner}
+              onPointerDown={onResizePointerDown}
+              className={`absolute ${pos} w-4 h-4 bg-background border-2 border-foreground rounded-sm opacity-0 group-hover:opacity-100 transition-opacity z-10`}
+              aria-label={`Resize ${corner}`}
+            />
+          );
+        })}
+      </div>
+    </motion.div>
   );
 };
 
