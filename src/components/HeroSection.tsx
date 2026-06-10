@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
-import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import b2bEclairs from "@/assets/b2b-eclairs.jpeg";
 import b2bTubes from "@/assets/b2b-tubes.jpeg";
+import strawberryPavlova from "@/assets/strawberry-pavlova.jpeg.asset.json";
+import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
+import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
 
 // Editorial collage hero — Dominique Ansel inspired.
 // Huge wordmark center; product photos float on white with pastel offset blocks.
@@ -34,7 +36,59 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          <DraggableResizableImage />
+          {/* Strawberry pavlova — mid-left, pastel-blue offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+            className="absolute left-[6%] md:left-[10%] top-[44%] md:top-[40%] w-[28%] md:w-[18%] max-w-[220px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-blue" />
+              <img
+                src={strawberryPavlova.url}
+                alt="Полунична павлова Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          {/* Strawberry eclair — mid-right, pastel-peach offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+            className="absolute right-[6%] md:right-[10%] top-[46%] md:top-[44%] w-[30%] md:w-[20%] max-w-[240px]"
+          >
+            <div className="relative">
+              <div className="absolute -top-3 -right-3 w-full h-full bg-pastel-peach" />
+              <img
+                src={strawberryEclair.url}
+                alt="Полуничний еклер Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
+
+          {/* Strawberry cheesecake — bottom-left, pastel-lime offset */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.35, ease: "easeOut" }}
+            className="absolute left-[2%] md:left-[6%] bottom-2 md:bottom-6 w-[30%] md:w-[20%] max-w-[240px]"
+          >
+            <div className="relative">
+              <div className="absolute -bottom-3 -right-3 w-full h-full bg-pastel-lavender" />
+              <img
+                src={strawberryCheesecake.url}
+                alt="Полуничний чізкейк Peremoga Bakery"
+                className="relative w-full aspect-square object-cover"
+                loading="eager"
+              />
+            </div>
+          </motion.div>
 
 
 
@@ -142,77 +196,5 @@ const HeroSection = () => {
   );
 };
 
-// Draggable + resizable duplicate of the hero croissant image.
-const DraggableResizableImage = () => {
-  const [size, setSize] = useState(220);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const resizingRef = useRef(false);
-
-  const onResizePointerDown = (e: React.PointerEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-    resizingRef.current = true;
-    const startX = e.clientX;
-    const startY = e.clientY;
-    const startSize = size;
-    (e.target as Element).setPointerCapture(e.pointerId);
-
-    const onMove = (ev: PointerEvent) => {
-      if (!resizingRef.current) return;
-      const delta = Math.max(ev.clientX - startX, ev.clientY - startY);
-      setSize(Math.max(80, Math.min(600, startSize + delta)));
-    };
-    const onUp = () => {
-      resizingRef.current = false;
-      window.removeEventListener("pointermove", onMove);
-      window.removeEventListener("pointerup", onUp);
-    };
-    window.addEventListener("pointermove", onMove);
-    window.addEventListener("pointerup", onUp);
-  };
-
-  return (
-    <motion.div
-      ref={containerRef}
-      drag
-      dragMomentum={false}
-      
-      initial={{ opacity: 0, y: 24 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, ease: "easeOut" }}
-      whileDrag={{ scale: 1.03 }}
-      style={{ width: size, height: size }}
-      className="absolute left-[8%] top-32 md:top-44 cursor-grab active:cursor-grabbing z-30 group"
-    >
-      <div className="relative w-full h-full select-none">
-        <div className="absolute -bottom-3 -left-3 w-full h-full bg-pastel-peach pointer-events-none" />
-        <img
-          src={b2bSupreme}
-          alt="Круасан Supreme Peremoga Bakery (копія)"
-          className="relative w-full h-full object-cover pointer-events-none"
-          loading="eager"
-          draggable={false}
-        />
-        {/* Resize handles */}
-        {(["nw", "ne", "sw", "se"] as const).map((corner) => {
-          const pos = {
-            nw: "-top-1.5 -left-1.5 cursor-nwse-resize",
-            ne: "-top-1.5 -right-1.5 cursor-nesw-resize",
-            sw: "-bottom-1.5 -left-1.5 cursor-nesw-resize",
-            se: "-bottom-1.5 -right-1.5 cursor-nwse-resize",
-          }[corner];
-          return (
-            <div
-              key={corner}
-              onPointerDown={onResizePointerDown}
-              className={`absolute ${pos} w-4 h-4 bg-background border-2 border-foreground rounded-sm opacity-0 group-hover:opacity-100 transition-opacity z-10`}
-              aria-label={`Resize ${corner}`}
-            />
-          );
-        })}
-      </div>
-    </motion.div>
-  );
-};
 
 export default HeroSection;
