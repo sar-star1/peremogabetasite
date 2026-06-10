@@ -68,7 +68,6 @@ const desktopDefaults: Record<string, SavedState> = {
 };
 
 // ====== Cloud-backed layout store (shared across all visitors) ======
-import { supabase } from "@/integrations/supabase/client";
 
 type LayoutMap = Record<string, SavedState>;
 type LayoutsByViewport = Record<Viewport, LayoutMap>;
