@@ -70,12 +70,12 @@ const MenuSection = () => {
                 onClick={() => setSelectedItem(item)}
                 className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
               >
-                <div className="aspect-square overflow-hidden bg-secondary mb-4 flex items-center justify-center p-4">
+                <div className={`aspect-square overflow-hidden mb-4 flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}>
                   <img
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
-                    className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-[900ms] bg-slate-50"
+                    className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-[900ms]"
                   />
                 </div>
                 <div className="flex items-start justify-between gap-3 mb-1.5">
