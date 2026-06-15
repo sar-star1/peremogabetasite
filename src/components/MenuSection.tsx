@@ -10,6 +10,9 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+/* Set to false to instantly reverse the background-blending effect */
+const BLEND_IMAGES = true;
+
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
