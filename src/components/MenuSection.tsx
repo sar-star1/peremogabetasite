@@ -106,7 +106,7 @@ const MenuSection = () => {
               <div className="relative w-full overflow-hidden">
                 <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                   {/* Main product image — first slide */}
-                  <div className="w-full aspect-square flex-shrink-0 snap-start bg-secondary flex items-center justify-center p-4">
+                  <div className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}>
                     <img
                       src={selectedItem.image}
                       alt={selectedItem.name}
@@ -117,7 +117,7 @@ const MenuSection = () => {
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className="w-full aspect-square flex-shrink-0 snap-start bg-secondary flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body"
+                      className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
                     >
                       Photo {i + 1}
                     </div>
