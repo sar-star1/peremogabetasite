@@ -96,78 +96,86 @@ const MenuSection = () => {
       </div>
 
       <Dialog open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
-        <DialogContent className="max-w-sm sm:max-w-md max-h-[85vh] overflow-y-auto p-5 gap-4">
+        <DialogContent className="max-w-sm sm:max-w-md max-h-[90vh] overflow-y-auto p-0 gap-0">
           {selectedItem && (
             <>
-              {/* Main showcase image — fills dialog inner width: ~408×408 px on sm+, ~280×280 px on mobile */}
-              <div className="aspect-square w-full overflow-hidden bg-secondary flex items-center justify-center p-4">
-                <img
-                  src={selectedItem.image}
-                  alt={selectedItem.name}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-
-              {/* Variation gallery — horizontal scroll. Each thumbnail is 96×96 px (square) */}
-              <div className="-mx-5 px-5">
-                <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory">
-                  {[0, 1, 2, 3].map((i) => (
+              {/* Instagram-style full-size image carousel */}
+              <div className="relative w-full overflow-hidden">
+                <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
+                  {/* Main product image — first slide */}
+                  <div className="w-full aspect-square flex-shrink-0 snap-start bg-secondary flex items-center justify-center p-4">
+                    <img
+                      src={selectedItem.image}
+                      alt={selectedItem.name}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  {/* Variation placeholders — same full size */}
+                  {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className="shrink-0 snap-start w-24 h-24 bg-secondary border border-border flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body"
+                      className="w-full aspect-square flex-shrink-0 snap-start bg-secondary flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body"
                     >
                       Photo {i + 1}
                     </div>
                   ))}
                 </div>
+                {/* Scroll indicator dots */}
+                <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
+                  {[0, 1, 2, 3].map((i) => (
+                    <div key={i} className="w-1.5 h-1.5 rounded-full bg-white/70" />
+                  ))}
+                </div>
               </div>
 
-              <DialogHeader className="space-y-1.5">
-                <DialogTitle className="font-display-black text-foreground text-base sm:text-lg uppercase leading-tight text-center">
-                  {selectedItem.name}
-                </DialogTitle>
-                <DialogDescription className="font-body text-xs text-muted-foreground font-light leading-relaxed text-center">
-                  {selectedItem.description}
-                </DialogDescription>
-              </DialogHeader>
+              <div className="p-5 space-y-4">
+                <DialogHeader className="space-y-1.5">
+                  <DialogTitle className="font-display-black text-foreground text-base sm:text-lg uppercase leading-tight text-center">
+                    {selectedItem.name}
+                  </DialogTitle>
+                  <DialogDescription className="font-body text-xs text-muted-foreground font-light leading-relaxed text-center">
+                    {selectedItem.description}
+                  </DialogDescription>
+                </DialogHeader>
 
-              <div className="space-y-4 border-t border-border pt-4">
-                <div>
-                  <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                    Склад та алергени
-                  </span>
-                  <p className="font-body text-xs text-foreground font-light leading-relaxed mt-1.5">
-                    {selectedItem.ingredients ??
-                      "Інформація уточнюється. Зверніться до нас в Instagram для уточнення складу та алергенів."}
-                  </p>
-                </div>
-
-                <div>
-                  <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                    Умови зберігання
-                  </span>
-                  <p className="font-body text-xs text-foreground font-light leading-relaxed mt-1.5">
-                    {selectedItem.storage ??
-                      "Інформація уточнюється. Зверніться до нас в Instagram для уточнення."}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between border-t border-border pt-3">
+                <div className="space-y-4 border-t border-border pt-4">
                   <div>
                     <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                      Вага
+                      Склад та алергени
                     </span>
-                    <p className="font-display-black text-foreground text-sm mt-1">
-                      {selectedItem.weight}
+                    <p className="font-body text-xs text-foreground font-light leading-relaxed mt-1.5">
+                      {selectedItem.ingredients ??
+                        "Інформація уточнюється. Зверніться до нас в Instagram для уточнення складу та алергенів."}
                     </p>
                   </div>
-                  <div className="text-right">
+
+                  <div>
                     <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-                      Ціна
+                      Умови зберігання
                     </span>
-                    <p className="font-display-black text-foreground text-sm mt-1">
-                      {selectedItem.price}
+                    <p className="font-body text-xs text-foreground font-light leading-relaxed mt-1.5">
+                      {selectedItem.storage ??
+                        "Інформація уточнюється. Зверніться до нас в Instagram для уточнення."}
                     </p>
+                  </div>
+
+                  <div className="flex items-center justify-between border-t border-border pt-3">
+                    <div>
+                      <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                        Вага
+                      </span>
+                      <p className="font-display-black text-foreground text-sm mt-1">
+                        {selectedItem.weight}
+                      </p>
+                    </div>
+                    <div className="text-right">
+                      <span className="font-body text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+                        Ціна
+                      </span>
+                      <p className="font-display-black text-foreground text-sm mt-1">
+                        {selectedItem.price}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
