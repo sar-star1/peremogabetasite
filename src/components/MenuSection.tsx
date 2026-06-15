@@ -10,6 +10,9 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 
+/* Set to false to instantly reverse the background-blending effect */
+const BLEND_IMAGES = true;
+
 const MenuSection = () => {
   const [activeCategory, setActiveCategory] = useState(0);
   const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
@@ -67,12 +70,12 @@ const MenuSection = () => {
                 onClick={() => setSelectedItem(item)}
                 className="group text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-foreground/40"
               >
-                <div className="aspect-square overflow-hidden bg-secondary mb-4 flex items-center justify-center p-4">
+                <div className={`aspect-square overflow-hidden mb-4 flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}>
                   <img
                     src={item.image}
                     alt={item.name}
                     loading="lazy"
-                    className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-[900ms] bg-slate-50"
+                    className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-[900ms]"
                   />
                 </div>
                 <div className="flex items-start justify-between gap-3 mb-1.5">
@@ -103,7 +106,7 @@ const MenuSection = () => {
               <div className="relative w-full overflow-hidden">
                 <div className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                   {/* Main product image — first slide */}
-                  <div className="w-full aspect-square flex-shrink-0 snap-start bg-secondary flex items-center justify-center p-4">
+                  <div className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}>
                     <img
                       src={selectedItem.image}
                       alt={selectedItem.name}
@@ -114,7 +117,7 @@ const MenuSection = () => {
                   {[1, 2, 3].map((i) => (
                     <div
                       key={i}
-                      className="w-full aspect-square flex-shrink-0 snap-start bg-secondary flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body"
+                      className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
                     >
                       Photo {i + 1}
                     </div>
