@@ -50,6 +50,10 @@
     --pastel-lavender: 260 35% 90%;
     --pastel-peach: 22 78% 88%;
 
+    /* Deeper blue accent (Базова Лінійка) */
+    --accent-blue: 205 60% 32%;
+    --accent-blue-soft: 205 55% 95%;
+
     /* Legacy token aliases — remapped to monochrome so existing components still work */
     --warm-gold: 0 0% 4%;
     --warm-cream: 0 0% 98%;
