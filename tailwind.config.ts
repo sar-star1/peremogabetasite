@@ -72,6 +72,8 @@ export default {
         "pastel-lime": "hsl(var(--pastel-lime))",
         "pastel-lavender": "hsl(var(--pastel-lavender))",
         "pastel-peach": "hsl(var(--pastel-peach))",
+        "accent-blue": "hsl(var(--accent-blue))",
+        "accent-blue-soft": "hsl(var(--accent-blue-soft))",
       },
       borderRadius: {
         lg: "var(--radius)",
