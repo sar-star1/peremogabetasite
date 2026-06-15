@@ -96,16 +96,32 @@ const MenuSection = () => {
       </div>
 
       <Dialog open={!!selectedItem} onOpenChange={(open) => !open && setSelectedItem(null)}>
-        <DialogContent className="max-w-sm sm:max-w-md max-h-[85vh] overflow-y-auto p-5 gap-3">
+        <DialogContent className="max-w-sm sm:max-w-md max-h-[85vh] overflow-y-auto p-5 gap-4">
           {selectedItem && (
             <>
-              <div className="aspect-square w-32 sm:w-40 mx-auto overflow-hidden bg-secondary flex items-center justify-center p-3">
+              {/* Main showcase image — fills dialog inner width: ~408×408 px on sm+, ~280×280 px on mobile */}
+              <div className="aspect-square w-full overflow-hidden bg-secondary flex items-center justify-center p-4">
                 <img
                   src={selectedItem.image}
                   alt={selectedItem.name}
                   className="w-full h-full object-contain"
                 />
               </div>
+
+              {/* Variation gallery — horizontal scroll. Each thumbnail is 96×96 px (square) */}
+              <div className="-mx-5 px-5">
+                <div className="flex gap-2 overflow-x-auto pb-2 snap-x snap-mandatory">
+                  {[0, 1, 2, 3].map((i) => (
+                    <div
+                      key={i}
+                      className="shrink-0 snap-start w-24 h-24 bg-secondary border border-border flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body"
+                    >
+                      Photo {i + 1}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <DialogHeader className="space-y-1.5">
                 <DialogTitle className="font-display-black text-foreground text-base sm:text-lg uppercase leading-tight text-center">
                   {selectedItem.name}
