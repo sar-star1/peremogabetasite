@@ -146,13 +146,7 @@
   }
 }
 
-/* Product image background blending (reversible — set BLEND_IMAGES to false in MenuSection.tsx to disable) */
+/* Product image background (reversible — set BLEND_IMAGES to false in MenuSection.tsx to disable) */
 .product-image-blend {
-  /* Remove visible photo-box background so white-backed images merge with page */
-  background: transparent !important;
-}
-
-.product-image-blend img {
-  /* Soft shadow for weight / floating feel */
-  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.18));
+  background: hsl(var(--background)) !important;
 }
