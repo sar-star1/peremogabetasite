@@ -1,6 +1,21 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowLeft, MapPin, Package, CalendarClock, Phone, Instagram } from "lucide-react";
+import {
+  ArrowLeft,
+  MapPin,
+  Package,
+  CalendarClock,
+  Phone,
+  Instagram,
+  Sandwich,
+  Beef,
+  Flame,
+  Wheat,
+  Coffee,
+  Plus,
+  Minus,
+} from "lucide-react";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import CategoryTiles from "@/components/CategoryTiles";
@@ -18,124 +33,122 @@ import toastAsset from "@/assets/baseline-toast.jpg.asset.json";
 type Product = {
   id: string;
   name: string;
+  short: string;
   weight: string;
   image: string;
-  tagline: string;
-  formats?: { label: string; description: string }[];
-  suitableFor: string[];
-  inWork?: string[];
+  icon: typeof Sandwich;
+  tags: string[];
+  formats?: string[];
+  uses: string[];
+  perks: string[];
+  kcal: string;
+  shelf: string;
   composition: string;
-  shelfLife: string;
-  nutrition: string;
 };
 
 const products: Product[] = [
   {
     id: "bran",
-    name: "Хліб пшеничний з висівками",
+    name: "Хліб з висівками",
+    short: "Щільна м'якушка, тримає форму, не кришиться.",
     weight: "500 г",
     image: branAsset.url,
-    tagline:
-      "Пшеничний хліб із додаванням висівок зі стабільною структурою та щільною, еластичною м'якушкою. Добре тримає форму, не кришиться та підходить для щоденного використання в закладах.",
-    formats: [
-      { label: "Нарізний", description: "рівні скибки, економія часу кухні, стабільна подача" },
-      { label: "Цілий", description: "можливість нарізки під власні задачі та формат страв" },
-    ],
-    suitableFor: ["Сендвічів", "Хлібної корзини", "Подачі до супів та основних страв"],
+    icon: Wheat,
+    tags: ["Нарізний", "Цілий"],
+    formats: ["Нарізний — рівні скибки", "Цілий — під власну нарізку"],
+    uses: ["Сендвічі", "Хлібна корзина", "Подача до супів"],
+    perks: ["Стабільна структура", "Не кришиться", "Щоденне використання"],
+    kcal: "239",
+    shelf: "10 діб · заморозка 3 міс",
     composition:
-      "Борошно пшеничне в/г, борошно 1/г, висівки пшеничні, вода, цукор білий кристалічний, дріжджі сухі, олія, сіль кухонна.",
-    shelfLife:
-      "10 діб в герметичній тарі при кімнатній температурі, у замороженому вигляді — 3 місяці.",
-    nutrition: "239 ккал · білки 6,17 г · жири 4,46 г · вуглеводи 43,44 г (на 100 г)",
+      "Борошно пшеничне в/г, борошно 1/г, висівки, вода, цукор, дріжджі, олія, сіль.",
   },
   {
     id: "burger",
     name: "Булочка для бургерів",
+    short: "Тримає начинку та соуси, не розмокає.",
     weight: "80 г",
     image: burgerAsset.url,
-    tagline:
-      "Булочка зі стабільною структурою, м'якою еластичною м'якушкою та рівномірною формою. Добре тримає начинку, не розмокає та зберігає вигляд у подачі.",
-    suitableFor: ["Класичних та авторських бургерів", "Доставки та takeaway"],
-    inWork: [
+    icon: Beef,
+    tags: ["З кунжутом"],
+    uses: ["Класичні бургери", "Авторські бургери", "Takeaway"],
+    perks: [
       "Не розвалюється при зборці",
-      "Тримає соуси та соки начинки",
-      "Зручна у роботі на потоці",
-      "Добре поводиться при підсмаженні",
+      "Тримає соки начинки",
+      "Добре підсмажується",
+      "Зручна на потоці",
     ],
+    kcal: "314",
+    shelf: "7 діб · заморозка 2 міс",
     composition:
-      "Борошно пшеничне в/г, вода, цукор білий кристалічний, маргарин вершковий, сухе молоко, дріжджі пресовані, олія, сіль кухонна, кунжут білий.",
-    shelfLife:
-      "7 діб в герметичній тарі при кімнатній температурі, у замороженому вигляді — 2 місяці.",
-    nutrition: "314 ккал · білки 7 г · жири 6,98 г · вуглеводи 55,48 г (на 100 г)",
+      "Борошно в/г, вода, цукор, маргарин вершковий, сухе молоко, дріжджі, олія, сіль, кунжут.",
   },
   {
     id: "panini",
     name: "Паніні",
+    short: "Не деформується при пресуванні на грилі.",
     weight: "120 г",
     image: paniniAsset.url,
-    tagline:
-      "Хліб для паніні зі щільною, еластичною структурою та рівномірною пористістю. Добре тримає начинку, не деформується при пресуванні та зберігає форму після грилю.",
-    suitableFor: ["Класичних паніні", "Гарячих сендвічів", "Takeaway та доставки"],
-    inWork: [
-      "Рівномірно підсмажується на грилі",
+    icon: Flame,
+    uses: ["Класичні паніні", "Гарячі сендвічі", "Доставка"],
+    perks: [
+      "Рівномірно підсмажується",
       "Не розсипається при розрізі",
-      "Тримає структуру з соковитою начинкою",
-      "Зручний у роботі на потоці",
+      "Тримає соковиту начинку",
     ],
+    kcal: "314",
+    shelf: "7 діб · заморозка 2 міс",
     composition:
-      "Борошно пшеничне в/г, вода, цукор білий кристалічний, маргарин вершковий, сухе молоко, дріжджі пресовані, олія, сіль кухонна.",
-    shelfLife:
-      "7 діб в герметичній тарі при кімнатній температурі, у замороженому вигляді — 2 місяці.",
-    nutrition: "314 ккал · білки 7,36 г · жири 6,98 г · вуглеводи 55,48 г (на 100 г)",
+      "Борошно в/г, вода, цукор, маргарин вершковий, сухе молоко, дріжджі, олія, сіль.",
+    tags: [],
   },
   {
     id: "baguette",
-    name: "Багети",
+    name: "Багет",
+    short: "Хрустка скоринка, еластична м'якушка.",
     weight: "150 г",
     image: baguetteAsset.url,
-    tagline:
-      "Багет зі стабільною формою, хрусткою скоринкою та щільною, еластичною м'якушкою. Добре тримає структуру, не кришиться та підходить для щоденного використання в закладах.",
-    formats: [
-      { label: "Цілий", description: "для власної нарізки та подачі" },
-      { label: "З надрізами / під сендвіч", description: "швидка підготовка та зручність у роботі" },
-    ],
-    suitableFor: ["Сендвічів", "Брускет", "Хлібної корзини", "Подачі до супів та основних страв"],
-    inWork: [
-      "Легко ріжеться на рівні частини",
-      "Не розсипається при нарізці",
+    icon: Sandwich,
+    tags: ["Цілий", "Під сендвіч"],
+    formats: ["Цілий — для власної нарізки", "З надрізами — швидка подача"],
+    uses: ["Сендвічі", "Брускети", "Хлібна корзина"],
+    perks: [
+      "Легко ріжеться рівно",
       "Зберігає форму при подачі",
-      "Підходить для запікання та підігріву",
+      "Підходить для запікання",
     ],
+    kcal: "314",
+    shelf: "7 діб · заморозка 2 міс",
     composition:
-      "Борошно пшеничне в/г, вода, цукор білий кристалічний, маргарин вершковий, сухе молоко, дріжджі пресовані, олія, сіль кухонна, кунжут білий.",
-    shelfLife:
-      "7 діб в герметичній тарі при кімнатній температурі, у замороженому вигляді — 2 місяці.",
-    nutrition: "314 ккал · білки 7,36 г · жири 6,98 г · вуглеводи 55,48 г (на 100 г)",
+      "Борошно в/г, вода, цукор, маргарин вершковий, сухе молоко, дріжджі, олія, сіль, кунжут.",
   },
   {
     id: "toast",
     name: "Тостовий хліб",
+    short: "Рівномірна пористість, м'яка еластична м'якушка.",
     weight: "—",
     image: toastAsset.url,
-    tagline:
-      "Тостовий хліб зі стабільною структурою, рівномірною пористістю та м'якою еластичною м'якушкою. Добре тримає форму, рівномірно підсмажується та підходить для щоденного використання в закладах.",
-    formats: [
-      { label: "Нарізний", description: "рівні скибки та швидка підготовка" },
-      { label: "Цілий", description: "можливість нарізки під власний формат подачі" },
-    ],
-    suitableFor: ["Тостів", "Сендвічів", "Сніданків", "Takeaway та доставки"],
-    inWork: [
+    icon: Coffee,
+    tags: ["Нарізний", "Цілий"],
+    formats: ["Нарізний — рівні скибки", "Цілий — під власний формат"],
+    uses: ["Тости", "Сендвічі", "Сніданки", "Takeaway"],
+    perks: [
       "Рівномірно підсмажується",
       "Не кришиться при нарізці",
-      "Зберігає структуру після обсмаження",
-      "Зручний у роботі на потоці",
+      "Зручний на потоці",
     ],
+    kcal: "—",
+    shelf: "7 діб · заморозка 2 міс",
     composition:
-      "Борошно пшеничне в/г, вода, цукор білий кристалічний, маргарин вершковий, сухе молоко, дріжджі пресовані, олія, сіль кухонна.",
-    shelfLife:
-      "7 діб в герметичній тарі при кімнатній температурі, у замороженому вигляді — 2 місяці.",
-    nutrition: "—",
+      "Борошно в/г, вода, цукор, маргарин вершковий, сухе молоко, дріжджі, олія, сіль.",
   },
+];
+
+const facts = [
+  { value: "5+", label: "років з HoReCa" },
+  { value: "100+", label: "одиниць — мін. замовлення" },
+  { value: "24/7", label: "комунікація з менеджером" },
+  { value: "Київ", label: "та область" },
 ];
 
 const Eyebrow = ({ children }: { children: React.ReactNode }) => (
@@ -144,139 +157,12 @@ const Eyebrow = ({ children }: { children: React.ReactNode }) => (
   </span>
 );
 
-const ProductBlock = ({ product, index }: { product: Product; index: number }) => {
-  const reverse = index % 2 === 1;
-  return (
-    <section className="py-16 md:py-24 border-t border-border">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-start max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-            className={`relative ${reverse ? "md:order-2" : ""}`}
-          >
-            <div
-              className={`absolute ${reverse ? "-top-4 -right-4" : "-bottom-4 -left-4"} w-full h-full bg-pastel-blue`}
-              aria-hidden="true"
-            />
-            <img
-              src={product.image}
-              alt={product.name}
-              loading="lazy"
-              className="relative w-full aspect-[4/5] object-cover"
-            />
-            {product.weight !== "—" && (
-              <span className="absolute top-4 left-4 z-10 bg-accent-blue text-primary-foreground font-body text-[11px] uppercase tracking-[0.25em] px-3 py-1.5">
-                {product.weight}
-              </span>
-            )}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            className={`flex flex-col ${reverse ? "md:order-1" : ""}`}
-          >
-            <Eyebrow>0{index + 1} · Базова Лінійка</Eyebrow>
-            <h2 className="font-display-black text-foreground text-4xl md:text-5xl leading-[0.95] mt-4 mb-6">
-              {product.name}
-            </h2>
-            <p className="text-muted-foreground text-sm md:text-base font-light leading-[1.85] max-w-md">
-              {product.tagline}
-            </p>
-
-            {product.formats && (
-              <div className="mt-8">
-                <span className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground">
-                  Доступні формати
-                </span>
-                <div className="mt-3 grid sm:grid-cols-2 gap-3 max-w-md">
-                  {product.formats.map((f) => (
-                    <div
-                      key={f.label}
-                      className="border-l-2 border-accent-blue bg-accent-blue-soft px-4 py-3"
-                    >
-                      <div className="font-body text-sm font-medium text-foreground">{f.label}</div>
-                      <div className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                        {f.description}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            <div className="mt-8 grid sm:grid-cols-2 gap-8 max-w-md">
-              <div>
-                <span className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground">
-                  Підходить для
-                </span>
-                <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground font-light">
-                  {product.suitableFor.map((s) => (
-                    <li key={s} className="flex gap-2">
-                      <span className="text-accent-blue mt-2 w-1 h-1 rounded-full bg-accent-blue shrink-0" />
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              {product.inWork && (
-                <div>
-                  <span className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground">
-                    У роботі
-                  </span>
-                  <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground font-light">
-                    {product.inWork.map((s) => (
-                      <li key={s} className="flex gap-2">
-                        <span className="text-accent-blue mt-2 w-1 h-1 rounded-full bg-accent-blue shrink-0" />
-                        {s}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-
-            <details className="mt-8 group border-t border-border pt-5 max-w-md">
-              <summary className="cursor-pointer list-none flex items-center justify-between font-body text-[11px] uppercase tracking-[0.3em] text-foreground">
-                <span>Склад, зберігання, КБЖУ</span>
-                <span className="text-accent-blue transition-transform group-open:rotate-45 text-xl leading-none">
-                  +
-                </span>
-              </summary>
-              <div className="mt-5 space-y-4 text-xs leading-[1.8] text-muted-foreground font-light">
-                <div>
-                  <span className="block uppercase tracking-[0.25em] text-foreground mb-1">
-                    Склад
-                  </span>
-                  {product.composition}
-                </div>
-                <div>
-                  <span className="block uppercase tracking-[0.25em] text-foreground mb-1">
-                    Термін зберігання
-                  </span>
-                  {product.shelfLife}
-                </div>
-                <div>
-                  <span className="block uppercase tracking-[0.25em] text-foreground mb-1">
-                    КБЖУ
-                  </span>
-                  {product.nutrition}
-                </div>
-              </div>
-            </details>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 const StandardLine = () => {
+  const [activeId, setActiveId] = useState(products[0].id);
+  const [specsOpen, setSpecsOpen] = useState(false);
+  const active = products.find((p) => p.id === activeId)!;
+  const ActiveIcon = active.icon;
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -299,26 +185,15 @@ const StandardLine = () => {
                 transition={{ duration: 0.7 }}
                 className="md:col-span-7"
               >
-                <Eyebrow>HoReCa · B2B · з 2021</Eyebrow>
+                <Eyebrow>HoReCa · B2B</Eyebrow>
                 <h1 className="font-display-black text-foreground text-5xl md:text-7xl lg:text-8xl mt-5 leading-[0.9]">
                   Базова
                   <br />
                   Лінійка
                 </h1>
-                <p className="mt-8 max-w-xl text-muted-foreground text-base md:text-lg leading-[1.85] font-light">
-                  Якісні продукти для стабільної роботи кухні. Хліб, булочки для бургерів, паніні
-                  та багети — однакова вага, однакова якість, прогнозована собівартість.
+                <p className="mt-8 max-w-md text-muted-foreground text-base md:text-lg leading-[1.7] font-light">
+                  Однакова вага, стабільна якість, прогнозована собівартість.
                 </p>
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {["Хліб", "Булочки для бургерів", "Паніні", "Багети", "Тостовий хліб"].map((t) => (
-                    <span
-                      key={t}
-                      className="font-body text-[11px] uppercase tracking-[0.25em] text-accent-blue border border-accent-blue/40 px-3 py-1.5"
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
               </motion.div>
 
               <motion.div
@@ -333,91 +208,222 @@ const StandardLine = () => {
                 />
                 <img
                   src={heroAsset.url}
-                  alt="Базова лінійка пекарні Перемога — хліб, булочки, паніні, багети"
+                  alt="Базова лінійка пекарні Перемога"
                   className="relative w-full aspect-[4/5] object-cover"
                 />
               </motion.div>
             </div>
-          </div>
-        </section>
 
-        {/* Intro / why us */}
-        <section className="py-20 md:py-28">
-          <div className="container mx-auto px-6">
-            <div className="grid md:grid-cols-12 gap-12 max-w-6xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-                className="md:col-span-5"
-              >
-                <Eyebrow>Про базову лінійку</Eyebrow>
-                <h2 className="font-display-black text-foreground text-3xl md:text-4xl leading-[1] mt-4">
-                  Партнер, на якого можна розраховувати в щоденній роботі
-                </h2>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                className="md:col-span-7 text-muted-foreground font-light leading-[1.85] text-sm md:text-base space-y-5"
-              >
-                <p>
-                  Ми працюємо з 2021 року і спеціалізуємось на виробництві та поставках виробів для
-                  закладів HoReCa. За цей час ми добре зрозуміли: для бізнесу важливо не просто
-                  отримати продукт, а мати стабільного партнера.
-                </p>
-                <div className="grid sm:grid-cols-2 gap-8 pt-4">
-                  <div>
-                    <span className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground">
-                      Стабільну роботу кухні забезпечує
-                    </span>
-                    <ul className="mt-4 space-y-2">
-                      {[
-                        "Стабільна якість у кожній партії",
-                        "Чітке дотримання термінів поставок",
-                        "Однакові розміри та вага виробів",
-                        "Продукт, з яким зручно працювати",
-                        "Швидка та гнучка комунікація",
-                      ].map((t) => (
-                        <li key={t} className="flex gap-2 text-sm">
-                          <span className="w-1 h-1 rounded-full bg-accent-blue mt-2 shrink-0" />
-                          {t}
-                        </li>
-                      ))}
-                    </ul>
+            {/* Facts strip */}
+            <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-accent-blue/20 border border-accent-blue/20">
+              {facts.map((f) => (
+                <div key={f.label} className="bg-accent-blue-soft p-5 md:p-6">
+                  <div className="font-display-black text-foreground text-3xl md:text-4xl leading-none">
+                    {f.value}
                   </div>
-                  <div>
-                    <span className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground">
-                      Наш продукт
-                    </span>
-                    <ul className="mt-4 space-y-2">
-                      <li className="flex gap-2 text-sm">
-                        <span className="w-1 h-1 rounded-full bg-accent-blue mt-2 shrink-0" />
-                        Не створює проблем у процесі
-                      </li>
-                      <li className="flex gap-2 text-sm">
-                        <span className="w-1 h-1 rounded-full bg-accent-blue mt-2 shrink-0" />
-                        Дозволяє контролювати собівартість і подачу
-                      </li>
-                    </ul>
+                  <div className="mt-2 font-body text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                    {f.label}
                   </div>
                 </div>
-              </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Products */}
-        <div>
-          {products.map((p, i) => (
-            <ProductBlock key={p.id} product={p} index={i} />
-          ))}
-        </div>
+        {/* Interactive product explorer */}
+        <section className="py-20 md:py-28 border-t border-border">
+          <div className="container mx-auto px-6">
+            <div className="max-w-3xl mb-12">
+              <Eyebrow>Оберіть продукт</Eyebrow>
+              <h2 className="font-display-black text-foreground text-4xl md:text-5xl leading-[0.95] mt-4">
+                П'ять позицій. Натисніть, щоб дослідити.
+              </h2>
+            </div>
 
-        {/* Delivery & cooperation */}
+            {/* Picker */}
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-10 max-w-5xl">
+              {products.map((p) => {
+                const Icon = p.icon;
+                const isActive = p.id === activeId;
+                return (
+                  <button
+                    key={p.id}
+                    onClick={() => {
+                      setActiveId(p.id);
+                      setSpecsOpen(false);
+                    }}
+                    className={`group relative text-left p-4 md:p-5 border transition-all duration-300 ${
+                      isActive
+                        ? "bg-accent-blue text-primary-foreground border-accent-blue"
+                        : "bg-background border-border hover:border-accent-blue hover:-translate-y-1"
+                    }`}
+                  >
+                    <Icon
+                      className={`w-6 h-6 ${
+                        isActive ? "text-primary-foreground" : "text-accent-blue"
+                      }`}
+                      strokeWidth={1.5}
+                    />
+                    <div
+                      className={`mt-4 font-body text-[10px] uppercase tracking-[0.25em] ${
+                        isActive ? "text-primary-foreground/70" : "text-muted-foreground"
+                      }`}
+                    >
+                      0{products.indexOf(p) + 1}
+                    </div>
+                    <div className="mt-1 font-display-black text-sm md:text-base leading-tight">
+                      {p.name}
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Active product */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={active.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.4 }}
+                className="grid md:grid-cols-12 gap-10 md:gap-14 max-w-6xl"
+              >
+                {/* Image */}
+                <div className="md:col-span-5 relative">
+                  <div
+                    className="absolute -bottom-4 -left-4 w-full h-full bg-pastel-blue"
+                    aria-hidden="true"
+                  />
+                  <img
+                    src={active.image}
+                    alt={active.name}
+                    className="relative w-full aspect-[4/5] object-cover"
+                  />
+                  {active.weight !== "—" && (
+                    <span className="absolute top-4 left-4 z-10 bg-accent-blue text-primary-foreground font-body text-[11px] uppercase tracking-[0.25em] px-3 py-1.5">
+                      {active.weight}
+                    </span>
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="md:col-span-7 flex flex-col">
+                  <div className="flex items-center gap-3">
+                    <ActiveIcon className="w-5 h-5 text-accent-blue" strokeWidth={1.5} />
+                    <Eyebrow>Базова лінійка</Eyebrow>
+                  </div>
+                  <h3 className="font-display-black text-foreground text-4xl md:text-5xl leading-[0.95] mt-3">
+                    {active.name}
+                  </h3>
+                  <p className="mt-5 text-muted-foreground text-base font-light leading-[1.7] max-w-lg">
+                    {active.short}
+                  </p>
+
+                  {active.tags && active.tags.length > 0 && (
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {active.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="font-body text-[11px] uppercase tracking-[0.25em] text-accent-blue border border-accent-blue/40 px-3 py-1.5"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Uses chips */}
+                  <div className="mt-8">
+                    <span className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground">
+                      Підходить для
+                    </span>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {active.uses.map((u) => (
+                        <span
+                          key={u}
+                          className="bg-accent-blue-soft text-foreground text-sm px-3 py-1.5"
+                        >
+                          {u}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Perks grid */}
+                  <div className="mt-8 grid sm:grid-cols-2 gap-3">
+                    {active.perks.map((perk, i) => (
+                      <motion.div
+                        key={perk}
+                        initial={{ opacity: 0, x: -10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.4, delay: 0.05 * i }}
+                        className="flex items-start gap-3 border-l-2 border-accent-blue pl-3 py-1"
+                      >
+                        <span className="text-sm text-foreground font-light leading-snug">
+                          {perk}
+                        </span>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  {/* Specs accordion */}
+                  <button
+                    onClick={() => setSpecsOpen((v) => !v)}
+                    className="mt-10 flex items-center justify-between w-full max-w-lg border-t border-border pt-5 font-body text-[11px] uppercase tracking-[0.3em] text-foreground"
+                  >
+                    <span>Склад · зберігання · КБЖУ</span>
+                    {specsOpen ? (
+                      <Minus className="w-4 h-4 text-accent-blue" />
+                    ) : (
+                      <Plus className="w-4 h-4 text-accent-blue" />
+                    )}
+                  </button>
+                  <AnimatePresence>
+                    {specsOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden max-w-lg"
+                      >
+                        <div className="grid sm:grid-cols-3 gap-5 pt-5 text-xs">
+                          <div>
+                            <div className="uppercase tracking-[0.25em] text-muted-foreground mb-1.5 text-[10px]">
+                              Ккал / 100 г
+                            </div>
+                            <div className="font-display-black text-foreground text-2xl">
+                              {active.kcal}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="uppercase tracking-[0.25em] text-muted-foreground mb-1.5 text-[10px]">
+                              Зберігання
+                            </div>
+                            <div className="text-foreground font-light leading-snug">
+                              {active.shelf}
+                            </div>
+                          </div>
+                          <div>
+                            <div className="uppercase tracking-[0.25em] text-muted-foreground mb-1.5 text-[10px]">
+                              Склад
+                            </div>
+                            <div className="text-muted-foreground font-light leading-relaxed">
+                              {active.composition}
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </section>
+
+        {/* Cooperation */}
         <section className="py-24 md:py-32 bg-accent-blue-soft border-t border-border">
           <div className="container mx-auto px-6">
             <motion.div
@@ -427,40 +433,25 @@ const StandardLine = () => {
               transition={{ duration: 0.7 }}
               className="max-w-3xl"
             >
-              <Eyebrow>Доставка та старт співпраці</Eyebrow>
+              <Eyebrow>Старт співпраці</Eyebrow>
               <h2 className="font-display-black text-foreground text-4xl md:text-6xl leading-[0.95] mt-5">
-                Почати працювати — просто
+                Почати — просто
               </h2>
             </motion.div>
 
             <div className="mt-16 grid md:grid-cols-3 gap-6 max-w-5xl">
               {[
-                {
-                  icon: MapPin,
-                  label: "Географія доставки",
-                  value: "м. Київ та область",
-                  note: "Інші регіони — за погодженням",
-                },
-                {
-                  icon: Package,
-                  label: "Мінімальне замовлення",
-                  value: "від 100 одиниць",
-                  note: "Гнучкий формат партії",
-                },
-                {
-                  icon: CalendarClock,
-                  label: "Графік поставок",
-                  value: "Регулярно за графіком",
-                  note: "Є можливість дозаказу",
-                },
-              ].map((card) => (
+                { icon: MapPin, label: "Доставка", value: "Київ та область" },
+                { icon: Package, label: "Мін. замовлення", value: "від 100 од." },
+                { icon: CalendarClock, label: "Графік", value: "Регулярно" },
+              ].map((card, i) => (
                 <motion.div
                   key={card.label}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className="bg-background p-8 border-t-2 border-accent-blue"
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="bg-background p-8 border-t-2 border-accent-blue hover:-translate-y-1 transition-transform"
                 >
                   <card.icon className="w-6 h-6 text-accent-blue" strokeWidth={1.5} />
                   <span className="block font-body text-[11px] uppercase tracking-[0.3em] text-muted-foreground mt-6">
@@ -469,43 +460,9 @@ const StandardLine = () => {
                   <div className="font-display-black text-foreground text-2xl mt-2 leading-tight">
                     {card.value}
                   </div>
-                  <p className="text-xs text-muted-foreground font-light mt-3 leading-relaxed">
-                    {card.note}
-                  </p>
                 </motion.div>
               ))}
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="mt-16 grid md:grid-cols-2 gap-10 max-w-5xl items-start"
-            >
-              <div className="border-l-2 border-accent-blue pl-6">
-                <span className="font-body text-[11px] uppercase tracking-[0.3em] text-accent-blue">
-                  Перед стартом
-                </span>
-                <p className="mt-3 text-foreground text-lg font-light leading-[1.7]">
-                  Ви можете замовити <strong className="font-medium">тестову партію</strong> або{" "}
-                  <strong className="font-medium">дегустаційний сет</strong> із нашої продукції —
-                  щоб переконатися, що продукт підходить вашій кухні.
-                </p>
-              </div>
-              <div>
-                <p className="text-muted-foreground font-light leading-[1.85] text-sm">
-                  Також маємо широку лінійку кондитерських виробів, авторської випічки та
-                  крафтового хлібу.
-                </p>
-                <Link
-                  to="/clients"
-                  className="inline-block mt-5 font-body text-[11px] uppercase tracking-[0.3em] text-foreground border-b border-foreground pb-1 hover:opacity-60 transition-opacity"
-                >
-                  Подивитись авторське меню
-                </Link>
-              </div>
-            </motion.div>
           </div>
         </section>
 
@@ -514,9 +471,9 @@ const StandardLine = () => {
           <div className="container mx-auto px-6">
             <div className="grid md:grid-cols-12 gap-10 max-w-5xl">
               <div className="md:col-span-5">
-                <Eyebrow>Наші контакти</Eyebrow>
+                <Eyebrow>Контакти</Eyebrow>
                 <h2 className="font-display-black text-foreground text-4xl md:text-5xl mt-4 leading-[0.95]">
-                  Напишіть або зателефонуйте
+                  На зв'язку
                 </h2>
               </div>
               <div className="md:col-span-7 grid sm:grid-cols-2 gap-8 text-sm">
