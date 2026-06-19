@@ -9,6 +9,7 @@ import strawberryPavlova from "@/assets/strawberry-pavlova.jpeg.asset.json";
 import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
 import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
 import { supabase } from "@/integrations/supabase/client";
+import HeroDecor from "@/components/HeroDecor";
 
 type Corner = "nw" | "ne" | "sw" | "se";
 type Viewport = "mobile" | "tablet" | "desktop";
@@ -285,6 +286,7 @@ const HeroSection = () => {
     >
       <div className="container mx-auto px-6">
         <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
+          <HeroDecor />
           <DraggableResizableImage
             id="supreme"
             viewport={viewport}
