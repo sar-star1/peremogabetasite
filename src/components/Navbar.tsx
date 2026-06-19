@@ -70,16 +70,16 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-background border-t border-border">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-5">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="font-body text-xs uppercase tracking-[0.2em] px-5 py-2.5 rounded-full bg-foreground text-background text-center"
-              >
-                {item.label}
-              </Link>
+          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+            {bakeryInfo.map((item) => (
+              <div key={item.label} className="flex flex-col leading-tight">
+                <span className="font-body text-[9px] uppercase tracking-[0.3em] text-foreground/60">
+                  {item.label}
+                </span>
+                <span className="font-body text-[12px] uppercase tracking-[0.18em] text-foreground">
+                  {item.value}
+                </span>
+              </div>
             ))}
           </div>
         </div>
