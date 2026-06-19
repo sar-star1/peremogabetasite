@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import peremogaLogo from "@/assets/peremoga-logo.jpg";
 
-const navItems = [
-  { label: "HORECA (B2B) ", href: "/b2b", isRoute: true },
-  { label: "АВТОРСЬКІ ВИРОБИ", href: "/clients", isRoute: true },
-  { label: "СТАНДАРТИЗОВАНА ЛІНІЙКА ", href: "/standard-line", isRoute: true },
+const bakeryInfo = [
+  { label: "Адреса", value: "вул. Григоровича-Барського, 1, Київ" },
+  { label: "Графік", value: "Пн — Сб · 08:00 — 20:00" },
 ];
 
 const Navbar = () => {
