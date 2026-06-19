@@ -18,6 +18,12 @@ import upload017 from "./upload-017.png.asset.json";
 import upload018 from "./upload-018.png.asset.json";
 import upload019 from "./upload-019.png.asset.json";
 import upload020 from "./upload-020.png.asset.json";
+import upload051 from "./upload-051.png.asset.json";
+import upload052 from "./upload-052.png.asset.json";
+import upload053 from "./upload-053.png.asset.json";
+import upload054 from "./upload-054.png.asset.json";
+import upload055 from "./upload-055.png.asset.json";
+import upload056 from "./upload-056.png.asset.json";
 
 export const uploadedPhotos = [
   { id: "upload-001", filename: "1.png", asset: upload001, url: upload001.url },
@@ -40,6 +46,12 @@ export const uploadedPhotos = [
   { id: "upload-018", filename: "18.png", asset: upload018, url: upload018.url },
   { id: "upload-019", filename: "19.png", asset: upload019, url: upload019.url },
   { id: "upload-020", filename: "20.png", asset: upload020, url: upload020.url },
+  { id: "upload-051", filename: "51.png", asset: upload051, url: upload051.url },
+  { id: "upload-052", filename: "52.png", asset: upload052, url: upload052.url },
+  { id: "upload-053", filename: "53.png", asset: upload053, url: upload053.url },
+  { id: "upload-054", filename: "54.png", asset: upload054, url: upload054.url },
+  { id: "upload-055", filename: "55.png", asset: upload055, url: upload055.url },
+  { id: "upload-056", filename: "56.png", asset: upload056, url: upload056.url },
 ] as const;
 
 export type UploadedPhoto = (typeof uploadedPhotos)[number];
