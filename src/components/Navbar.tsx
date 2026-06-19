@@ -3,10 +3,9 @@ import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import peremogaLogo from "@/assets/peremoga-logo.jpg";
 
-const navItems = [
-  { label: "HORECA (B2B) ", href: "/b2b", isRoute: true },
-  { label: "АВТОРСЬКІ ВИРОБИ", href: "/clients", isRoute: true },
-  { label: "СТАНДАРТИЗОВАНА ЛІНІЙКА ", href: "/standard-line", isRoute: true },
+const bakeryInfo = [
+  { label: "Адреса", value: "вул. Григоровича-Барського, 1, Київ" },
+  { label: "Графік", value: "Пн — Сб · 08:00 — 20:00" },
 ];
 
 const Navbar = () => {
@@ -44,16 +43,17 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Right cluster — pill buttons */}
-        <div className="hidden md:flex items-center gap-3">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className="font-body text-[11px] uppercase tracking-[0.2em] px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-foreground/85 transition-colors"
-            >
-              {item.label}
-            </Link>
+        {/* Right cluster — bakery info */}
+        <div className="hidden md:flex items-center gap-6">
+          {bakeryInfo.map((item) => (
+            <div key={item.label} className="flex flex-col leading-tight text-right">
+              <span className="font-body text-[9px] uppercase tracking-[0.3em] text-foreground/60">
+                {item.label}
+              </span>
+              <span className="font-body text-[11px] uppercase tracking-[0.18em] text-foreground">
+                {item.value}
+              </span>
+            </div>
           ))}
         </div>
 
@@ -70,16 +70,16 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-background border-t border-border">
-          <div className="container mx-auto px-6 py-6 flex flex-col gap-5">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                onClick={() => setMobileOpen(false)}
-                className="font-body text-xs uppercase tracking-[0.2em] px-5 py-2.5 rounded-full bg-foreground text-background text-center"
-              >
-                {item.label}
-              </Link>
+          <div className="container mx-auto px-6 py-6 flex flex-col gap-4">
+            {bakeryInfo.map((item) => (
+              <div key={item.label} className="flex flex-col leading-tight">
+                <span className="font-body text-[9px] uppercase tracking-[0.3em] text-foreground/60">
+                  {item.label}
+                </span>
+                <span className="font-body text-[12px] uppercase tracking-[0.18em] text-foreground">
+                  {item.value}
+                </span>
+              </div>
             ))}
           </div>
         </div>
