@@ -2,56 +2,71 @@ import { motion } from "framer-motion";
 import { uploadedPhotos } from "@/assets/uploads";
 
 /**
- * 20 decorative thumbnails arranged around the PEREMOGA BAKERY hero wordmark.
+ * 20 decorative photos in the hero, sized variably (tiny → as large as the
+ * existing draggable hero photos) and positioned in the gaps between them.
  *
- * Safe zones (no text overlap) at every breakpoint:
- *  - Outer left & right rails (outside the centered wordmark)
- *  - Top strip above the wordmark
- *  - Bottom strip above the CTA buttons (which sit BELOW the collage area)
+ * The 7 existing draggable photos (default layout) occupy roughly:
+ *   - top-left big block, top-center small, top-right block
+ *   - mid-left block, mid-right block
+ *   - bottom-center-left, bottom-center-right
  *
- * Per-viewport sizes:
- *  - mobile  : ~28px tiny thumbs, tight against edges (left-0 / right-0)
- *  - tablet  : ~52px thumbs in the section gutters
- *  - desktop : ~80px thumbs with more breathing room
+ * Gap zones used for decor:
+ *   A. between top-left and top-center      (~28% .. 35% wide column)
+ *   B. between top-center and top-right     (~50% .. 70% wide column)
+ *   C. mid band between top + mid rows
+ *   D. far-right vertical strip
+ *   E. bottom-left strip + bottom-center slot + far-right bottom
+ *
+ * Each spot defines its own size per breakpoint (mobile / tablet / desktop)
+ * via Tailwind arbitrary values so sizes vary widely.
  */
 
 type Spot = {
-  /** 1-based index into uploadedPhotos (1..20). */
+  /** 1-based index into uploadedPhotos. */
   i: number;
-  /** Responsive Tailwind positioning + size classes. */
-  cls: string;
+  /** Position classes (percentage-based, per breakpoint). */
+  pos: string;
+  /** Size classes per breakpoint, e.g. "w-[28px] h-[28px] md:w-[60px] md:h-[60px] lg:w-[120px] lg:h-[120px]". */
+  size: string;
   rotate?: number;
 };
 
-// 20 spots distributed around the hero perimeter. Center stays clear for the wordmark.
+// All percentages are relative to the hero collage box.
+// Sizes are tuned so some decor matches the scale of existing draggable photos.
 const spots: Spot[] = [
-  // ─── Top row (4): just above where wordmark eyebrow sits, far left → right
-  { i: 1,  cls: "top-0 left-0 w-7 h-7 md:top-2 md:left-4 md:w-12 md:h-12 lg:top-2 lg:left-6 lg:w-20 lg:h-20", rotate: -6 },
-  { i: 2,  cls: "top-0 left-[22%] w-7 h-7 md:top-1 md:left-[22%] md:w-12 md:h-12 lg:top-0 lg:left-[22%] lg:w-16 lg:h-16", rotate: 4 },
-  { i: 3,  cls: "top-0 right-[22%] w-7 h-7 md:top-1 md:right-[22%] md:w-12 md:h-12 lg:top-0 lg:right-[22%] lg:w-16 lg:h-16", rotate: -3 },
-  { i: 4,  cls: "top-0 right-0 w-7 h-7 md:top-2 md:right-4 md:w-12 md:h-12 lg:top-2 lg:right-6 lg:w-20 lg:h-20", rotate: 7 },
+  // ── Zone A: narrow top-center-left gap (~28-34% wide)
+  { i: 1,  pos: "top-[2%] left-[28%]",         size: "w-[26px] h-[26px] md:w-[60px] md:h-[60px] lg:w-[90px] lg:h-[90px]",   rotate: -6 },
+  { i: 2,  pos: "top-[18%] left-[26%]",        size: "w-[32px] h-[32px] md:w-[70px] md:h-[70px] lg:w-[120px] lg:h-[120px]", rotate: 5 },
 
-  // ─── Left rail (6): outside left edge of wordmark, top → bottom
-  { i: 5,  cls: "top-[15%] left-0 w-7 h-7 md:top-[14%] md:left-1 md:w-12 md:h-12 lg:top-[14%] lg:left-2 lg:w-20 lg:h-20", rotate: 5 },
-  { i: 6,  cls: "top-[30%] left-0 w-7 h-7 md:top-[28%] md:left-2 md:w-14 md:h-14 lg:top-[28%] lg:left-4 lg:w-24 lg:h-24", rotate: -5 },
-  { i: 7,  cls: "top-[45%] left-0 w-7 h-7 md:top-[44%] md:left-1 md:w-12 md:h-12 lg:top-[44%] lg:left-2 lg:w-20 lg:h-20", rotate: 3 },
-  { i: 8,  cls: "top-[60%] left-0 w-7 h-7 md:top-[60%] md:left-2 md:w-14 md:h-14 lg:top-[60%] lg:left-4 lg:w-24 lg:h-24", rotate: -7 },
-  { i: 9,  cls: "top-[75%] left-0 w-7 h-7 md:top-[76%] md:left-1 md:w-12 md:h-12 lg:top-[76%] lg:left-2 lg:w-20 lg:h-20", rotate: 6 },
-  { i: 10, cls: "bottom-0 left-[12%] w-7 h-7 md:bottom-2 md:left-[12%] md:w-12 md:h-12 lg:bottom-2 lg:left-[14%] lg:w-16 lg:h-16", rotate: -4 },
+  // ── Zone B: wide top-center-right gap (~50-70%)
+  { i: 3,  pos: "top-[1%] left-[52%]",         size: "w-[40px] h-[40px] md:w-[90px] md:h-[90px] lg:w-[150px] lg:h-[150px]", rotate: 4 },
+  { i: 4,  pos: "top-[20%] left-[62%]",        size: "w-[28px] h-[28px] md:w-[60px] md:h-[60px] lg:w-[100px] lg:h-[100px]", rotate: -3 },
+  { i: 5,  pos: "top-[6%] left-[68%]",         size: "w-[22px] h-[22px] md:w-[50px] md:h-[50px] lg:w-[80px] lg:h-[80px]",   rotate: 8 },
 
-  // ─── Right rail (6): outside right edge of wordmark, top → bottom
-  { i: 11, cls: "top-[15%] right-0 w-7 h-7 md:top-[14%] md:right-1 md:w-12 md:h-12 lg:top-[14%] lg:right-2 lg:w-20 lg:h-20", rotate: -5 },
-  { i: 12, cls: "top-[30%] right-0 w-7 h-7 md:top-[28%] md:right-2 md:w-14 md:h-14 lg:top-[28%] lg:right-4 lg:w-24 lg:h-24", rotate: 6 },
-  { i: 13, cls: "top-[45%] right-0 w-7 h-7 md:top-[44%] md:right-1 md:w-12 md:h-12 lg:top-[44%] lg:right-2 lg:w-20 lg:h-20", rotate: -3 },
-  { i: 14, cls: "top-[60%] right-0 w-7 h-7 md:top-[60%] md:right-2 md:w-14 md:h-14 lg:top-[60%] lg:right-4 lg:w-24 lg:h-24", rotate: 5 },
-  { i: 15, cls: "top-[75%] right-0 w-7 h-7 md:top-[76%] md:right-1 md:w-12 md:h-12 lg:top-[76%] lg:right-2 lg:w-20 lg:h-20", rotate: -6 },
-  { i: 16, cls: "bottom-0 right-[12%] w-7 h-7 md:bottom-2 md:right-[12%] md:w-12 md:h-12 lg:bottom-2 lg:right-[14%] lg:w-16 lg:h-16", rotate: 4 },
+  // ── Zone C: mid band, beside / behind the wordmark
+  { i: 6,  pos: "top-[32%] left-[28%]",        size: "w-[44px] h-[44px] md:w-[110px] md:h-[110px] lg:w-[200px] lg:h-[200px]", rotate: -5 },
+  { i: 7,  pos: "top-[28%] left-[44%]",        size: "w-[20px] h-[20px] md:w-[44px] md:h-[44px] lg:w-[70px] lg:h-[70px]",   rotate: 3 },
+  { i: 8,  pos: "top-[36%] left-[58%]",        size: "w-[36px] h-[36px] md:w-[80px] md:h-[80px] lg:w-[140px] lg:h-[140px]", rotate: -7 },
+  { i: 9,  pos: "top-[26%] right-[6%]",        size: "w-[24px] h-[24px] md:w-[52px] md:h-[52px] lg:w-[90px] lg:h-[90px]",   rotate: 6 },
 
-  // ─── Bottom row (4): below wordmark, sitting just above the CTA strip
-  { i: 17, cls: "bottom-0 left-0 w-7 h-7 md:bottom-2 md:left-4 md:w-12 md:h-12 lg:bottom-2 lg:left-6 lg:w-20 lg:h-20", rotate: 7 },
-  { i: 18, cls: "bottom-0 left-[36%] w-7 h-7 md:bottom-1 md:left-[36%] md:w-12 md:h-12 lg:bottom-0 lg:left-[36%] lg:w-16 lg:h-16", rotate: -4 },
-  { i: 19, cls: "bottom-0 right-[36%] w-7 h-7 md:bottom-1 md:right-[36%] md:w-12 md:h-12 lg:bottom-0 lg:right-[36%] lg:w-16 lg:h-16", rotate: 3 },
-  { i: 20, cls: "bottom-0 right-0 w-7 h-7 md:bottom-2 md:right-4 md:w-12 md:h-12 lg:bottom-2 lg:right-6 lg:w-20 lg:h-20", rotate: -7 },
+  // ── Zone D: far-right strip between top-right and mid-right photos
+  { i: 10, pos: "top-[38%] right-[1%]",        size: "w-[18px] h-[18px] md:w-[40px] md:h-[40px] lg:w-[60px] lg:h-[60px]",   rotate: -4 },
+  { i: 11, pos: "top-[58%] right-[0%]",        size: "w-[26px] h-[26px] md:w-[60px] md:h-[60px] lg:w-[100px] lg:h-[100px]", rotate: 7 },
+
+  // ── Mid-left far edge between supreme and pavlova
+  { i: 12, pos: "top-[36%] left-[2%]",         size: "w-[20px] h-[20px] md:w-[44px] md:h-[44px] lg:w-[80px] lg:h-[80px]",   rotate: -5 },
+
+  // ── Zone E: lower band
+  { i: 13, pos: "top-[58%] left-[30%]",        size: "w-[34px] h-[34px] md:w-[80px] md:h-[80px] lg:w-[140px] lg:h-[140px]", rotate: 5 },
+  { i: 14, pos: "top-[62%] left-[46%]",        size: "w-[22px] h-[22px] md:w-[50px] md:h-[50px] lg:w-[80px] lg:h-[80px]",   rotate: -6 },
+  { i: 15, pos: "bottom-[2%] left-[14%]",      size: "w-[30px] h-[30px] md:w-[70px] md:h-[70px] lg:w-[110px] lg:h-[110px]", rotate: 4 },
+  { i: 16, pos: "bottom-[4%] left-[40%]",      size: "w-[26px] h-[26px] md:w-[60px] md:h-[60px] lg:w-[90px] lg:h-[90px]",   rotate: -8 },
+  { i: 17, pos: "bottom-[6%] right-[18%]",     size: "w-[42px] h-[42px] md:w-[100px] md:h-[100px] lg:w-[170px] lg:h-[170px]", rotate: 6 },
+  { i: 18, pos: "bottom-[0%] right-[2%]",      size: "w-[20px] h-[20px] md:w-[44px] md:h-[44px] lg:w-[70px] lg:h-[70px]",   rotate: -3 },
+
+  // ── Top corners small accents
+  { i: 19, pos: "top-[0%] left-[0%]",          size: "w-[18px] h-[18px] md:w-[36px] md:h-[36px] lg:w-[54px] lg:h-[54px]",   rotate: -10 },
+  { i: 20, pos: "top-[0%] right-[0%]",         size: "w-[18px] h-[18px] md:w-[36px] md:h-[36px] lg:w-[54px] lg:h-[54px]",   rotate: 10 },
 ];
 
 const HeroDecor = () => {
@@ -68,8 +83,8 @@ const HeroDecor = () => {
             loading="eager"
             initial={{ opacity: 0, scale: 0.85, rotate: spot.rotate ?? 0 }}
             animate={{ opacity: 1, scale: 1, rotate: spot.rotate ?? 0 }}
-            transition={{ duration: 0.6, delay: 0.4 + idx * 0.04, ease: "easeOut" }}
-            className={`absolute object-cover shadow-md ${spot.cls}`}
+            transition={{ duration: 0.6, delay: 0.4 + idx * 0.035, ease: "easeOut" }}
+            className={`absolute object-cover shadow-md ${spot.pos} ${spot.size}`}
           />
         );
       })}
