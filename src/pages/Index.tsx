@@ -116,6 +116,7 @@ const Index = () => {
         <ReviewsSection />
         <FAQSection />
         <ContactSection />
+        <PhotoMarquee direction="right" speed={70} />
       </main>
       <FooterSection />
     </div>
