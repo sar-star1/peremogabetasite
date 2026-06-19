@@ -44,13 +44,13 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Right cluster */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* Right cluster — pill buttons */}
+        <div className="hidden md:flex items-center gap-3">
           {navItems.map((item) => (
             <Link
               key={item.href}
               to={item.href}
-              className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground hover:opacity-60 transition-opacity"
+              className="font-body text-[11px] uppercase tracking-[0.2em] px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-foreground/85 transition-colors"
             >
               {item.label}
             </Link>
