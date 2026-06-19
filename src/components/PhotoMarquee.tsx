@@ -10,6 +10,8 @@ interface PhotoMarqueeProps {
   direction?: "left" | "right";
   /** Seconds per loop. Lower = faster. */
   speed?: number;
+  /** Extra classes for the outer wrapper. */
+  className?: string;
 }
 
 const PhotoMarquee = ({ direction = "left", speed = 60 }: PhotoMarqueeProps) => {
