@@ -216,7 +216,7 @@ interface DecorativeImagesProps {
 const DecorativeImages = ({ variant }: DecorativeImagesProps) => {
   const spots = layouts[variant];
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-20">
       {spots.map((spot, idx) => {
         const photo = uploadedPhotos[spot.i - 1];
         if (!photo) return null;
