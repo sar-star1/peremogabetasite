@@ -285,8 +285,8 @@ const HeroSection = () => {
       role="banner"
     >
       <div className="container mx-auto px-6">
+        <HeroDecorStrip variant="top" />
         <div className="relative min-h-[560px] md:min-h-[680px] lg:min-h-[760px]">
-          <HeroDecor />
           <DraggableResizableImage
             id="supreme"
             viewport={viewport}
