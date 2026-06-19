@@ -43,16 +43,17 @@ const Navbar = () => {
           </span>
         </div>
 
-        {/* Right cluster — pill buttons */}
-        <div className="hidden md:flex items-center gap-3">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              to={item.href}
-              className="font-body text-[11px] uppercase tracking-[0.2em] px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-foreground/85 transition-colors"
-            >
-              {item.label}
-            </Link>
+        {/* Right cluster — bakery info */}
+        <div className="hidden md:flex items-center gap-6">
+          {bakeryInfo.map((item) => (
+            <div key={item.label} className="flex flex-col leading-tight text-right">
+              <span className="font-body text-[9px] uppercase tracking-[0.3em] text-foreground/60">
+                {item.label}
+              </span>
+              <span className="font-body text-[11px] uppercase tracking-[0.18em] text-foreground">
+                {item.value}
+              </span>
+            </div>
           ))}
         </div>
 
