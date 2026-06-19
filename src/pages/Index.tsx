@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import CategoryTiles from "@/components/CategoryTiles";
 import PromoStrip from "@/components/PromoStrip";
 import ReviewsSection from "@/components/ReviewsSection";
+import PhotoMarquee from "@/components/PhotoMarquee";
 
 import FAQSection from "@/components/FAQSection";
 import ContactSection from "@/components/ContactSection";
@@ -17,6 +18,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <main>
+        <PhotoMarquee direction="left" speed={70} />
         <HeroSection />
 
         <CategoryTiles
@@ -114,6 +116,7 @@ const Index = () => {
         <ReviewsSection />
         <FAQSection />
         <ContactSection />
+        <PhotoMarquee direction="right" speed={70} />
       </main>
       <FooterSection />
     </div>
