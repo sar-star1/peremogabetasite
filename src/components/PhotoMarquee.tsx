@@ -14,15 +14,18 @@ interface PhotoMarqueeProps {
   className?: string;
 }
 
-const PhotoMarquee = ({ direction = "left", speed = 60 }: PhotoMarqueeProps) => {
+const PhotoMarquee = ({
+  direction = "left",
+  speed = 60,
+  className = "",
+}: PhotoMarqueeProps) => {
   const items = [...uploadedPhotos, ...uploadedPhotos];
-  const animation =
-    direction === "left" ? "marquee-left" : "marquee-right";
+  const animation = direction === "left" ? "marquee-left" : "marquee-right";
 
   return (
     <div
       aria-hidden="true"
-      className="relative w-full overflow-hidden bg-background py-4 md:py-6 border-y border-border"
+      className={`relative w-full overflow-hidden bg-background py-4 md:py-6 border-y border-border ${className}`}
     >
       <div
         className="flex gap-3 md:gap-5 w-max"
