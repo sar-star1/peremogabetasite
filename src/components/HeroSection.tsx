@@ -9,7 +9,7 @@ import strawberryPavlova from "@/assets/strawberry-pavlova.jpeg.asset.json";
 import strawberryEclair from "@/assets/strawberry-eclair.jpeg.asset.json";
 import strawberryCheesecake from "@/assets/strawberry-cheesecake.jpeg.asset.json";
 import { supabase } from "@/integrations/supabase/client";
-import HeroDecor from "@/components/HeroDecor";
+import HeroDecorStrip from "@/components/HeroDecor";
 
 type Corner = "nw" | "ne" | "sw" | "se";
 type Viewport = "mobile" | "tablet" | "desktop";
