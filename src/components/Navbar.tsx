@@ -76,7 +76,7 @@ const Navbar = () => {
                 key={item.href}
                 to={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-body text-xs uppercase tracking-[0.3em] text-foreground"
+                className="font-body text-xs uppercase tracking-[0.2em] px-5 py-2.5 rounded-full bg-foreground text-background text-center"
               >
                 {item.label}
               </Link>
