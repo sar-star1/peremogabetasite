@@ -2,88 +2,76 @@ import { motion } from "framer-motion";
 import { uploadedPhotos } from "@/assets/uploads";
 
 /**
- * 20 decorative photos in the hero, sized variably (tiny → as large as the
- * existing draggable hero photos) and positioned in the gaps between them.
+ * 20 decorative photos placed in two dedicated strips — one ABOVE and one
+ * BELOW the existing hero collage. By living in their own bands they cannot
+ * touch the PEREMOGA BAKERY wordmark (which sits inside the collage) nor any
+ * of the 7 existing draggable hero photos.
  *
- * The 7 existing draggable photos (default layout) occupy roughly:
- *   - top-left big block, top-center small, top-right block
- *   - mid-left block, mid-right block
- *   - bottom-center-left, bottom-center-right
- *
- * Gap zones used for decor:
- *   A. between top-left and top-center      (~28% .. 35% wide column)
- *   B. between top-center and top-right     (~50% .. 70% wide column)
- *   C. mid band between top + mid rows
- *   D. far-right vertical strip
- *   E. bottom-left strip + bottom-center slot + far-right bottom
- *
- * Each spot defines its own size per breakpoint (mobile / tablet / desktop)
- * via Tailwind arbitrary values so sizes vary widely.
+ * Sizes vary widely (small thumbs ↔ medium tiles) and scale per breakpoint.
  */
 
 type Spot = {
   /** 1-based index into uploadedPhotos. */
   i: number;
-  /** Position classes (percentage-based, per breakpoint). */
+  /** Absolute position within the strip (percentage of strip width / height). */
   pos: string;
-  /** Size classes per breakpoint, e.g. "w-[28px] h-[28px] md:w-[60px] md:h-[60px] lg:w-[120px] lg:h-[120px]". */
+  /** Square size, responsive. */
   size: string;
   rotate?: number;
 };
 
-// All percentages are relative to the hero collage box.
-// Sizes are tuned so some decor matches the scale of existing draggable photos.
-const spots: Spot[] = [
-  // ── Zone A: narrow top-center-left gap (~28-34% wide)
-  { i: 1,  pos: "top-[2%] left-[28%]",         size: "w-[26px] h-[26px] md:w-[60px] md:h-[60px] lg:w-[90px] lg:h-[90px]",   rotate: -6 },
-  { i: 2,  pos: "top-[18%] left-[26%]",        size: "w-[32px] h-[32px] md:w-[70px] md:h-[70px] lg:w-[120px] lg:h-[120px]", rotate: 5 },
-
-  // ── Zone B: wide top-center-right gap (~50-70%)
-  { i: 3,  pos: "top-[1%] left-[52%]",         size: "w-[40px] h-[40px] md:w-[90px] md:h-[90px] lg:w-[150px] lg:h-[150px]", rotate: 4 },
-  { i: 4,  pos: "top-[20%] left-[62%]",        size: "w-[28px] h-[28px] md:w-[60px] md:h-[60px] lg:w-[100px] lg:h-[100px]", rotate: -3 },
-  { i: 5,  pos: "top-[6%] left-[68%]",         size: "w-[22px] h-[22px] md:w-[50px] md:h-[50px] lg:w-[80px] lg:h-[80px]",   rotate: 8 },
-
-  // ── Zone C: mid band, beside / behind the wordmark
-  { i: 6,  pos: "top-[32%] left-[28%]",        size: "w-[44px] h-[44px] md:w-[110px] md:h-[110px] lg:w-[200px] lg:h-[200px]", rotate: -5 },
-  { i: 7,  pos: "top-[28%] left-[44%]",        size: "w-[20px] h-[20px] md:w-[44px] md:h-[44px] lg:w-[70px] lg:h-[70px]",   rotate: 3 },
-  { i: 8,  pos: "top-[36%] left-[58%]",        size: "w-[36px] h-[36px] md:w-[80px] md:h-[80px] lg:w-[140px] lg:h-[140px]", rotate: -7 },
-  { i: 9,  pos: "top-[26%] right-[6%]",        size: "w-[24px] h-[24px] md:w-[52px] md:h-[52px] lg:w-[90px] lg:h-[90px]",   rotate: 6 },
-
-  // ── Zone D: far-right strip between top-right and mid-right photos
-  { i: 10, pos: "top-[38%] right-[1%]",        size: "w-[18px] h-[18px] md:w-[40px] md:h-[40px] lg:w-[60px] lg:h-[60px]",   rotate: -4 },
-  { i: 11, pos: "top-[58%] right-[0%]",        size: "w-[26px] h-[26px] md:w-[60px] md:h-[60px] lg:w-[100px] lg:h-[100px]", rotate: 7 },
-
-  // ── Mid-left far edge between supreme and pavlova
-  { i: 12, pos: "top-[36%] left-[2%]",         size: "w-[20px] h-[20px] md:w-[44px] md:h-[44px] lg:w-[80px] lg:h-[80px]",   rotate: -5 },
-
-  // ── Zone E: lower band
-  { i: 13, pos: "top-[58%] left-[30%]",        size: "w-[34px] h-[34px] md:w-[80px] md:h-[80px] lg:w-[140px] lg:h-[140px]", rotate: 5 },
-  { i: 14, pos: "top-[62%] left-[46%]",        size: "w-[22px] h-[22px] md:w-[50px] md:h-[50px] lg:w-[80px] lg:h-[80px]",   rotate: -6 },
-  { i: 15, pos: "bottom-[2%] left-[14%]",      size: "w-[30px] h-[30px] md:w-[70px] md:h-[70px] lg:w-[110px] lg:h-[110px]", rotate: 4 },
-  { i: 16, pos: "bottom-[4%] left-[40%]",      size: "w-[26px] h-[26px] md:w-[60px] md:h-[60px] lg:w-[90px] lg:h-[90px]",   rotate: -8 },
-  { i: 17, pos: "bottom-[6%] right-[18%]",     size: "w-[42px] h-[42px] md:w-[100px] md:h-[100px] lg:w-[170px] lg:h-[170px]", rotate: 6 },
-  { i: 18, pos: "bottom-[0%] right-[2%]",      size: "w-[20px] h-[20px] md:w-[44px] md:h-[44px] lg:w-[70px] lg:h-[70px]",   rotate: -3 },
-
-  // ── Top corners small accents
-  { i: 19, pos: "top-[0%] left-[0%]",          size: "w-[18px] h-[18px] md:w-[36px] md:h-[36px] lg:w-[54px] lg:h-[54px]",   rotate: -10 },
-  { i: 20, pos: "top-[0%] right-[0%]",         size: "w-[18px] h-[18px] md:w-[36px] md:h-[36px] lg:w-[54px] lg:h-[54px]",   rotate: 10 },
+// 10 spots per strip, scattered horizontally with varied vertical offset.
+const topStrip: Spot[] = [
+  { i: 1,  pos: "left-[1%]  top-[10%]",  size: "w-7 h-7  md:w-12 md:h-12 lg:w-20 lg:h-20",   rotate: -8 },
+  { i: 2,  pos: "left-[11%] top-[50%]",  size: "w-9 h-9  md:w-16 md:h-16 lg:w-28 lg:h-28",   rotate: 5 },
+  { i: 3,  pos: "left-[21%] top-[5%]",   size: "w-8 h-8  md:w-14 md:h-14 lg:w-24 lg:h-24",   rotate: -4 },
+  { i: 4,  pos: "left-[30%] top-[45%]",  size: "w-7 h-7  md:w-12 md:h-12 lg:w-20 lg:h-20",   rotate: 7 },
+  { i: 5,  pos: "left-[39%] top-[0%]",   size: "w-10 h-10 md:w-20 md:h-20 lg:w-32 lg:h-32",  rotate: -3 },
+  { i: 6,  pos: "left-[51%] top-[45%]",  size: "w-8 h-8  md:w-14 md:h-14 lg:w-24 lg:h-24",   rotate: 6 },
+  { i: 7,  pos: "left-[61%] top-[10%]",  size: "w-9 h-9  md:w-16 md:h-16 lg:w-28 lg:h-28",   rotate: -5 },
+  { i: 8,  pos: "left-[72%] top-[50%]",  size: "w-7 h-7  md:w-12 md:h-12 lg:w-20 lg:h-20",   rotate: 4 },
+  { i: 9,  pos: "left-[82%] top-[20%]",  size: "w-10 h-10 md:w-18 md:h-18 lg:w-[120px] lg:h-[120px]", rotate: -7 },
+  { i: 10, pos: "right-[1%] top-[0%]",   size: "w-8 h-8  md:w-14 md:h-14 lg:w-24 lg:h-24",   rotate: 8 },
 ];
 
-const HeroDecor = () => {
+const bottomStrip: Spot[] = [
+  { i: 11, pos: "left-[1%]  top-[40%]",  size: "w-8 h-8  md:w-14 md:h-14 lg:w-24 lg:h-24",   rotate: 6 },
+  { i: 12, pos: "left-[11%] top-[5%]",   size: "w-10 h-10 md:w-18 md:h-18 lg:w-[120px] lg:h-[120px]", rotate: -6 },
+  { i: 13, pos: "left-[22%] top-[50%]",  size: "w-7 h-7  md:w-12 md:h-12 lg:w-20 lg:h-20",   rotate: 4 },
+  { i: 14, pos: "left-[31%] top-[10%]",  size: "w-9 h-9  md:w-16 md:h-16 lg:w-28 lg:h-28",   rotate: -7 },
+  { i: 15, pos: "left-[42%] top-[45%]",  size: "w-7 h-7  md:w-12 md:h-12 lg:w-20 lg:h-20",   rotate: 5 },
+  { i: 16, pos: "left-[51%] top-[0%]",   size: "w-10 h-10 md:w-20 md:h-20 lg:w-32 lg:h-32",  rotate: -3 },
+  { i: 17, pos: "left-[62%] top-[45%]",  size: "w-8 h-8  md:w-14 md:h-14 lg:w-24 lg:h-24",   rotate: 7 },
+  { i: 18, pos: "left-[72%] top-[10%]",  size: "w-9 h-9  md:w-16 md:h-16 lg:w-28 lg:h-28",   rotate: -4 },
+  { i: 19, pos: "left-[83%] top-[50%]",  size: "w-7 h-7  md:w-12 md:h-12 lg:w-20 lg:h-20",   rotate: 6 },
+  { i: 20, pos: "right-[1%] top-[15%]",  size: "w-10 h-10 md:w-18 md:h-18 lg:w-[110px] lg:h-[110px]", rotate: -8 },
+];
+
+interface HeroDecorStripProps {
+  variant: "top" | "bottom";
+}
+
+const HeroDecorStrip = ({ variant }: HeroDecorStripProps) => {
+  const spots = variant === "top" ? topStrip : bottomStrip;
   return (
-    <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0">
+    <div
+      aria-hidden="true"
+      className={`relative w-full h-16 md:h-28 lg:h-40 ${
+        variant === "top" ? "mb-6 md:mb-8 lg:mb-10" : "mt-6 md:mt-8 lg:mt-10"
+      }`}
+    >
       {spots.map((spot, idx) => {
         const photo = uploadedPhotos[spot.i - 1];
         if (!photo) return null;
         return (
           <motion.img
-            key={`hero-decor-${spot.i}`}
+            key={`hero-decor-${variant}-${spot.i}`}
             src={photo.url}
             alt=""
             loading="eager"
             initial={{ opacity: 0, scale: 0.85, rotate: spot.rotate ?? 0 }}
             animate={{ opacity: 1, scale: 1, rotate: spot.rotate ?? 0 }}
-            transition={{ duration: 0.6, delay: 0.4 + idx * 0.035, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 0.3 + idx * 0.04, ease: "easeOut" }}
             className={`absolute object-cover shadow-md ${spot.pos} ${spot.size}`}
           />
         );
@@ -92,4 +80,4 @@ const HeroDecor = () => {
   );
 };
 
-export default HeroDecor;
+export default HeroDecorStrip;
