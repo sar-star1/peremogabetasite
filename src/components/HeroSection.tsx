@@ -395,6 +395,10 @@ const HeroSection = () => {
           </div>
         </div>
 
+        <HeroDecorStrip variant="bottom" />
+
+
+
         {/* CTA buttons — placed below the floating-image collage so they never overlap */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
