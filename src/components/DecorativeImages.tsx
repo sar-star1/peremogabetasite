@@ -39,7 +39,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "top-2 right-2 w-14 h-14 " +
         "md:top-6 md:right-4 md:w-24 md:h-24 " +
-        "lg:top-10 lg:-right-6 lg:w-36 lg:h-36",
+        "lg:top-10 lg:right-6 lg:w-36 lg:h-36",
       rotate: -6,
     },
     {
@@ -47,14 +47,14 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "hidden md:block " +
         "md:bottom-4 md:left-4 md:w-20 md:h-20 " +
-        "lg:bottom-12 lg:-left-8 lg:w-32 lg:h-32",
+        "lg:bottom-12 lg:left-8 lg:w-32 lg:h-32",
       rotate: 8,
     },
     {
       i: 3,
       cls:
         "hidden lg:block " +
-        "lg:top-1/2 lg:-right-12 lg:w-24 lg:h-24",
+        "lg:top-1/2 lg:right-12 lg:w-24 lg:h-24",
       rotate: -3,
     },
   ],
@@ -65,7 +65,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "top-2 left-2 w-14 h-14 " +
         "md:top-8 md:left-2 md:w-20 md:h-20 " +
-        "lg:top-16 lg:-left-10 lg:w-32 lg:h-32",
+        "lg:top-16 lg:left-10 lg:w-32 lg:h-32",
       rotate: 5,
     },
     {
@@ -73,7 +73,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "hidden md:block " +
         "md:bottom-6 md:right-2 md:w-24 md:h-24 " +
-        "lg:bottom-16 lg:-right-12 lg:w-36 lg:h-36",
+        "lg:bottom-16 lg:right-12 lg:w-36 lg:h-36",
       rotate: -7,
     },
     {
@@ -90,7 +90,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "top-2 right-2 w-14 h-14 " +
         "md:top-6 md:right-4 md:w-20 md:h-20 " +
-        "lg:top-12 lg:-right-10 lg:w-32 lg:h-32",
+        "lg:top-12 lg:right-10 lg:w-32 lg:h-32",
       rotate: -5,
     },
     {
@@ -98,7 +98,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "hidden md:block " +
         "md:bottom-6 md:left-2 md:w-24 md:h-24 " +
-        "lg:bottom-12 lg:-left-12 lg:w-36 lg:h-36",
+        "lg:bottom-12 lg:left-12 lg:w-36 lg:h-36",
       rotate: 6,
     },
     {
@@ -114,7 +114,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "top-2 left-2 w-14 h-14 " +
         "md:top-8 md:left-4 md:w-20 md:h-20 " +
-        "lg:top-16 lg:-left-12 lg:w-32 lg:h-32",
+        "lg:top-16 lg:left-12 lg:w-32 lg:h-32",
       rotate: -8,
     },
     {
@@ -122,7 +122,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "hidden md:block " +
         "md:bottom-4 md:right-2 md:w-20 md:h-20 " +
-        "lg:bottom-10 lg:-right-10 lg:w-32 lg:h-32",
+        "lg:bottom-10 lg:right-10 lg:w-32 lg:h-32",
       rotate: 6,
     },
     {
@@ -138,7 +138,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "top-2 right-2 w-14 h-14 " +
         "md:top-8 md:right-4 md:w-24 md:h-24 " +
-        "lg:top-16 lg:-right-12 lg:w-32 lg:h-32",
+        "lg:top-16 lg:right-12 lg:w-32 lg:h-32",
       rotate: 7,
     },
     {
@@ -146,7 +146,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "hidden md:block " +
         "md:bottom-6 md:left-4 md:w-20 md:h-20 " +
-        "lg:bottom-12 lg:-left-12 lg:w-28 lg:h-28",
+        "lg:bottom-12 lg:left-12 lg:w-28 lg:h-28",
       rotate: -5,
     },
   ],
@@ -157,7 +157,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "top-2 left-2 w-12 h-12 " +
         "md:top-8 md:left-2 md:w-20 md:h-20 " +
-        "lg:top-16 lg:-left-12 lg:w-32 lg:h-32",
+        "lg:top-16 lg:left-12 lg:w-32 lg:h-32",
       rotate: -6,
     },
     {
@@ -165,7 +165,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "hidden md:block " +
         "md:bottom-8 md:right-2 md:w-20 md:h-20 " +
-        "lg:bottom-16 lg:-right-12 lg:w-32 lg:h-32",
+        "lg:bottom-16 lg:right-12 lg:w-32 lg:h-32",
       rotate: 5,
     },
   ],
@@ -195,7 +195,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "top-2 right-2 w-12 h-12 " +
         "md:top-8 md:right-4 md:w-20 md:h-20 " +
-        "lg:top-16 lg:-right-10 lg:w-32 lg:h-32",
+        "lg:top-16 lg:right-10 lg:w-32 lg:h-32",
       rotate: -7,
     },
     {
@@ -203,7 +203,7 @@ const layouts: Record<Variant, Spot[]> = {
       cls:
         "hidden md:block " +
         "md:bottom-6 md:left-4 md:w-20 md:h-20 " +
-        "lg:bottom-12 lg:-left-10 lg:w-32 lg:h-32",
+        "lg:bottom-12 lg:left-10 lg:w-32 lg:h-32",
       rotate: 5,
     },
   ],
