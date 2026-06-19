@@ -406,19 +406,19 @@ const HeroSection = () => {
           className="fixed bottom-5 md:bottom-6 left-0 right-0 z-40 flex items-center justify-center pointer-events-none"
         >
           <div className="pointer-events-auto flex flex-wrap items-center justify-center gap-3 md:gap-4 bg-background/80 backdrop-blur-md border border-border rounded-full px-4 py-3 md:px-6 md:py-3.5 shadow-lg">
-            {[
-              { to: "/clients", label: "АВТОРСЬКІ ВИРОБИ" },
-              { to: "/b2b", label: "HORECA (B2B)" },
-              { to: "/standard-line", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА" },
-            ].map((cta) => (
-              <Link
-                key={cta.to}
-                to={cta.to}
-                className="font-body text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-foreground bg-foreground text-background rounded-full px-5 py-2.5 md:px-6 md:py-3 hover:bg-foreground/85 transition-colors duration-200"
-              >
-                {cta.label}
-              </Link>
-            ))}
+          {[
+            { to: "/clients", label: "АВТОРСЬКІ ВИРОБИ" },
+            { to: "/b2b", label: "HORECA (B2B)" },
+            { to: "/standard-line", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА" },
+          ].map((cta) => (
+            <Link
+              key={cta.to}
+              to={cta.to}
+              className="font-body text-[10px] md:text-[11px] uppercase tracking-[0.25em] text-white bg-foreground rounded-full px-5 py-2.5 md:px-6 md:py-3 hover:bg-foreground/85 transition-colors duration-200"
+            >
+              {cta.label}
+            </Link>
+          ))}
           </div>
         </motion.div>
       </div>
