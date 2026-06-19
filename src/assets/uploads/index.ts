@@ -8,6 +8,16 @@ import upload007 from "./upload-007.png.asset.json";
 import upload008 from "./upload-008.png.asset.json";
 import upload009 from "./upload-009.png.asset.json";
 import upload010 from "./upload-010.png.asset.json";
+import upload011 from "./upload-011.png.asset.json";
+import upload012 from "./upload-012.png.asset.json";
+import upload013 from "./upload-013.png.asset.json";
+import upload014 from "./upload-014.png.asset.json";
+import upload015 from "./upload-015.png.asset.json";
+import upload016 from "./upload-016.png.asset.json";
+import upload017 from "./upload-017.png.asset.json";
+import upload018 from "./upload-018.png.asset.json";
+import upload019 from "./upload-019.png.asset.json";
+import upload020 from "./upload-020.png.asset.json";
 
 export const uploadedPhotos = [
   { id: "upload-001", filename: "1.png", asset: upload001, url: upload001.url },
@@ -20,6 +30,16 @@ export const uploadedPhotos = [
   { id: "upload-008", filename: "8.png", asset: upload008, url: upload008.url },
   { id: "upload-009", filename: "9.png", asset: upload009, url: upload009.url },
   { id: "upload-010", filename: "10.png", asset: upload010, url: upload010.url },
+  { id: "upload-011", filename: "11.png", asset: upload011, url: upload011.url },
+  { id: "upload-012", filename: "12.png", asset: upload012, url: upload012.url },
+  { id: "upload-013", filename: "13.png", asset: upload013, url: upload013.url },
+  { id: "upload-014", filename: "14.png", asset: upload014, url: upload014.url },
+  { id: "upload-015", filename: "15.png", asset: upload015, url: upload015.url },
+  { id: "upload-016", filename: "16.png", asset: upload016, url: upload016.url },
+  { id: "upload-017", filename: "17.png", asset: upload017, url: upload017.url },
+  { id: "upload-018", filename: "18.png", asset: upload018, url: upload018.url },
+  { id: "upload-019", filename: "19.png", asset: upload019, url: upload019.url },
+  { id: "upload-020", filename: "20.png", asset: upload020, url: upload020.url },
 ] as const;
 
 export type UploadedPhoto = (typeof uploadedPhotos)[number];
