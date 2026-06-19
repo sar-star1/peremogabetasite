@@ -39,7 +39,7 @@ const PhotoMarquee = ({
             src={photo.url}
             alt=""
             loading="lazy"
-            className="h-20 w-20 md:h-28 md:w-28 lg:h-36 lg:w-36 object-cover flex-shrink-0 shadow-sm"
+            className="h-20 w-20 md:h-28 md:w-28 lg:h-36 lg:w-36 object-cover flex-shrink-0 shadow-sm rounded-full"
           />
         ))}
       </div>
