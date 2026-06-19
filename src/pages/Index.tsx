@@ -18,7 +18,6 @@ const Index = () => {
     <div className="min-h-screen">
       <Navbar />
       <main>
-        <PhotoMarquee direction="left" speed={70} className="mt-20 md:mt-24" />
         <HeroSection />
 
         <CategoryTiles
