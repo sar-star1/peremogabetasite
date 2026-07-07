@@ -53,7 +53,7 @@ type Product = {
   short: string;
   weight: string;
   image: string;
-  icon: typeof Sandwich;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: number }>;
   tags: string[];
   formats?: string[];
   uses: string[];
