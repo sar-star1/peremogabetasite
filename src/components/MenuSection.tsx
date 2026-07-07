@@ -115,14 +115,31 @@ const MenuSection = () => {
                     />
                   </div>
                   {/* Variation placeholders — same full size */}
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
-                    >
-                      Photo {i + 1}
-                    </div>
-                  ))}
+                  {[1, 2, 3].map((i) => {
+                    const photoNum = i + 1;
+                    if (photoNum === 2) {
+                      return (
+                        <div
+                          key={i}
+                          className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
+                        >
+                          <img
+                            src={photo2Asset.url}
+                            alt={`${selectedItem.name} — фото ${photoNum}`}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      );
+                    }
+                    return (
+                      <div
+                        key={i}
+                        className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center text-[9px] uppercase tracking-[0.2em] text-muted-foreground/60 font-body ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
+                      >
+                        Photo {photoNum}
+                      </div>
+                    );
+                  })}
                 </div>
                 {/* Scroll indicator dots */}
                 <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
