@@ -388,7 +388,16 @@ const HeroSection = () => {
               transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
               className="font-display-black text-[#A4B8CC] leading-[0.85] text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[10rem] xl:text-[12rem]"
             >
-              <span className="block">PEREMOGA</span>
+              <span className="block">
+                PERE
+                <img
+                  src={mAsset.url}
+                  alt=""
+                  className="inline-block h-[1.1em] w-auto align-baseline mx-[0.01em]"
+                  style={{ aspectRatio: "609/911" }}
+                />
+                OGA
+              </span>
               <span className="block">BAKERY</span>
             </motion.h1>
           </div>
