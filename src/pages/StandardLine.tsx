@@ -16,6 +16,23 @@ import {
   Plus,
   Minus,
 } from "lucide-react";
+
+const BaguetteIcon = ({ className, strokeWidth = 1.5 }: { className?: string; strokeWidth?: number }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={strokeWidth}
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M4 18c1.5-3 3-7 4.5-9s3.5-3 5-2.5 3 3 4 5.5 2 6.5 2.5 8.5" />
+    <path d="M4.5 16.5c1.5-2.5 3-6 4.5-8s3.5-2.5 5-2 3 2.5 4 5 2 6 2.5 8" />
+    <path d="M5 15c1.5-2 3-5 4.5-7s3.5-2 5-1.5 3 2 4 4.5 2 5.5 2.5 7.5" />
+    <path d="M6 13.5c1.5-1.5 3-4 4.5-6s3.5-1.5 5-1 3 1.5 4 4 2 5 2.5 7" />
+  </svg>
+);
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/FooterSection";
 import CategoryTiles from "@/components/CategoryTiles";
@@ -36,7 +53,7 @@ type Product = {
   short: string;
   weight: string;
   image: string;
-  icon: typeof Sandwich;
+  icon: React.ComponentType<{ className?: string; strokeWidth?: string | number }>;
   tags: string[];
   formats?: string[];
   uses: string[];
@@ -108,7 +125,7 @@ const products: Product[] = [
     short: "Хрустка скоринка, еластична м'якушка.",
     weight: "150 г",
     image: baguetteAsset.url,
-    icon: Sandwich,
+    icon: BaguetteIcon,
     tags: ["Цілий", "Під сендвіч"],
     formats: ["Цілий — для власної нарізки", "З надрізами — швидка подача"],
     uses: ["Сендвічі", "Брускети", "Хлібна корзина"],
