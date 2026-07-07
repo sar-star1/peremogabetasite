@@ -125,7 +125,7 @@ const products: Product[] = [
     short: "Хрустка скоринка, еластична м'якушка.",
     weight: "150 г",
     image: baguetteAsset.url,
-    icon: Sandwich,
+    icon: BaguetteIcon,
     tags: ["Цілий", "Під сендвіч"],
     formats: ["Цілий — для власної нарізки", "З надрізами — швидка подача"],
     uses: ["Сендвічі", "Брускети", "Хлібна корзина"],
