@@ -145,7 +145,23 @@ const products: Product[] = [
     short: "Рівномірна пористість, м'яка еластична м'якушка.",
     weight: "—",
     image: toastAsset.url,
-    icon: Coffee,
+    icon: ({ className, strokeWidth = 1.5 }: { className?: string; strokeWidth?: number }) => (
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className={className}
+      >
+        <path d="M4 16c0-3 2.5-6 5-6h6c2.5 0 5 3 5 6v3c0 .55-.45 1-1 1H5c-.55 0-1-.45-1-1z" />
+        <path d="M6 10V8c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2v2" />
+        <path d="M9 17v2" />
+        <path d="M12 17v2" />
+        <path d="M15 17v2" />
+      </svg>
+    ),
     tags: ["Нарізний", "Цілий"],
     formats: ["Нарізний — рівні скибки", "Цілий — під власний формат"],
     uses: ["Тости", "Сендвічі", "Сніданки", "Takeaway"],
