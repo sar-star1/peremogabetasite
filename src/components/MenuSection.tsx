@@ -119,6 +119,23 @@ const MenuSection = () => {
                   {/* Variation placeholders — same full size */}
                   {[1, 2, 3].map((i) => {
                     const photoNum = i + 1;
+                    if (photoNum === 4) {
+                      return (
+                        <div
+                          key={i}
+                          className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
+                        >
+                          <video
+                            src={photo4Asset.url}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      );
+                    }
                     if (photoNum === 2 || photoNum === 3) {
                       const src = photoNum === 2 ? photo2Asset.url : photo3Asset.url;
                       return (
