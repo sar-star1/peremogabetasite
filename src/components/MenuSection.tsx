@@ -4,6 +4,7 @@ import { menuCategories } from "@/data/menuData";
 import type { MenuItem } from "@/data/menuData";
 import photo2Asset from "@/assets/photo-2.png.asset.json";
 import photo3Asset from "@/assets/photo-3.png.asset.json";
+import photo4Asset from "@/assets/photo-4.mp4.asset.json";
 import {
   Dialog,
   DialogContent,
