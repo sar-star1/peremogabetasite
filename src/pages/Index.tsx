@@ -19,6 +19,7 @@ const Index = () => {
       <Navbar />
       <main>
         <HeroSection />
+        <PhotoMarquee direction="right" speed={70} />
 
         <CategoryTiles
           eyebrow="ВАШ НАПРЯМОК"
