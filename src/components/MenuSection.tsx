@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuCategories } from "@/data/menuData";
 import type { MenuItem } from "@/data/menuData";
+import photo2Asset from "@/assets/photo-2.png.asset.json";
 import {
   Dialog,
   DialogContent,
