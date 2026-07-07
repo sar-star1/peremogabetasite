@@ -202,7 +202,7 @@ const StandardLine = () => {
       <main className="pt-24 text-primary">
         {/* Hero */}
         <section className="relative overflow-hidden bg-accent-blue-soft">
-          <div className="container mx-auto px-6 py-16 md:py-24">
+          <div className="container mx-auto px-6 pt-6 pb-16 md:pt-8 md:pb-24">
             <Link
               to="/"
               className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-12 font-light"
