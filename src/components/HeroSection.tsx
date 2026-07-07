@@ -391,7 +391,7 @@ const HeroSection = () => {
               <span className="block">
                 PERE
                 <img
-                  src={mAsset.url}
+                  src="/peremoga-m.png"
                   alt=""
                   className="inline-block h-[1.1em] w-auto align-baseline mx-[0.01em]"
                   style={{ aspectRatio: "609/911" }}
