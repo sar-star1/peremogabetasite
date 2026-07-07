@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { menuCategories } from "@/data/menuData";
 import type { MenuItem } from "@/data/menuData";
 import photo2Asset from "@/assets/photo-2.png.asset.json";
+import photo3Asset from "@/assets/photo-3.png.asset.json";
 import {
   Dialog,
   DialogContent,
@@ -117,14 +118,15 @@ const MenuSection = () => {
                   {/* Variation placeholders — same full size */}
                   {[1, 2, 3].map((i) => {
                     const photoNum = i + 1;
-                    if (photoNum === 2) {
+                    if (photoNum === 2 || photoNum === 3) {
+                      const src = photoNum === 2 ? photo2Asset.url : photo3Asset.url;
                       return (
                         <div
                           key={i}
                           className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
                         >
                           <img
-                            src={photo2Asset.url}
+                            src={src}
                             alt={`${selectedItem.name} — фото ${photoNum}`}
                             className="w-full h-full object-contain"
                           />
