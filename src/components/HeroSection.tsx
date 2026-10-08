@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import heroBg from "@/assets/hero-bg.jpg";
+import { c } from "@/content";
 
 // Editorial hero — Dominique Ansel inspired.
 // Full-bleed background photo, huge wordmark centered, sticky CTA bar below.
@@ -10,9 +10,9 @@ const HeroSection = () => {
       className="relative bg-background min-h-[100svh] md:min-h-screen flex items-center justify-center pt-24 pb-28 md:pt-28 md:pb-32 overflow-hidden"
       role="banner"
     >
-      {/* Background photo — replace src/assets/hero-bg.jpg with the real shot later. */}
+      {/* Background photo — editable from the dashboard (home.hero.image). */}
       <img
-        src={heroBg}
+        src={c("home.hero.image")}
         alt="Свіжа випічка та десерти пекарні Перемога на світлому столі"
         className="absolute inset-0 h-full w-full object-cover select-none"
         draggable={false}
@@ -33,7 +33,7 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="font-body text-[10px] md:text-xs uppercase tracking-[0.4em] text-foreground/70 mb-4"
           >
-            KYIV · 2021
+            {c("home.hero.eyebrow")}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 16 }}
@@ -41,8 +41,8 @@ const HeroSection = () => {
             transition={{ duration: 0.9, delay: 0.5, ease: "easeOut" }}
             className="font-display-black text-foreground leading-[0.85] text-[18vw] sm:text-[14vw] md:text-[11vw] lg:text-[10rem] xl:text-[12rem]"
           >
-            <span className="block">PEREMOGA</span>
-            <span className="block">BAKERY</span>
+            <span className="block">{c("home.hero.title1")}</span>
+            <span className="block">{c("home.hero.title2")}</span>
           </motion.h1>
         </div>
 
@@ -55,9 +55,9 @@ const HeroSection = () => {
         >
           <div className="pointer-events-auto flex flex-wrap items-center justify-center gap-3 md:gap-4 bg-background/80 backdrop-blur-md border border-border rounded-full px-4 py-3 md:px-6 md:py-3.5 shadow-lg">
             {[
-              { to: "/clients", label: "АВТОРСЬКІ ВИРОБИ" },
-              { to: "/b2b", label: "HORECA (B2B)" },
-              { to: "/standard-line", label: "СТАНДАРТИЗОВАНА ЛІНІЙКА" },
+              { to: "/clients", label: c("home.hero.cta1") },
+              { to: "/b2b", label: c("home.hero.cta2") },
+              { to: "/standard-line", label: c("home.hero.cta3") },
             ].map((cta) => (
               <Link
                 key={cta.to}

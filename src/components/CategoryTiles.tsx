@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
-import breadSliced from "@/assets/bread-sliced.webp";
-import breadBasket from "@/assets/bread-basket.webp";
+import { c } from "@/content";
 
 type Tile = {
   to: string;
@@ -15,23 +13,23 @@ type Tile = {
 const defaultTiles: Tile[] = [
   {
     to: "/b2b",
-    eyebrow: "ДЛЯ ПАРТНЕРСТВА",
-    title: "HORECA (B2B) ",
-    image: b2bSupreme,
+    eyebrow: c("home.tiles.1.eyebrow"),
+    title: c("home.tiles.1.title"),
+    image: c("home.tiles.1.image"),
     alt: "Авторська випічка Supreme для кав'ярень та ресторанів",
   },
   {
     to: "/clients",
-    eyebrow: "АВТОРСЬКІ ВИРОБИ",
-    title: "МЕНЮ ",
-    image: breadSliced,
+    eyebrow: c("home.tiles.2.eyebrow"),
+    title: c("home.tiles.2.title"),
+    image: c("home.tiles.2.image"),
     alt: "Свіжий крафтовий хліб у пекарні Перемога, Київ",
   },
   {
     to: "/standard-line",
-    eyebrow: "МАСОВИЙ РИНОК",
-    title: "СТАНДАРТИЗОВАНА ЛІНІЙКА ",
-    image: breadBasket,
+    eyebrow: c("home.tiles.3.eyebrow"),
+    title: c("home.tiles.3.title"),
+    image: c("home.tiles.3.image"),
     alt: "Стандартизована лінійка випічки пекарні Перемога",
   },
 ];
@@ -101,7 +99,7 @@ const CategoryTiles = ({
                   {tile.title}
                 </h3>
                 <span className="inline-block mt-4 font-body text-[11px] uppercase tracking-[0.3em] text-foreground border-b border-foreground pb-1">
-                  Дізнатись більше
+                  {c("home.tiles.more")}
                 </span>
               </Link>
             </motion.div>

@@ -1,23 +1,12 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
+import { c } from "@/content";
 
-const reviews = [
-  {
-    name: "Тетяна Нікітішина",
-    text: "Щодня ходжу в цю кав'ярню з дочкою, нам дуже подобається😍 Випічка завжди дуже свіжа і кава дуже смачна!! Бариста дуже мила та привітна) В кав'ярні приємна атмосфера, гарні декорації, дуже тепло та затишно. Раджу всім!!",
-    rating: 5,
-  },
-  {
-    name: "Мария Ходзицкая",
-    text: "Це місце, де завжди зустрічають з посмішкою на обличчі, запропонують найсмачнішу випічку, та ароматну каву. Я таких еклерів більше ніде не куштувала — ніжнюсінькі, дуже-дуже смачні! А ще, рекомендую скуштувати хлібчик!",
-    rating: 5,
-  },
-  {
-    name: "Aeris",
-    text: "Атмосфера дуже затишна, а кава завжди смачна та ароматна. Бариста Каріна — просто чудова, завжди привітна і допоможе обрати ідеальний напій. Місце ідеально підходить як для швидкої кави, так і для неспішного відпочинку.",
-    rating: 5,
-  },
-];
+const reviews = [1, 2, 3].map((n) => ({
+  name: c(`home.reviews.${n}.name`),
+  text: c(`home.reviews.${n}.text`),
+  rating: 5,
+}));
 
 const Stars = ({ count }: { count: number }) => (
   <div className="flex gap-0.5">
@@ -38,10 +27,10 @@ const ReviewsSection = () => {
           className="text-center mb-12 max-w-3xl mx-auto"
         >
           <span className="font-body text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
-            Успіх наших гостей
+            {c("home.reviews.eyebrow")}
           </span>
           <h2 className="font-display-black text-foreground text-4xl md:text-6xl lg:text-7xl uppercase mt-4 leading-[0.9]">
-            Вони вже обрали
+            {c("home.reviews.heading")}
           </h2>
         </motion.div>
 

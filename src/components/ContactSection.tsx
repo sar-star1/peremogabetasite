@@ -1,30 +1,31 @@
 import { motion } from "framer-motion";
 import { MapPin, Clock, Mail, Phone } from "lucide-react";
+import { c } from "@/content";
 
 const schedule = [
-  { day: "Понеділок — Субота", hours: "08:00 — 20:00" },
-  { day: "Неділя", hours: "Вихідний" },
+  { day: c("contact.days1"), hours: c("contact.hours1") },
+  { day: c("contact.days2"), hours: c("contact.hours2") },
 ];
 
 const items = [
   {
     icon: MapPin,
     title: "Адреса",
-    value: "вулиця Григоровича-Барського, 1, Київ",
+    value: c("contact.address"),
     href: "https://maps.app.goo.gl/QyoiGuZsLpDQeFmB9",
     external: true,
   },
   {
     icon: Phone,
     title: "Телефон",
-    value: "+38 (093) 526-38-25",
-    href: "tel:+380935263825",
+    value: c("contact.phone"),
+    href: `tel:+${c("contact.phone").replace(/\D/g, "")}`,
   },
   {
     icon: Mail,
     title: "Email",
-    value: "peremogabakery@gmail.com",
-    href: "mailto:peremogabakery@gmail.com",
+    value: c("contact.email"),
+    href: `mailto:${c("contact.email")}`,
   },
 ];
 
@@ -39,10 +40,10 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <span className="font-body text-[11px] uppercase tracking-[0.4em] text-muted-foreground">
-            Зробіть перший крок
+            {c("contact.eyebrow")}
           </span>
           <h2 className="font-display-black text-foreground text-4xl md:text-6xl lg:text-7xl uppercase mt-4 leading-[0.9]">
-            Visit us
+            {c("contact.heading")}
           </h2>
         </motion.div>
 
