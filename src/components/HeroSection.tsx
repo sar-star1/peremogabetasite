@@ -25,8 +25,8 @@ const HeroSection = () => {
       {/* Bottom fade into the next section. */}
       <div className="absolute inset-x-0 bottom-0 h-40 bg-hero-overlay" aria-hidden="true" />
 
-      <div className="container relative mx-auto px-6">
-        <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[560px] md:min-h-[680px] lg:min-h-[760px] pointer-events-none">
+      <div className="container relative mx-auto w-full px-6">
+        <div className="relative z-10 flex flex-col items-center justify-center text-center pointer-events-none">
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
