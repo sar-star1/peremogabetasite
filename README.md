@@ -1,27 +1,22 @@
-# Peremoga Bakery
+# Peremoga Bakery — public website
 
-I am sending you an instagram page, as well as the website of the bakery in Ukraine.
-From the website take all the information, menu, contacts, pictures, colors and logos.
+The bakery's public site (peremogabakery.com.ua). React + Vite + Tailwind, hosted on Vercel.
 
-This project was built with [Lovable](https://lovable.dev).
+## Run locally
 
-**Live app**: https://peremogabetasite.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/88ad7ab8-8ff3-449c-b1da-5cddf61b034f).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+```bash
+npm install
 npm run dev
 ```
+
+Opens on http://localhost:8080.
+
+## Deploy
+
+Vercel builds every push. `main` is the live site; any other branch gets its own preview URL.
+
+`vercel.json` sends every non-asset path to `index.html` so routes like `/b2b` load directly.
+
+## Images
+
+All photos and videos live in `src/assets` (and `public/assets`) and are bundled with the site.
