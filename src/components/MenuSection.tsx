@@ -2,9 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuCategories } from "@/data/menuData";
 import type { MenuItem } from "@/data/menuData";
-import photo2Asset from "@/assets/photo-2.png.asset.json";
-import photo3Asset from "@/assets/photo-3.png.asset.json";
-import photo4Asset from "@/assets/photo-4.mp4.asset.json";
+import photo2Asset from "@/assets/photo-2.png";
+import photo3Asset from "@/assets/photo-3.png";
+import photo4Asset from "@/assets/photo-4.mp4";
 import {
   Dialog,
   DialogContent,
@@ -126,7 +126,7 @@ const MenuSection = () => {
                           className={`w-full aspect-square flex-shrink-0 snap-start flex items-center justify-center p-4 ${BLEND_IMAGES ? "product-image-blend" : "bg-secondary"}`}
                         >
                           <video
-                            src={photo4Asset.url}
+                            src={photo4Asset}
                             autoPlay
                             loop
                             muted
@@ -137,7 +137,7 @@ const MenuSection = () => {
                       );
                     }
                     if (photoNum === 2 || photoNum === 3) {
-                      const src = photoNum === 2 ? photo2Asset.url : photo3Asset.url;
+                      const src = photoNum === 2 ? photo2Asset : photo3Asset;
                       return (
                         <div
                           key={i}

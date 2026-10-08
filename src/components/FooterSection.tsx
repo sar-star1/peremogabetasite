@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { c } from "@/content";
 
 const FooterSection = () => {
   return (
@@ -12,7 +13,7 @@ const FooterSection = () => {
             BAKERY
           </span>
           <p className="text-[11px] font-body uppercase tracking-[0.4em] text-background/50 mt-3 mb-10">
-            Kyiv · з 2021
+            {c("footer.tagline")}
           </p>
 
           <div className="flex items-center gap-8 mb-10">

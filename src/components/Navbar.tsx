@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import peremogaLogo from "@/assets/peremoga-logo.jpg";
+import { c } from "@/content";
 
 const bakeryInfo = [
-  { label: "Адреса", value: "вул. Григоровича-Барського, 1, Київ" },
-  { label: "Графік", value: "Пн — Сб · 08:00 — 20:00" },
+  { label: "Адреса", value: c("nav.address") },
+  { label: "Графік", value: c("nav.hours") },
 ];
 
 const Navbar = () => {

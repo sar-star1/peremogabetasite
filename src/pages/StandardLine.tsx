@@ -40,12 +40,12 @@ import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import breadSliced from "@/assets/bread-sliced.webp";
 
-import heroAsset from "@/assets/baseline-hero.jpg.asset.json";
-import branAsset from "@/assets/baseline-bran-bread.jpg.asset.json";
-import burgerAsset from "@/assets/baseline-burger.jpg.asset.json";
-import paniniAsset from "@/assets/baseline-panini.jpg.asset.json";
-import baguetteAsset from "@/assets/baseline-baguette.jpg.asset.json";
-import toastAsset from "@/assets/baseline-toast.jpg.asset.json";
+import heroAsset from "@/assets/baseline-hero.jpg";
+import branAsset from "@/assets/baseline-bran-bread.jpg";
+import burgerAsset from "@/assets/baseline-burger.jpg";
+import paniniAsset from "@/assets/baseline-panini.jpg";
+import baguetteAsset from "@/assets/baseline-baguette.jpg";
+import toastAsset from "@/assets/baseline-toast.jpg";
 
 type Product = {
   id: string;
@@ -69,7 +69,7 @@ const products: Product[] = [
     name: "Хліб з висівками",
     short: "Щільна м'якушка, тримає форму, не кришиться.",
     weight: "500 г",
-    image: branAsset.url,
+    image: branAsset,
     icon: Wheat,
     tags: ["Нарізний", "Цілий"],
     formats: ["Нарізний — рівні скибки", "Цілий — під власну нарізку"],
@@ -85,7 +85,7 @@ const products: Product[] = [
     name: "Булочка для бургерів",
     short: "Тримає начинку та соуси, не розмокає.",
     weight: "80 г",
-    image: burgerAsset.url,
+    image: burgerAsset,
     icon: Beef,
     tags: ["З кунжутом"],
     uses: ["Класичні бургери", "Авторські бургери", "Takeaway"],
@@ -105,7 +105,7 @@ const products: Product[] = [
     name: "Паніні",
     short: "Не деформується при пресуванні на грилі.",
     weight: "120 г",
-    image: paniniAsset.url,
+    image: paniniAsset,
     icon: Flame,
     uses: ["Класичні паніні", "Гарячі сендвічі", "Доставка"],
     perks: [
@@ -124,7 +124,7 @@ const products: Product[] = [
     name: "Багет",
     short: "Хрустка скоринка, еластична м'якушка.",
     weight: "150 г",
-    image: baguetteAsset.url,
+    image: baguetteAsset,
     icon: BaguetteIcon,
     tags: ["Цілий", "Під сендвіч"],
     formats: ["Цілий — для власної нарізки", "З надрізами — швидка подача"],
@@ -144,7 +144,7 @@ const products: Product[] = [
     name: "Тостовий хліб",
     short: "Рівномірна пористість, м'яка еластична м'якушка.",
     weight: "—",
-    image: toastAsset.url,
+    image: toastAsset,
     icon: ({ className, strokeWidth = 1.5 }: { className?: string; strokeWidth?: number }) => (
       <svg
         viewBox="0 0 24 24"
@@ -240,7 +240,7 @@ const StandardLine = () => {
                   aria-hidden="true"
                 />
                 <img
-                  src={heroAsset.url}
+                  src={heroAsset}
                   alt="Базова лінійка пекарні Перемога"
                   className="relative w-full aspect-[4/5] object-cover"
                 />

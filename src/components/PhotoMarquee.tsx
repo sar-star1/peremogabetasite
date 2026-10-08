@@ -1,7 +1,7 @@
 import { uploadedPhotos } from "@/assets/uploads";
 
 /**
- * Infinite horizontal marquee showing all 20 uploaded product photos.
+ * Infinite horizontal marquee showing the uploaded product photos (320px WebP).
  * Duplicates the list once and animates -50% to loop seamlessly.
  */
 
@@ -38,7 +38,9 @@ const PhotoMarquee = ({
             key={`${photo.id}-${idx}`}
             src={photo.url}
             alt=""
-            loading="lazy"
+            width={320}
+            height={320}
+            decoding="async"
             className="h-20 w-20 md:h-28 md:w-28 lg:h-36 lg:w-36 object-cover flex-shrink-0 shadow-sm rounded-full"
           />
         ))}
