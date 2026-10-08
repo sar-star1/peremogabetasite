@@ -7,7 +7,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 const HeroSection = () => {
   return (
     <header
-      className="relative bg-background pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
+      className="relative bg-background min-h-[100svh] md:min-h-screen flex items-center justify-center pt-24 pb-28 md:pt-28 md:pb-32 overflow-hidden"
       role="banner"
     >
       {/* Background photo — replace src/assets/hero-bg.jpg with the real shot later. */}
