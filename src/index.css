@@ -122,6 +122,18 @@
       hsla(0, 0%, 100%, 0.6) 100%);
   }
 
+  /* Cream scrim behind the hero wordmark so text stays readable over the photo */
+  .bg-hero-scrim {
+    background:
+      radial-gradient(ellipse 70% 55% at 50% 46%,
+        hsl(var(--background) / 0.85) 0%,
+        hsl(var(--background) / 0.5) 45%,
+        hsl(var(--background) / 0) 78%),
+      linear-gradient(180deg,
+        hsl(var(--background) / 0.55) 0%,
+        hsl(var(--background) / 0) 28%);
+  }
+
   .bg-warm-gradient {
     @apply bg-background;
   }
