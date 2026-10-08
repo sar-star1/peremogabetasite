@@ -1,4 +1,4 @@
-
+import { Link } from "react-router-dom";
 
 const FooterSection = () => {
   return (
@@ -32,6 +32,27 @@ const FooterSection = () => {
             >
               Maps
             </a>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 mb-10">
+            <Link
+              to="/privacy"
+              className="text-background/70 hover:text-background transition-colors text-[11px] font-body uppercase tracking-[0.3em]"
+            >
+              Конфіденційність
+            </Link>
+            <Link
+              to="/terms"
+              className="text-background/70 hover:text-background transition-colors text-[11px] font-body uppercase tracking-[0.3em]"
+            >
+              Умови використання
+            </Link>
+            <Link
+              to="/cookies"
+              className="text-background/70 hover:text-background transition-colors text-[11px] font-body uppercase tracking-[0.3em]"
+            >
+              Cookie
+            </Link>
           </div>
 
           <div className="h-px w-16 bg-background/20 mb-6" />
