@@ -269,6 +269,17 @@ const B2B = () => {
               >
                 Надіслати запит
               </button>
+              <p className="mt-4 font-body text-xs text-muted-foreground font-light leading-relaxed">
+                Надсилаючи форму, ви погоджуєтеся з нашою{" "}
+                <Link to="/privacy" className="underline underline-offset-2 hover:text-foreground transition-colors">
+                  Політикою конфіденційності
+                </Link>{" "}
+                та{" "}
+                <Link to="/cookies" className="underline underline-offset-2 hover:text-foreground transition-colors">
+                  Політикою щодо cookie
+                </Link>
+                .
+              </p>
             </motion.form>
           </div>
         </section>
