@@ -1,6 +1,6 @@
 # Peremoga Bakery — public website
 
-The bakery's public site (peremogabakery.com.ua). React + Vite + Tailwind, hosted on Vercel.
+The bakery's public site (www.peremogabakery.com). React + Vite + Tailwind, hosted on Vercel.
 
 ## Run locally
 

@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://peremogabakery.com.ua/sitemap.xml
+Sitemap: https://www.peremogabakery.com/sitemap.xml
