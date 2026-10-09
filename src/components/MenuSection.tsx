@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuCategories } from "@/data/menuData";
 import type { MenuItem } from "@/data/menuData";
-import photo2Asset from "@/assets/photo-2.png";
-import photo3Asset from "@/assets/photo-3.png";
+import photo2Asset from "@/assets/photo-2.webp";
+import photo3Asset from "@/assets/photo-3.webp";
 import photo4Asset from "@/assets/photo-4.mp4";
 import {
   Dialog,
