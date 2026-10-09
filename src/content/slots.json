@@ -3,139 +3,738 @@
     "page": "Головна",
     "section": "Шапка сайту",
     "slots": [
-      { "key": "nav.address", "label": "Адреса (вгорі сторінки)", "type": "text", "default": "вул. Григоровича-Барського, 1, Київ" },
-      { "key": "nav.hours", "label": "Графік (вгорі сторінки)", "type": "text", "default": "Пн — Сб · 08:00 — 20:00" }
+      {
+        "key": "nav.address",
+        "label": "Адреса (вгорі сторінки)",
+        "type": "text",
+        "default": "вул. Григоровича-Барського, 1, Київ"
+      },
+      {
+        "key": "nav.hours",
+        "label": "Графік (вгорі сторінки)",
+        "type": "text",
+        "default": "Пн — Сб · 08:00 — 20:00"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Перший екран",
     "slots": [
-      { "key": "home.hero.image", "label": "Фонове фото", "type": "image", "default": "/site/hero.webp" },
-      { "key": "home.hero.eyebrow", "label": "Надпис над назвою", "type": "text", "default": "KYIV · 2021" },
-      { "key": "home.hero.title1", "label": "Назва — перший рядок", "type": "text", "default": "PEREMOGA" },
-      { "key": "home.hero.title2", "label": "Назва — другий рядок", "type": "text", "default": "BAKERY" },
-      { "key": "home.hero.cta1", "label": "Кнопка 1 (авторські вироби)", "type": "text", "default": "АВТОРСЬКІ ВИРОБИ" },
-      { "key": "home.hero.cta2", "label": "Кнопка 2 (B2B)", "type": "text", "default": "HORECA (B2B)" },
-      { "key": "home.hero.cta3", "label": "Кнопка 3 (стандартизована лінійка)", "type": "text", "default": "СТАНДАРТИЗОВАНА ЛІНІЙКА" }
+      {
+        "key": "home.hero.image",
+        "label": "Фонове фото",
+        "type": "image",
+        "default": "/site/hero.webp"
+      },
+      {
+        "key": "home.hero.eyebrow",
+        "label": "Надпис над назвою",
+        "type": "text",
+        "default": "KYIV · 2021"
+      },
+      {
+        "key": "home.hero.title1",
+        "label": "Назва — перший рядок",
+        "type": "text",
+        "default": "PEREMOGA"
+      },
+      {
+        "key": "home.hero.title2",
+        "label": "Назва — другий рядок",
+        "type": "text",
+        "default": "BAKERY"
+      },
+      {
+        "key": "home.hero.cta1",
+        "label": "Кнопка 1 (авторські вироби)",
+        "type": "text",
+        "default": "АВТОРСЬКІ ВИРОБИ"
+      },
+      {
+        "key": "home.hero.cta2",
+        "label": "Кнопка 2 (B2B)",
+        "type": "text",
+        "default": "HORECA (B2B)"
+      },
+      {
+        "key": "home.hero.cta3",
+        "label": "Кнопка 3 (стандартизована лінійка)",
+        "type": "text",
+        "default": "СТАНДАРТИЗОВАНА ЛІНІЙКА"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Напрямки (три картки)",
     "slots": [
-      { "key": "home.tiles.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "ВАШ НАПРЯМОК" },
-      { "key": "home.tiles.heading", "label": "Заголовок", "type": "text", "default": "ЩО ВАС ЦІКАВИТЬ?" },
-      { "key": "home.tiles.more", "label": "Текст посилання під картками", "type": "text", "default": "Дізнатись більше" },
-      { "key": "home.tiles.1.image", "label": "Картка 1 (B2B) — фото", "type": "image", "default": "/site/supreme-croissants.webp" },
-      { "key": "home.tiles.1.eyebrow", "label": "Картка 1 — надпис", "type": "text", "default": "ДЛЯ ПАРТНЕРСТВА" },
-      { "key": "home.tiles.1.title", "label": "Картка 1 — заголовок", "type": "text", "default": "HORECA (B2B)" },
-      { "key": "home.tiles.2.image", "label": "Картка 2 (меню) — фото", "type": "image", "default": "/site/bread-sliced.webp" },
-      { "key": "home.tiles.2.eyebrow", "label": "Картка 2 — надпис", "type": "text", "default": "АВТОРСЬКІ ВИРОБИ" },
-      { "key": "home.tiles.2.title", "label": "Картка 2 — заголовок", "type": "text", "default": "МЕНЮ" },
-      { "key": "home.tiles.3.image", "label": "Картка 3 (стандартизована лінійка) — фото", "type": "image", "default": "/site/bread-basket.webp" },
-      { "key": "home.tiles.3.eyebrow", "label": "Картка 3 — надпис", "type": "text", "default": "МАСОВИЙ РИНОК" },
-      { "key": "home.tiles.3.title", "label": "Картка 3 — заголовок", "type": "text", "default": "СТАНДАРТИЗОВАНА ЛІНІЙКА" }
+      {
+        "key": "home.tiles.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "ВАШ НАПРЯМОК"
+      },
+      {
+        "key": "home.tiles.heading",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "ЩО ВАС ЦІКАВИТЬ?"
+      },
+      {
+        "key": "home.tiles.more",
+        "label": "Текст посилання під картками",
+        "type": "text",
+        "default": "Дізнатись більше"
+      },
+      {
+        "key": "home.tiles.1.image",
+        "label": "Картка 1 (B2B) — фото",
+        "type": "image",
+        "default": "/site/supreme-croissants.webp"
+      },
+      {
+        "key": "home.tiles.1.eyebrow",
+        "label": "Картка 1 — надпис",
+        "type": "text",
+        "default": "ДЛЯ ПАРТНЕРСТВА"
+      },
+      {
+        "key": "home.tiles.1.title",
+        "label": "Картка 1 — заголовок",
+        "type": "text",
+        "default": "HORECA (B2B)"
+      },
+      {
+        "key": "home.tiles.2.image",
+        "label": "Картка 2 (меню) — фото",
+        "type": "image",
+        "default": "/site/bread-sliced.webp"
+      },
+      {
+        "key": "home.tiles.2.eyebrow",
+        "label": "Картка 2 — надпис",
+        "type": "text",
+        "default": "АВТОРСЬКІ ВИРОБИ"
+      },
+      {
+        "key": "home.tiles.2.title",
+        "label": "Картка 2 — заголовок",
+        "type": "text",
+        "default": "МЕНЮ"
+      },
+      {
+        "key": "home.tiles.3.image",
+        "label": "Картка 3 (стандартизована лінійка) — фото",
+        "type": "image",
+        "default": "/site/bread-basket.webp"
+      },
+      {
+        "key": "home.tiles.3.eyebrow",
+        "label": "Картка 3 — надпис",
+        "type": "text",
+        "default": "МАСОВИЙ РИНОК"
+      },
+      {
+        "key": "home.tiles.3.title",
+        "label": "Картка 3 — заголовок",
+        "type": "text",
+        "default": "СТАНДАРТИЗОВАНА ЛІНІЙКА"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Блок «Про нас»",
     "slots": [
-      { "key": "home.promo1.image", "label": "Фото", "type": "image", "default": "/site/team.webp" },
-      { "key": "home.promo1.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "Реміснича пекарня · з 2021" },
-      { "key": "home.promo1.title", "label": "Заголовок", "type": "text", "default": "Ми розуміємо, що кожен момент — особливий" },
-      { "key": "home.promo1.text", "label": "Текст", "type": "longtext", "default": "З 2021 року наша пекарня народилася з пристрасті до ремесла. У 2022 році, з початком війни, вона отримала своє ім'я — коли ми почали випікати благодійний хліб «Перемога».\n\nМи поєднуємо авторські рецептури та натуральні інгредієнти, щоб кожен ваш вибір був осмисленим — і неймовірно смачним." },
-      { "key": "home.promo1.cta", "label": "Текст кнопки", "type": "text", "default": "Авторські Вироби" }
+      {
+        "key": "home.promo1.image",
+        "label": "Фото",
+        "type": "image",
+        "default": "/site/team.webp"
+      },
+      {
+        "key": "home.promo1.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "Реміснича пекарня · з 2021"
+      },
+      {
+        "key": "home.promo1.title",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Ми розуміємо, що кожен момент — особливий"
+      },
+      {
+        "key": "home.promo1.text",
+        "label": "Текст",
+        "type": "longtext",
+        "default": "З 2021 року наша пекарня народилася з пристрасті до ремесла. У 2022 році, з початком війни, вона отримала своє ім'я — коли ми почали випікати благодійний хліб «Перемога».\n\nМи поєднуємо авторські рецептури та натуральні інгредієнти, щоб кожен ваш вибір був осмисленим — і неймовірно смачним."
+      },
+      {
+        "key": "home.promo1.cta",
+        "label": "Текст кнопки",
+        "type": "text",
+        "default": "Авторські Вироби"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Блок «Авторські смаки»",
     "slots": [
-      { "key": "home.promo2.image", "label": "Фото", "type": "image", "default": "/site/promo-desserts.webp" },
-      { "key": "home.promo2.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "Випічка · десерти · хліб" },
-      { "key": "home.promo2.title", "label": "Заголовок", "type": "text", "default": "Авторські смаки щодня" },
-      { "key": "home.promo2.text", "label": "Текст", "type": "longtext", "default": "Круглі круасани Supreme, ніжні еклери, чізкейки із солоною карамеллю, торти на замовлення та сезонні десерти — усе власної рецептури, на натуральних інгредієнтах.\n\nПодарункові набори, паски, штолени та калачі — для тих, хто хоче подарувати справді особливе." },
-      { "key": "home.promo2.cta", "label": "Текст кнопки", "type": "text", "default": "Дивитись меню" }
+      {
+        "key": "home.promo2.image",
+        "label": "Фото",
+        "type": "image",
+        "default": "/site/promo-desserts.webp"
+      },
+      {
+        "key": "home.promo2.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "Випічка · десерти · хліб"
+      },
+      {
+        "key": "home.promo2.title",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Авторські смаки щодня"
+      },
+      {
+        "key": "home.promo2.text",
+        "label": "Текст",
+        "type": "longtext",
+        "default": "Круглі круасани Supreme, ніжні еклери, чізкейки із солоною карамеллю, торти на замовлення та сезонні десерти — усе власної рецептури, на натуральних інгредієнтах.\n\nПодарункові набори, паски, штолени та калачі — для тих, хто хоче подарувати справді особливе."
+      },
+      {
+        "key": "home.promo2.cta",
+        "label": "Текст кнопки",
+        "type": "text",
+        "default": "Дивитись меню"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Блок «B2B»",
     "slots": [
-      { "key": "home.promo3.image", "label": "Фото", "type": "image", "default": "/site/supreme-croissants.webp" },
-      { "key": "home.promo3.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "B2B · для закладів" },
-      { "key": "home.promo3.title", "label": "Заголовок", "type": "text", "default": "Надійний партнер вашої кав'ярні" },
-      { "key": "home.promo3.text", "label": "Текст", "type": "longtext", "default": "Щоденні поставки авторської випічки, десертів та крафтового хліба до закладів Києва, Ірпеня та Бучі. Швидка комунікація, персональний менеджер.\n\n**10% кешбеку щомісяця** у нашій програмі лояльності для партнерів." },
-      { "key": "home.promo3.cta", "label": "Текст кнопки", "type": "text", "default": "Отримати прайс" }
+      {
+        "key": "home.promo3.image",
+        "label": "Фото",
+        "type": "image",
+        "default": "/site/supreme-croissants.webp"
+      },
+      {
+        "key": "home.promo3.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "B2B · для закладів"
+      },
+      {
+        "key": "home.promo3.title",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Надійний партнер вашої кав'ярні"
+      },
+      {
+        "key": "home.promo3.text",
+        "label": "Текст",
+        "type": "longtext",
+        "default": "Щоденні поставки авторської випічки, десертів та крафтового хліба до закладів Києва, Ірпеня та Бучі. Швидка комунікація, персональний менеджер.\n\n**10% кешбеку щомісяця** у нашій програмі лояльності для партнерів."
+      },
+      {
+        "key": "home.promo3.cta",
+        "label": "Текст кнопки",
+        "type": "text",
+        "default": "Отримати прайс"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Блок «Стандартизована лінійка»",
     "slots": [
-      { "key": "home.promo4.image", "label": "Фото", "type": "image", "default": "/site/bread-basket.webp" },
-      { "key": "home.promo4.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "Масовий ринок" },
-      { "key": "home.promo4.title", "label": "Заголовок", "type": "text", "default": "Стандартизована лінійка" },
-      { "key": "home.promo4.text", "label": "Текст", "type": "longtext", "default": "Наша стандартизована лінійка — стабільна якість, чіткі рецептури та надійний асортимент для щоденного попиту.\n\nДеталі та повний асортимент з'являться найближчим часом." },
-      { "key": "home.promo4.cta", "label": "Текст кнопки", "type": "text", "default": "Дізнатись більше" }
+      {
+        "key": "home.promo4.image",
+        "label": "Фото",
+        "type": "image",
+        "default": "/site/bread-basket.webp"
+      },
+      {
+        "key": "home.promo4.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "Масовий ринок"
+      },
+      {
+        "key": "home.promo4.title",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Стандартизована лінійка"
+      },
+      {
+        "key": "home.promo4.text",
+        "label": "Текст",
+        "type": "longtext",
+        "default": "Наша стандартизована лінійка — стабільна якість, чіткі рецептури та надійний асортимент для щоденного попиту.\n\nДеталі та повний асортимент з'являться найближчим часом."
+      },
+      {
+        "key": "home.promo4.cta",
+        "label": "Текст кнопки",
+        "type": "text",
+        "default": "Дізнатись більше"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Відгуки",
     "slots": [
-      { "key": "home.reviews.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "Успіх наших гостей" },
-      { "key": "home.reviews.heading", "label": "Заголовок", "type": "text", "default": "Вони вже обрали" },
-      { "key": "home.reviews.1.name", "label": "Відгук 1 — ім'я", "type": "text", "default": "Тетяна Нікітішина" },
-      { "key": "home.reviews.1.text", "label": "Відгук 1 — текст", "type": "longtext", "default": "Щодня ходжу в цю кав'ярню з дочкою, нам дуже подобається😍 Випічка завжди дуже свіжа і кава дуже смачна!! Бариста дуже мила та привітна) В кав'ярні приємна атмосфера, гарні декорації, дуже тепло та затишно. Раджу всім!!" },
-      { "key": "home.reviews.2.name", "label": "Відгук 2 — ім'я", "type": "text", "default": "Мария Ходзицкая" },
-      { "key": "home.reviews.2.text", "label": "Відгук 2 — текст", "type": "longtext", "default": "Це місце, де завжди зустрічають з посмішкою на обличчі, запропонують найсмачнішу випічку, та ароматну каву. Я таких еклерів більше ніде не куштувала — ніжнюсінькі, дуже-дуже смачні! А ще, рекомендую скуштувати хлібчик!" },
-      { "key": "home.reviews.3.name", "label": "Відгук 3 — ім'я", "type": "text", "default": "Aeris" },
-      { "key": "home.reviews.3.text", "label": "Відгук 3 — текст", "type": "longtext", "default": "Атмосфера дуже затишна, а кава завжди смачна та ароматна. Бариста Каріна — просто чудова, завжди привітна і допоможе обрати ідеальний напій. Місце ідеально підходить як для швидкої кави, так і для неспішного відпочинку." }
+      {
+        "key": "home.reviews.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "Успіх наших гостей"
+      },
+      {
+        "key": "home.reviews.heading",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Вони вже обрали"
+      },
+      {
+        "key": "home.reviews.1.name",
+        "label": "Відгук 1 — ім'я",
+        "type": "text",
+        "default": "Тетяна Нікітішина"
+      },
+      {
+        "key": "home.reviews.1.text",
+        "label": "Відгук 1 — текст",
+        "type": "longtext",
+        "default": "Щодня ходжу в цю кав'ярню з дочкою, нам дуже подобається😍 Випічка завжди дуже свіжа і кава дуже смачна!! Бариста дуже мила та привітна) В кав'ярні приємна атмосфера, гарні декорації, дуже тепло та затишно. Раджу всім!!"
+      },
+      {
+        "key": "home.reviews.2.name",
+        "label": "Відгук 2 — ім'я",
+        "type": "text",
+        "default": "Мария Ходзицкая"
+      },
+      {
+        "key": "home.reviews.2.text",
+        "label": "Відгук 2 — текст",
+        "type": "longtext",
+        "default": "Це місце, де завжди зустрічають з посмішкою на обличчі, запропонують найсмачнішу випічку, та ароматну каву. Я таких еклерів більше ніде не куштувала — ніжнюсінькі, дуже-дуже смачні! А ще, рекомендую скуштувати хлібчик!"
+      },
+      {
+        "key": "home.reviews.3.name",
+        "label": "Відгук 3 — ім'я",
+        "type": "text",
+        "default": "Aeris"
+      },
+      {
+        "key": "home.reviews.3.text",
+        "label": "Відгук 3 — текст",
+        "type": "longtext",
+        "default": "Атмосфера дуже затишна, а кава завжди смачна та ароматна. Бариста Каріна — просто чудова, завжди привітна і допоможе обрати ідеальний напій. Місце ідеально підходить як для швидкої кави, так і для неспішного відпочинку."
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Питання та відповіді (FAQ)",
     "slots": [
-      { "key": "home.faq.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "Маєте запитання?" },
-      { "key": "home.faq.heading", "label": "Заголовок", "type": "text", "default": "FAQ" },
-      { "key": "home.faq.1.q", "label": "Питання 1", "type": "text", "default": "Де знаходиться пекарня Peremoga Bakery?" },
-      { "key": "home.faq.1.a", "label": "Відповідь 1", "type": "longtext", "default": "Ми знаходимося за адресою вулиця Григоровича-Барського, 1, Київ, Україна. Зручне розташування з безкоштовною парковкою." },
-      { "key": "home.faq.2.q", "label": "Питання 2", "type": "text", "default": "Який графік роботи пекарні?" },
-      { "key": "home.faq.2.a", "label": "Відповідь 2", "type": "longtext", "default": "Ми працюємо з понеділка по суботу з 08:00 до 20:00. У неділю — вихідний." },
-      { "key": "home.faq.3.q", "label": "Питання 3", "type": "text", "default": "Чи можна замовити торт або десерти на замовлення?" },
-      { "key": "home.faq.3.a", "label": "Відповідь 3", "type": "longtext", "default": "Так! Ми виготовляємо авторські торти та десерти на замовлення для свят, весіль та корпоративів. Зверніться до нас за телефоном або email для обговорення деталей." },
-      { "key": "home.faq.4.q", "label": "Питання 4", "type": "text", "default": "Чи є у вас B2B постачання для кав'ярень?" },
-      { "key": "home.faq.4.a", "label": "Відповідь 4", "type": "longtext", "default": "Так, ми здійснюємо B2B постачання випічки та хліба для кав'ярень, ресторанів та готелів у Києві. Зв'яжіться з нами для обговорення умов співпраці." },
-      { "key": "home.faq.5.q", "label": "Питання 5", "type": "text", "default": "Чи є у вас безглютенова або веганська випічка?" },
-      { "key": "home.faq.5.a", "label": "Відповідь 5", "type": "longtext", "default": "Наше меню постійно оновлюється. Будь ласка, зверніться до нас за телефоном або в Instagram, щоб дізнатися про актуальний асортимент." },
-      { "key": "home.faq.6.q", "label": "Питання 6", "type": "text", "default": "Чи є парковка біля пекарні?" },
-      { "key": "home.faq.6.a", "label": "Відповідь 6", "type": "longtext", "default": "Так, біля нашої пекарні є безкоштовна парковка для відвідувачів." }
+      {
+        "key": "home.faq.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "Маєте запитання?"
+      },
+      {
+        "key": "home.faq.heading",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "FAQ"
+      },
+      {
+        "key": "home.faq.1.q",
+        "label": "Питання 1",
+        "type": "text",
+        "default": "Де знаходиться пекарня Peremoga Bakery?"
+      },
+      {
+        "key": "home.faq.1.a",
+        "label": "Відповідь 1",
+        "type": "longtext",
+        "default": "Ми знаходимося за адресою вулиця Григоровича-Барського, 1, Київ, Україна. Зручне розташування з безкоштовною парковкою."
+      },
+      {
+        "key": "home.faq.2.q",
+        "label": "Питання 2",
+        "type": "text",
+        "default": "Який графік роботи пекарні?"
+      },
+      {
+        "key": "home.faq.2.a",
+        "label": "Відповідь 2",
+        "type": "longtext",
+        "default": "Ми працюємо з понеділка по суботу з 08:00 до 20:00. У неділю — вихідний."
+      },
+      {
+        "key": "home.faq.3.q",
+        "label": "Питання 3",
+        "type": "text",
+        "default": "Чи можна замовити торт або десерти на замовлення?"
+      },
+      {
+        "key": "home.faq.3.a",
+        "label": "Відповідь 3",
+        "type": "longtext",
+        "default": "Так! Ми виготовляємо авторські торти та десерти на замовлення для свят, весіль та корпоративів. Зверніться до нас за телефоном або email для обговорення деталей."
+      },
+      {
+        "key": "home.faq.4.q",
+        "label": "Питання 4",
+        "type": "text",
+        "default": "Чи є у вас B2B постачання для кав'ярень?"
+      },
+      {
+        "key": "home.faq.4.a",
+        "label": "Відповідь 4",
+        "type": "longtext",
+        "default": "Так, ми здійснюємо B2B постачання випічки та хліба для кав'ярень, ресторанів та готелів у Києві. Зв'яжіться з нами для обговорення умов співпраці."
+      },
+      {
+        "key": "home.faq.5.q",
+        "label": "Питання 5",
+        "type": "text",
+        "default": "Чи є у вас безглютенова або веганська випічка?"
+      },
+      {
+        "key": "home.faq.5.a",
+        "label": "Відповідь 5",
+        "type": "longtext",
+        "default": "Наше меню постійно оновлюється. Будь ласка, зверніться до нас за телефоном або в Instagram, щоб дізнатися про актуальний асортимент."
+      },
+      {
+        "key": "home.faq.6.q",
+        "label": "Питання 6",
+        "type": "text",
+        "default": "Чи є парковка біля пекарні?"
+      },
+      {
+        "key": "home.faq.6.a",
+        "label": "Відповідь 6",
+        "type": "longtext",
+        "default": "Так, біля нашої пекарні є безкоштовна парковка для відвідувачів."
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Контакти",
     "slots": [
-      { "key": "contact.eyebrow", "label": "Надпис над заголовком", "type": "text", "default": "Зробіть перший крок" },
-      { "key": "contact.heading", "label": "Заголовок", "type": "text", "default": "Visit us" },
-      { "key": "contact.address", "label": "Адреса", "type": "text", "default": "вулиця Григоровича-Барського, 1, Київ" },
-      { "key": "contact.phone", "label": "Телефон", "type": "text", "default": "+38 (093) 526-38-25" },
-      { "key": "contact.email", "label": "Email", "type": "text", "default": "peremogabakery@gmail.com" },
-      { "key": "contact.days1", "label": "Графік — дні (рядок 1)", "type": "text", "default": "Понеділок — Субота" },
-      { "key": "contact.hours1", "label": "Графік — години (рядок 1)", "type": "text", "default": "08:00 — 20:00" },
-      { "key": "contact.days2", "label": "Графік — дні (рядок 2)", "type": "text", "default": "Неділя" },
-      { "key": "contact.hours2", "label": "Графік — години (рядок 2)", "type": "text", "default": "Вихідний" }
+      {
+        "key": "contact.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "Зробіть перший крок"
+      },
+      {
+        "key": "contact.heading",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Visit us"
+      },
+      {
+        "key": "contact.address",
+        "label": "Адреса",
+        "type": "text",
+        "default": "вулиця Григоровича-Барського, 1, Київ"
+      },
+      {
+        "key": "contact.phone",
+        "label": "Телефон",
+        "type": "text",
+        "default": "+38 (093) 526-38-25"
+      },
+      {
+        "key": "contact.email",
+        "label": "Email",
+        "type": "text",
+        "default": "peremogabakery@gmail.com"
+      },
+      {
+        "key": "contact.days1",
+        "label": "Графік — дні (рядок 1)",
+        "type": "text",
+        "default": "Понеділок — Субота"
+      },
+      {
+        "key": "contact.hours1",
+        "label": "Графік — години (рядок 1)",
+        "type": "text",
+        "default": "08:00 — 20:00"
+      },
+      {
+        "key": "contact.days2",
+        "label": "Графік — дні (рядок 2)",
+        "type": "text",
+        "default": "Неділя"
+      },
+      {
+        "key": "contact.hours2",
+        "label": "Графік — години (рядок 2)",
+        "type": "text",
+        "default": "Вихідний"
+      }
     ]
   },
   {
     "page": "Головна",
     "section": "Підвал сайту",
     "slots": [
-      { "key": "footer.tagline", "label": "Підпис під назвою", "type": "text", "default": "Kyiv · з 2021" }
+      {
+        "key": "footer.tagline",
+        "label": "Підпис під назвою",
+        "type": "text",
+        "default": "Kyiv · з 2021"
+      }
+    ]
+  },
+  {
+    "page": "Для закладів (B2B)",
+    "section": "Перший екран",
+    "slots": [
+      {
+        "key": "b2b.hero.eyebrow",
+        "label": "Надпис над заголовком",
+        "type": "text",
+        "default": "ДЛЯ ПАРТНЕРСТВА"
+      },
+      {
+        "key": "b2b.hero.title",
+        "label": "Заголовок (головний для Google)",
+        "type": "text",
+        "default": "Випічка та десерти для кав'ярень і ресторанів Києва"
+      },
+      {
+        "key": "b2b.hero.text",
+        "label": "Текст",
+        "type": "longtext",
+        "default": "Вітаємо Вас в пекарні «Перемога»! Наша пекарня — Ваш надійний партнер у постачанні авторської випічки, смачних десертів і крафтового хлібу.\n\nНаразі ми виконуємо поставки в заклади Києва, Ірпеня і Бучі.\n\nПрацюємо виключно з натуральними і органічними продуктами високої якості. Постійно вдосконалюємо рецептуру і оновлюємо асортимент.\n\nА швидка комунікація і персональний менеджер додає гнучкості нашій співпраці.\n\nТакож ви можете отримати **10% кешбеку щомісяця** при виконанні умов нашої програми лояльності для партнерів."
+      },
+      {
+        "key": "b2b.hero.cta",
+        "label": "Текст кнопки",
+        "type": "text",
+        "default": "Отримати прайс для закладів"
+      },
+      {
+        "key": "b2b.bar",
+        "label": "Нижня смуга (текст)",
+        "type": "text",
+        "default": "Працюємо із закладами Києва, Ірпеня і Бучі · 10% кешбеку щомісяця"
+      }
+    ]
+  },
+  {
+    "page": "Для закладів (B2B)",
+    "section": "Умови співпраці",
+    "slots": [
+      {
+        "key": "b2b.terms.heading",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Умови співпраці"
+      },
+      {
+        "key": "b2b.terms.cutoff",
+        "label": "Прийом замовлень",
+        "type": "text",
+        "default": "За день до поставки: неділя — п'ятниця до 17:00"
+      },
+      {
+        "key": "b2b.terms.kyiv",
+        "label": "Доставка по Києву",
+        "type": "text",
+        "default": "Понеділок, середа, п'ятниця з 09:00 до 14:00"
+      },
+      {
+        "key": "b2b.terms.suburbs",
+        "label": "Доставка в передмістя",
+        "type": "text",
+        "default": "Ірпінь, Буча, Білогородка та Троєщина — по середах з 10:00 до 14:00"
+      },
+      {
+        "key": "b2b.terms.minimum",
+        "label": "Мінімальне замовлення",
+        "type": "text",
+        "default": "1 000 грн"
+      },
+      {
+        "key": "b2b.terms.fee",
+        "label": "Вартість доставки",
+        "type": "text",
+        "default": "Правий берег — 200 грн, лівий берег і передмістя — 250 грн. Від 2 000 грн — безкоштовно"
+      },
+      {
+        "key": "b2b.terms.payment",
+        "label": "Оплата",
+        "type": "text",
+        "default": "За рахунком на ФОП або готівкою; можливе відтермінування 2–3 дні"
+      },
+      {
+        "key": "b2b.terms.tasting",
+        "label": "Дегустаційний сет",
+        "type": "text",
+        "default": "Три позиції з меню на вибір — безкоштовно привеземо на вашу локацію"
+      },
+      {
+        "key": "b2b.terms.cashback",
+        "label": "Програма лояльності",
+        "type": "text",
+        "default": "10% кешбеку щомісяця для партнерів"
+      }
+    ]
+  },
+  {
+    "page": "Для закладів (B2B)",
+    "section": "Як почати співпрацю",
+    "slots": [
+      {
+        "key": "b2b.steps.heading",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Як почати співпрацю"
+      },
+      {
+        "key": "b2b.steps.1",
+        "label": "Крок 1",
+        "type": "text",
+        "default": "Залиште запит нижче — надішлемо актуальний прайс і умови для вашого закладу."
+      },
+      {
+        "key": "b2b.steps.2",
+        "label": "Крок 2",
+        "type": "text",
+        "default": "Оберіть три позиції для безкоштовного дегустаційного сету — привеземо на вашу локацію."
+      },
+      {
+        "key": "b2b.steps.3",
+        "label": "Крок 3",
+        "type": "text",
+        "default": "Надішліть замовлення за день до поставки: назву закладу, адресу, телефон отримувача й форму оплати."
+      }
+    ]
+  },
+  {
+    "page": "Для закладів (B2B)",
+    "section": "Питання та відповіді",
+    "slots": [
+      {
+        "key": "b2b.faq.heading",
+        "label": "Заголовок",
+        "type": "text",
+        "default": "Питання від закладів"
+      },
+      {
+        "key": "b2b.faq.1.q",
+        "label": "Питання 1",
+        "type": "text",
+        "default": "Яке мінімальне замовлення для закладу?"
+      },
+      {
+        "key": "b2b.faq.1.a",
+        "label": "Відповідь 1",
+        "type": "longtext",
+        "default": "Мінімальна сума замовлення — 1 000 грн. Від 2 000 грн доставка безкоштовна."
+      },
+      {
+        "key": "b2b.faq.2.q",
+        "label": "Питання 2",
+        "type": "text",
+        "default": "Коли і куди ви доставляєте?"
+      },
+      {
+        "key": "b2b.faq.2.a",
+        "label": "Відповідь 2",
+        "type": "longtext",
+        "default": "По Києву — у понеділок, середу та п'ятницю з 09:00 до 14:00. Ірпінь, Буча, Білогородка та Троєщина — по середах з 10:00 до 14:00."
+      },
+      {
+        "key": "b2b.faq.3.q",
+        "label": "Питання 3",
+        "type": "text",
+        "default": "До котрої години можна зробити замовлення?"
+      },
+      {
+        "key": "b2b.faq.3.a",
+        "label": "Відповідь 3",
+        "type": "longtext",
+        "default": "За день до поставки, з неділі по п'ятницю до 17:00."
+      },
+      {
+        "key": "b2b.faq.4.q",
+        "label": "Питання 4",
+        "type": "text",
+        "default": "Скільки коштує доставка?"
+      },
+      {
+        "key": "b2b.faq.4.a",
+        "label": "Відповідь 4",
+        "type": "longtext",
+        "default": "Правий берег Києва — 200 грн, лівий берег та передмістя — 250 грн. При замовленні від 2 000 грн доставка безкоштовна."
+      },
+      {
+        "key": "b2b.faq.5.q",
+        "label": "Питання 5",
+        "type": "text",
+        "default": "Як можна оплатити?"
+      },
+      {
+        "key": "b2b.faq.5.a",
+        "label": "Відповідь 5",
+        "type": "longtext",
+        "default": "За рахунком на ФОП або готівкою. Для постійних партнерів можливе відтермінування платежу на 2–3 дні."
+      },
+      {
+        "key": "b2b.faq.6.q",
+        "label": "Питання 6",
+        "type": "text",
+        "default": "Чи можна спершу спробувати продукцію?"
+      },
+      {
+        "key": "b2b.faq.6.a",
+        "label": "Відповідь 6",
+        "type": "longtext",
+        "default": "Так. Оберіть три позиції з меню — ми безкоштовно привеземо дегустаційний сет на вашу локацію."
+      },
+      {
+        "key": "b2b.faq.7.q",
+        "label": "Питання 7",
+        "type": "text",
+        "default": "Що потрібно, щоб почати співпрацю?"
+      },
+      {
+        "key": "b2b.faq.7.a",
+        "label": "Відповідь 7",
+        "type": "longtext",
+        "default": "Назва закладу, адреса й телефон отримувача, форма оплати (ФОП або готівка) і, для ФОП, дані платника. Залиште запит на цій сторінці — надішлемо прайс і умови."
+      },
+      {
+        "key": "b2b.faq.8.q",
+        "label": "Питання 8",
+        "type": "text",
+        "default": "Яку продукцію ви постачаєте закладам?"
+      },
+      {
+        "key": "b2b.faq.8.a",
+        "label": "Відповідь 8",
+        "type": "longtext",
+        "default": "Класичні та круглі круасани, солоні круасани й сендвічі на крафтовому хлібі, еклери, чізкейки, торти, тарти, кіші, донати, макарони, порційні десерти та хліб на заквасці — близько 90 позицій власної рецептури."
+      }
     ]
   }
 ]

@@ -6,7 +6,7 @@
 import { readFile, rm, writeFile } from "node:fs/promises";
 
 const dist = new URL("../dist/", import.meta.url);
-const { render, headTags, PAGES, NOT_FOUND } = await import(new URL("../dist-ssr/entry-server.js", import.meta.url));
+const { render, headTags, llmsTxt, PAGES, NOT_FOUND } = await import(new URL("../dist-ssr/entry-server.js", import.meta.url));
 const template = await readFile(new URL("index.html", dist), "utf8");
 
 const page = (seo, url) =>
@@ -19,4 +19,6 @@ for (const seo of PAGES) {
 }
 await writeFile(new URL("404.html", dist), page(NOT_FOUND, "/404"));
 console.log("[prerender] 404 → dist/404.html");
+await writeFile(new URL("llms.txt", dist), llmsTxt());
+console.log("[prerender] llms.txt");
 await rm(new URL("../dist-ssr/", import.meta.url), { recursive: true });

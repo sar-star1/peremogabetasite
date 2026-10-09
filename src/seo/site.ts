@@ -1,4 +1,4 @@
-import { c } from "@/content";
+import { c, plain } from "@/content";
 
 // Everything search engines and AI assistants read about each page: title,
 // description, canonical URL and schema.org JSON-LD. Used at build time by
@@ -24,52 +24,22 @@ const AREA_SERVED = ["Київ", "Ірпінь", "Буча", "Білогород
 
 const telephone = () => `+${c("contact.phone").replace(/\D/g, "")}`;
 
-/** Partner (HoReCa) terms — also shown on /b2b and in llms.txt. Keep in one place. */
-export const B2B_TERMS = {
-  cutoff: "Замовлення приймаємо за день до поставки: неділя — п'ятниця до 17:00.",
-  kyiv: "Київ: доставка в понеділок, середу та п'ятницю з 09:00 до 14:00.",
-  suburbs: "Ірпінь, Буча, Білогородка та Троєщина: доставка по середах з 10:00 до 14:00.",
-  minimum: "Мінімальне замовлення — 1 000 грн.",
-  fee: "Доставка: правий берег Києва — 200 грн, лівий берег та передмістя — 250 грн; від 2 000 грн — безкоштовно.",
-  payment: "Оплата за рахунком на ФОП або готівкою; можливе відтермінування платежу на 2–3 дні.",
-  tasting: "Дегустаційний сет: три позиції з меню на вибір — безкоштовно привеземо на вашу локацію.",
-  cashback: "10% кешбеку щомісяця за програмою лояльності для партнерів.",
-};
-
-export const B2B_FAQ: { q: string; a: string }[] = [
-  {
-    q: "Яке мінімальне замовлення для закладу?",
-    a: "Мінімальна сума замовлення — 1 000 грн. Від 2 000 грн доставка безкоштовна.",
-  },
-  {
-    q: "Коли і куди ви доставляєте?",
-    a: "По Києву — у понеділок, середу та п'ятницю з 09:00 до 14:00. Ірпінь, Буча, Білогородка та Троєщина — по середах з 10:00 до 14:00.",
-  },
-  {
-    q: "До котрої години можна зробити замовлення?",
-    a: "За день до поставки, з неділі по п'ятницю до 17:00.",
-  },
-  {
-    q: "Скільки коштує доставка?",
-    a: "Правий берег Києва — 200 грн, лівий берег та передмістя — 250 грн. При замовленні від 2 000 грн доставка безкоштовна.",
-  },
-  {
-    q: "Як можна оплатити?",
-    a: "За рахунком на ФОП або готівкою. Для постійних партнерів можливе відтермінування платежу на 2–3 дні.",
-  },
-  {
-    q: "Чи можна спершу спробувати продукцію?",
-    a: "Так. Оберіть три позиції з меню — ми безкоштовно привеземо дегустаційний сет на вашу локацію.",
-  },
-  {
-    q: "Що потрібно, щоб почати співпрацю?",
-    a: "Назва закладу, адреса й телефон отримувача, форма оплати (ФОП або готівка) і, для ФОП, дані платника. Залиште запит на сторінці — надішлемо прайс і умови.",
-  },
-  {
-    q: "Яку продукцію ви постачаєте закладам?",
-    a: "Класичні та круглі круасани, солоні круасани й сендвічі на крафтовому хлібі, еклери, чізкейки, торти, тарти, кіші, донати, макарони, порційні десерти та хліб на заквасці — близько 90 позицій власної рецептури.",
-  },
+/** Partner (HoReCa) terms as label → editable slot; shown on /b2b and used in JSON-LD and llms.txt. */
+export const B2B_TERM_SLOTS: [label: string, key: string][] = [
+  ["Прийом замовлень", "b2b.terms.cutoff"],
+  ["Доставка по Києву", "b2b.terms.kyiv"],
+  ["Передмістя", "b2b.terms.suburbs"],
+  ["Мінімальне замовлення", "b2b.terms.minimum"],
+  ["Вартість доставки", "b2b.terms.fee"],
+  ["Оплата", "b2b.terms.payment"],
+  ["Дегустаційний сет", "b2b.terms.tasting"],
+  ["Програма лояльності", "b2b.terms.cashback"],
 ];
+
+export const b2bTerms = () => B2B_TERM_SLOTS.map(([label, key]) => `${label}: ${plain(key)}.`);
+
+export const b2bFaq = () =>
+  [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({ q: plain(`b2b.faq.${n}.q`), a: plain(`b2b.faq.${n}.a`) }));
 
 export interface PageSeo {
   path: string;
@@ -143,10 +113,7 @@ const faqPage = (items: { q: string; a: string }[], id: string) => ({
 });
 
 const homeFaq = () =>
-  [1, 2, 3, 4, 5, 6].map((n) => ({
-    q: c(`home.faq.${n}.q`).replace(/\*\*/g, ""),
-    a: c(`home.faq.${n}.a`).replace(/\*\*/g, ""),
-  }));
+  [1, 2, 3, 4, 5, 6].map((n) => ({ q: plain(`home.faq.${n}.q`), a: plain(`home.faq.${n}.a`) }));
 
 const b2bService = () => ({
   "@type": "Service",
@@ -157,7 +124,7 @@ const b2bService = () => ({
   areaServed: AREA_SERVED,
   audience: { "@type": "BusinessAudience", audienceType: "Кав'ярні, ресторани, готелі, кейтеринг" },
   url: `${SITE_URL}/b2b`,
-  description: Object.values(B2B_TERMS).join(" "),
+  description: b2bTerms().join(" "),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Асортимент для закладів",
@@ -212,7 +179,7 @@ export const PAGES: PageSeo[] = [
     title: "Випічка та десерти для кав'ярень оптом — Київ | Peremoga Bakery",
     description:
       "Постачання круасанів, еклерів, чізкейків, тортів, кішів і хліба на заквасці для кав'ярень, ресторанів і готелів Києва, Ірпеня, Бучі. Доставка пн/ср/пт, мінімум 1 000 грн, безкоштовно від 2 000 грн, дегустаційний сет.",
-    jsonLd: () => [b2bService(), faqPage(B2B_FAQ, `${SITE_URL}/b2b#faq`)],
+    jsonLd: () => [b2bService(), faqPage(b2bFaq(), `${SITE_URL}/b2b#faq`)],
   },
   {
     path: "/standard-line",

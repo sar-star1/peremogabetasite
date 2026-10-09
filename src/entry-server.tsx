@@ -3,6 +3,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import AppShell from "./AppShell";
 import { headTags } from "./seo/head";
+import { llmsTxt } from "./seo/llms";
 import { NOT_FOUND, PAGES } from "./seo/site";
 
 // Build-time only (scripts/prerender.mjs): render a route to HTML.
@@ -11,4 +12,4 @@ export function render(url: string): string {
   return renderToString(<AppShell Router={Router} />);
 }
 
-export { headTags, NOT_FOUND, PAGES };
+export { headTags, llmsTxt, NOT_FOUND, PAGES };

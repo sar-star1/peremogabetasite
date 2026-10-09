@@ -11,6 +11,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+import { c, Paragraphs } from "@/content";
+import { B2B_TERM_SLOTS, b2bFaq } from "@/seo/site";
 import heroBakery from "@/assets/b2b-hero-cake.jpeg";
 import croissants from "@/assets/hero-croissants.webp";
 import breadBasket from "@/assets/bread-basket.webp";
@@ -138,36 +146,46 @@ const B2B = () => {
               className="max-w-3xl mx-auto text-center bg-background/85 backdrop-blur-sm p-8 md:p-12 shadow-lg"
             >
               <span className="font-body text-xs uppercase tracking-[0.3em] text-foreground/70 font-light">
-                ДЛЯ ПАРТНЕРСТВА
+                {c("b2b.hero.eyebrow")}
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-light text-foreground mt-4 mb-8 tracking-wide">
-                Вітаємо Вас в пекарні «Перемога»!
+                {c("b2b.hero.title")}
               </h1>
-              <div className="space-y-5 text-foreground/90 text-base md:text-lg font-light leading-relaxed text-left md:text-center">
-                <p>
-                  Наша пекарня — Ваш надійний партнер у постачанні авторської випічки, смачних десертів і
-                  крафтового хлібу.
-                </p>
-                <p>Наразі ми виконуємо поставки в заклади Києва, Ірпеня і Бучі.</p>
-                <p>
-                  Працюємо виключно з натуральними і органічними продуктами високої якості. Постійно
-                  вдосконалюємо рецептуру і оновлюємо асортимент.
-                </p>
-                <p>А швидка комунікація і персональний менеджер додає гнучкості нашій співпраці.</p>
-                <p>
-                  Також ви можете отримати <span className="font-normal text-foreground">10% кешбеку щомісяця</span> при
-                  виконанні умов нашої програми лояльності для партнерів.
-                </p>
+              <div className="space-y-5 text-foreground/90 text-base md:text-lg font-light leading-relaxed text-left md:text-center [&_span]:font-normal">
+                <Paragraphs k="b2b.hero.text" />
               </div>
 
               <a
                 href="#price"
                 className="inline-flex items-center justify-center mt-10 px-10 py-4 bg-foreground text-background font-body text-sm uppercase tracking-[0.2em] font-light hover:bg-foreground/90 transition-colors"
               >
-                Отримати прайс для закладів
+                {c("b2b.hero.cta")}
               </a>
               <WheatDivider className="mt-12" />
             </motion.div>
+          </div>
+        </section>
+
+        {/* Partner terms — plain facts that search engines and AI assistants can quote */}
+        <section id="terms" className="py-20 md:py-28 bg-background border-b border-border">
+          <div className="container mx-auto px-6">
+            <div className="text-center mb-14">
+              <span className="font-body text-xs uppercase tracking-[0.3em] text-muted-foreground font-light">
+                Київ · Ірпінь · Буча
+              </span>
+              <h2 className="font-display text-3xl md:text-5xl font-light text-foreground mt-3 tracking-wide">
+                {c("b2b.terms.heading")}
+              </h2>
+              <WheatDivider className="mt-6" />
+            </div>
+            <dl className="max-w-4xl mx-auto grid sm:grid-cols-2 gap-x-12 gap-y-8">
+              {B2B_TERM_SLOTS.map(([label, key]) => (
+                <div key={key} className="border-t border-foreground pt-4">
+                  <dt className="font-body text-[11px] uppercase tracking-[0.3em] text-foreground">{label}</dt>
+                  <dd className="mt-2 text-muted-foreground font-light leading-relaxed">{c(key)}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </section>
 
@@ -215,6 +233,44 @@ const B2B = () => {
 
 
 
+
+        {/* How to start */}
+        <section className="py-20 md:py-28 bg-background border-t border-border">
+          <div className="container mx-auto px-6">
+            <h2 className="font-display text-3xl md:text-5xl font-light text-foreground text-center tracking-wide mb-14">
+              {c("b2b.steps.heading")}
+            </h2>
+            <ol className="max-w-5xl mx-auto grid md:grid-cols-3 gap-10">
+              {[1, 2, 3].map((n) => (
+                <li key={n} className="border-t border-foreground pt-5">
+                  <span className="font-display text-4xl font-light text-foreground">{n}</span>
+                  <p className="mt-3 text-muted-foreground font-light leading-relaxed">{c(`b2b.steps.${n}`)}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Partner FAQ — same questions as the FAQPage JSON-LD in src/seo/site.ts */}
+        <section id="faq" className="py-20 md:py-28 bg-background border-t border-border">
+          <div className="container mx-auto px-6 max-w-3xl">
+            <h2 className="font-display text-3xl md:text-5xl font-light text-foreground text-center tracking-wide mb-12">
+              {c("b2b.faq.heading")}
+            </h2>
+            <Accordion type="single" collapsible className="border-t border-foreground">
+              {b2bFaq().map((faq, i) => (
+                <AccordionItem key={i} value={`b2b-faq-${i}`} className="border-b border-foreground">
+                  <AccordionTrigger className="font-display text-lg md:text-xl font-light text-foreground text-left hover:no-underline py-5">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent forceMount className="text-muted-foreground font-light leading-relaxed pb-5">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
 
         {/* Price request form */}
         <section id="price" className="py-24 pb-32 bg-background">
@@ -318,7 +374,7 @@ const B2B = () => {
       <div className="fixed bottom-0 inset-x-0 z-40 bg-foreground/95 backdrop-blur-sm border-t border-foreground/20">
         <div className="container mx-auto px-6 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="font-body text-xs sm:text-sm text-background/90 font-light tracking-wide text-center sm:text-left">
-            Працюємо із закладами Києва, Ірпеня і Бучі · 10% кешбеку щомісяця
+            {c("b2b.bar")}
           </p>
           <a
             href="#price"
