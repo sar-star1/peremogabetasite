@@ -40,12 +40,12 @@ import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";
 import b2bCake from "@/assets/b2b-cake.jpeg";
 import breadSliced from "@/assets/bread-sliced.webp";
 
-import heroAsset from "@/assets/baseline-hero.jpg";
-import branAsset from "@/assets/baseline-bran-bread.jpg";
-import burgerAsset from "@/assets/baseline-burger.jpg";
-import paniniAsset from "@/assets/baseline-panini.jpg";
-import baguetteAsset from "@/assets/baseline-baguette.jpg";
-import toastAsset from "@/assets/baseline-toast.jpg";
+import heroAsset from "@/assets/baseline-hero.webp";
+import branAsset from "@/assets/baseline-bran-bread.webp";
+import burgerAsset from "@/assets/baseline-burger.webp";
+import paniniAsset from "@/assets/baseline-panini.webp";
+import baguetteAsset from "@/assets/baseline-baguette.webp";
+import toastAsset from "@/assets/baseline-toast.webp";
 
 type Product = {
   id: string;

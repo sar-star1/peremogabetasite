@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import heroBakery from "@/assets/b2b-hero-cake.jpeg";
-import croissants from "@/assets/hero-croissants.jpg";
+import croissants from "@/assets/hero-croissants.webp";
 import breadBasket from "@/assets/bread-basket.webp";
 import breadSliced from "@/assets/bread-sliced.webp";
 import b2bSupreme from "@/assets/b2b-supreme-croissants.jpeg";

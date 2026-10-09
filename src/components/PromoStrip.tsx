@@ -13,11 +13,12 @@ interface PromoStripProps {
   reverse?: boolean;
   background?: "background" | "warm" | "linen";
   imageContain?: boolean;
+  /** Which pastel offset colour to use (cycles through the palette). */
+  accent?: number;
 }
 
-// Cycle through pastel offset colors per instance for an editorial feel.
+// Pastel offset colours for an editorial feel; pages pass `accent` per strip.
 const pastelPalette = ["bg-pastel-peach", "bg-pastel-blue", "bg-pastel-lime", "bg-pastel-lavender"];
-let stripCounter = 0;
 
 const PromoStrip = ({
   eyebrow,
@@ -31,8 +32,9 @@ const PromoStrip = ({
   reverse = false,
   background = "background",
   imageContain = false,
+  accent = 0,
 }: PromoStripProps) => {
-  const pastel = pastelPalette[stripCounter++ % pastelPalette.length];
+  const pastel = pastelPalette[accent % pastelPalette.length];
 
   const cta = ctaLabel && ctaHref ? (
     ctaExternal ? (

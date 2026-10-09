@@ -23,6 +23,7 @@ const Index = () => {
         <PromoStrip
           background="warm"
           imageAlt="Команда пекарні Перемога — серце ремісничої випічки в Києві"
+          accent={0}
           eyebrow={c("home.promo1.eyebrow")}
           title={c("home.promo1.title")}
           image={c("home.promo1.image")}
@@ -34,6 +35,7 @@ const Index = () => {
         <PromoStrip
           background="background"
           reverse
+          accent={1}
           eyebrow={c("home.promo2.eyebrow")}
           title={c("home.promo2.title")}
           image={c("home.promo2.image")}
@@ -46,6 +48,7 @@ const Index = () => {
         <PromoStrip
           background="linen"
           imageAlt="Поставки авторської випічки для кав'ярень та ресторанів Києва, Ірпеня, Бучі"
+          accent={2}
           eyebrow={c("home.promo3.eyebrow")}
           title={c("home.promo3.title")}
           image={c("home.promo3.image")}
@@ -57,6 +60,7 @@ const Index = () => {
         <PromoStrip
           background="background"
           reverse
+          accent={3}
           eyebrow={c("home.promo4.eyebrow")}
           title={c("home.promo4.title")}
           image={c("home.promo4.image")}
